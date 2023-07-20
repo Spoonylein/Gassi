@@ -12,25 +12,31 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \GassiEvent.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var events: FetchedResults<GassiEvent>
 
     var body: some View {
         NavigationView {
+            
             List {
-                ForEach(items) { item in
+                ForEach(events) { event in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Item at \(event.timestamp!, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(event.timestamp!, formatter: itemFormatter)
+                        Text(event.dog?.name ?? "no name")
+                        Text(event.type?.name ?? "no name")
+                        Text(event.subtype?.name ?? "")
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem {
+                    #if os(iOS)
                     EditButton()
+                    #endif
                 }
                 ToolbarItem {
                     Button(action: addItem) {
@@ -44,7 +50,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
+            let newItem = GassiEvent(context: viewContext)
             newItem.timestamp = Date()
 
             do {
@@ -60,7 +66,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { events[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -83,6 +89,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }
 }

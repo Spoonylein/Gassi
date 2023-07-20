@@ -11,9 +11,42 @@
 		5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
 		5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BF1242A68529E00E006C6 /* Assets.xcassets */; };
 		5C3BF1282A68529E00E006C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BF1272A68529E00E006C6 /* Preview Assets.xcassets */; };
-		5C3BF12A2A68529E00E006C6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* Persistence.swift */; };
+		5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
 		5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
+		5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
+		5CA5C3932A68667500B867D0 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
+		5CA5C3942A68668D00B867D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
+		5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
+		5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
+		5CCD1D282A68532D00DA8727 /* GassiWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD1D272A68532D00DA8727 /* GassiWatchApp.swift */; };
+		5CCD1D2C2A68532D00DA8727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD1D2B2A68532D00DA8727 /* Assets.xcassets */; };
+		5CCD1D2F2A68532D00DA8727 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD1D2E2A68532D00DA8727 /* Preview Assets.xcassets */; };
+		5CCD1D322A68532D00DA8727 /* GassiWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5CCD1D252A68532C00DA8727 /* GassiWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CCD1D302A68532D00DA8727 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C3BF1152A68529E00E006C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CCD1D242A68532C00DA8727;
+			remoteInfo = "GassiWatch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5CCD1D362A68532D00DA8727 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5CCD1D322A68532D00DA8727 /* GassiWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5C3BF11D2A68529E00E006C6 /* Gassi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gassi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,13 +54,28 @@
 		5C3BF1222A68529E00E006C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C3BF1242A68529E00E006C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C3BF1272A68529E00E006C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5C3BF1292A68529E00E006C6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		5C3BF1292A68529E00E006C6 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		5C3BF12C2A68529E00E006C6 /* Gassi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gassi.xcdatamodel; sourceTree = "<group>"; };
 		5C3BF12E2A68529E00E006C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CA5C3952A6869C000B867D0 /* Gassi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gassi.entitlements; sourceTree = "<group>"; };
+		5CA5C3962A6869D500B867D0 /* GassiWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GassiWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5CA5C3972A6869E200B867D0 /* GassiWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GassiWatch Watch App.entitlements"; sourceTree = "<group>"; };
+		5CA5C3A12A6872BC00B867D0 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		5CCD1D252A68532C00DA8727 /* GassiWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GassiWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CCD1D272A68532D00DA8727 /* GassiWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiWatchApp.swift; sourceTree = "<group>"; };
+		5CCD1D2B2A68532D00DA8727 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5CCD1D2E2A68532D00DA8727 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5C3BF11A2A68529E00E006C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CCD1D222A68532C00DA8727 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,8 +88,12 @@
 		5C3BF1142A68529E00E006C6 = {
 			isa = PBXGroup;
 			children = (
+				5CA5C3A12A6872BC00B867D0 /* Documentation.docc */,
+				5CA5C38F2A68657000B867D0 /* Shared */,
 				5C3BF11F2A68529E00E006C6 /* Gassi */,
+				5CCD1D262A68532D00DA8727 /* GassiWatch Watch App */,
 				5C3BF11E2A68529E00E006C6 /* Products */,
+				5CCD1D1C2A6852DF00DA8727 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5C3BF11D2A68529E00E006C6 /* Gassi.app */,
+				5CCD1D252A68532C00DA8727 /* GassiWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,12 +109,10 @@
 		5C3BF11F2A68529E00E006C6 /* Gassi */ = {
 			isa = PBXGroup;
 			children = (
+				5CA5C3952A6869C000B867D0 /* Gassi.entitlements */,
 				5C3BF1202A68529E00E006C6 /* GassiApp.swift */,
-				5C3BF1222A68529E00E006C6 /* ContentView.swift */,
 				5C3BF1242A68529E00E006C6 /* Assets.xcassets */,
-				5C3BF1292A68529E00E006C6 /* Persistence.swift */,
 				5C3BF12E2A68529E00E006C6 /* Info.plist */,
-				5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */,
 				5C3BF1262A68529E00E006C6 /* Preview Content */,
 			);
 			path = Gassi;
@@ -71,6 +122,67 @@
 			isa = PBXGroup;
 			children = (
 				5C3BF1272A68529E00E006C6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5CA5C38F2A68657000B867D0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5CA5C3912A68658200B867D0 /* Model */,
+				5CA5C3902A68657800B867D0 /* Views */,
+				5CA5C3982A686BE300B867D0 /* Resources */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5CA5C3902A68657800B867D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C3BF1222A68529E00E006C6 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CA5C3912A68658200B867D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */,
+				5C3BF1292A68529E00E006C6 /* CoreDataController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5CA5C3982A686BE300B867D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5CCD1D1C2A6852DF00DA8727 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5CCD1D262A68532D00DA8727 /* GassiWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				5CA5C3972A6869E200B867D0 /* GassiWatch Watch App.entitlements */,
+				5CA5C3962A6869D500B867D0 /* GassiWatch-Watch-App-Info.plist */,
+				5CCD1D272A68532D00DA8727 /* GassiWatchApp.swift */,
+				5CCD1D2B2A68532D00DA8727 /* Assets.xcassets */,
+				5CCD1D2D2A68532D00DA8727 /* Preview Content */,
+			);
+			path = "GassiWatch Watch App";
+			sourceTree = "<group>";
+		};
+		5CCD1D2D2A68532D00DA8727 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5CCD1D2E2A68532D00DA8727 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -85,14 +197,33 @@
 				5C3BF1192A68529E00E006C6 /* Sources */,
 				5C3BF11A2A68529E00E006C6 /* Frameworks */,
 				5C3BF11B2A68529E00E006C6 /* Resources */,
+				5CCD1D362A68532D00DA8727 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CCD1D312A68532D00DA8727 /* PBXTargetDependency */,
+			);
+			name = Gassi;
+			productName = Gassi;
+			productReference = 5C3BF11D2A68529E00E006C6 /* Gassi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5CCD1D242A68532C00DA8727 /* GassiWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CCD1D332A68532D00DA8727 /* Build configuration list for PBXNativeTarget "GassiWatch Watch App" */;
+			buildPhases = (
+				5CCD1D212A68532C00DA8727 /* Sources */,
+				5CCD1D222A68532C00DA8727 /* Frameworks */,
+				5CCD1D232A68532C00DA8727 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Gassi;
-			productName = Gassi;
-			productReference = 5C3BF11D2A68529E00E006C6 /* Gassi.app */;
+			name = "GassiWatch Watch App";
+			productName = "GassiWatch Watch App";
+			productReference = 5CCD1D252A68532C00DA8727 /* GassiWatch Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -106,6 +237,9 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					5C3BF11C2A68529E00E006C6 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					5CCD1D242A68532C00DA8727 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
@@ -124,6 +258,7 @@
 			projectRoot = "";
 			targets = (
 				5C3BF11C2A68529E00E006C6 /* Gassi */,
+				5CCD1D242A68532C00DA8727 /* GassiWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +273,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CCD1D232A68532C00DA8727 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CCD1D2F2A68532D00DA8727 /* Preview Assets.xcassets in Resources */,
+				5CCD1D2C2A68532D00DA8727 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -145,14 +289,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C3BF12A2A68529E00E006C6 /* Persistence.swift in Sources */,
+				5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */,
 				5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */,
 				5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */,
+				5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */,
 				5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CCD1D212A68532C00DA8727 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */,
+				5CA5C3942A68668D00B867D0 /* ContentView.swift in Sources */,
+				5CA5C3932A68667500B867D0 /* Gassi.xcdatamodeld in Sources */,
+				5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */,
+				5CCD1D282A68532D00DA8727 /* GassiWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CCD1D312A68532D00DA8727 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CCD1D242A68532C00DA8727 /* GassiWatch Watch App */;
+			targetProxy = 5CCD1D302A68532D00DA8727 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5C3BF12F2A68529E00E006C6 /* Debug */ = {
@@ -272,14 +437,17 @@
 		5C3BF1322A68529E00E006C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gassi/Gassi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gassi/Preview Content\"";
 				DEVELOPMENT_TEAM = J642D97843;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gassi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,14 +469,17 @@
 		5C3BF1332A68529E00E006C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gassi/Gassi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gassi/Preview Content\"";
 				DEVELOPMENT_TEAM = J642D97843;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gassi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +495,70 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5CCD1D342A68532D00DA8727 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "GassiWatch Watch App/GassiWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GassiWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = J642D97843;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GassiWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = GassiWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = SpoonSOFT.Gassi;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.Gassi.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Debug;
+		};
+		5CCD1D352A68532D00DA8727 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "GassiWatch Watch App/GassiWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GassiWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = J642D97843;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GassiWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = GassiWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = SpoonSOFT.Gassi;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.Gassi.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
 			};
 			name = Release;
 		};
@@ -344,6 +579,15 @@
 			buildConfigurations = (
 				5C3BF1322A68529E00E006C6 /* Debug */,
 				5C3BF1332A68529E00E006C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CCD1D332A68532D00DA8727 /* Build configuration list for PBXNativeTarget "GassiWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCD1D342A68532D00DA8727 /* Debug */,
+				5CCD1D352A68532D00DA8727 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

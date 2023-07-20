@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="GassiBreed" representedClassName="GassiBreed" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="dogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiDog" inverseName="breed" inverseEntity="GassiDog"/>
+    </entity>
+    <entity name="GassiDog" representedClassName="GassiDog" syncable="YES" codeGenerationType="class">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="breed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiBreed" inverseName="dogs" inverseEntity="GassiBreed"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="dog" inverseEntity="GassiEvent"/>
+        <relationship name="sex" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiSex" inverseName="dogs" inverseEntity="GassiSex"/>
+    </entity>
+    <entity name="GassiEvent" representedClassName="GassiEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="dog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiDog" inverseName="events" inverseEntity="GassiDog"/>
+        <relationship name="subtype" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiSubtype" inverseName="events" inverseEntity="GassiSubtype"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiType" inverseName="events" inverseEntity="GassiType"/>
+    </entity>
+    <entity name="GassiSex" representedClassName="GassiSex" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="dogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiDog" inverseName="sex" inverseEntity="GassiDog"/>
+    </entity>
+    <entity name="GassiSubtype" representedClassName="GassiSubtype" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="subtype" inverseEntity="GassiEvent"/>
+        <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiType" inverseName="subtypes" inverseEntity="GassiType"/>
+    </entity>
+    <entity name="GassiType" representedClassName="GassiType" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="predict" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="type" inverseEntity="GassiEvent"/>
+        <relationship name="subtypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiSubtype" inverseName="types" inverseEntity="GassiSubtype"/>
+    </entity>
+</model>

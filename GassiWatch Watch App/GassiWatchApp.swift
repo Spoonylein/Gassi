@@ -1,6 +1,6 @@
 //
-//  GassiApp.swift
-//  Gassi
+//  GassiWatchApp.swift
+//  GassiWatch Watch App
 //
 //  Created by Jan Löffel on 19.07.23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct GassiApp: App {
+struct GassiWatchApp: App {
     let coreDataController = CoreDataController.shared
 
     var body: some Scene {
