@@ -14,10 +14,14 @@
 		5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
 		5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
 		5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
-		5CA5C3932A68667500B867D0 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
 		5CA5C3942A68668D00B867D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
 		5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
 		5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
+		5CBA09442A6D1DA10036EF67 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
+		5CBA094E2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */; };
+		5CBA094F2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */; };
+		5CBA09512A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA09502A6DB3670036EF67 /* CoreDataExtensions.swift */; };
+		5CBA09522A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA09502A6DB3670036EF67 /* CoreDataExtensions.swift */; };
 		5CCD1D282A68532D00DA8727 /* GassiWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD1D272A68532D00DA8727 /* GassiWatchApp.swift */; };
 		5CCD1D2C2A68532D00DA8727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD1D2B2A68532D00DA8727 /* Assets.xcassets */; };
 		5CCD1D2F2A68532D00DA8727 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD1D2E2A68532D00DA8727 /* Preview Assets.xcassets */; };
@@ -61,6 +65,8 @@
 		5CA5C3962A6869D500B867D0 /* GassiWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GassiWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5CA5C3972A6869E200B867D0 /* GassiWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GassiWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		5CA5C3A12A6872BC00B867D0 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		5CBA09502A6DB3670036EF67 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		5CCD1D252A68532C00DA8727 /* GassiWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GassiWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCD1D272A68532D00DA8727 /* GassiWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiWatchApp.swift; sourceTree = "<group>"; };
 		5CCD1D2B2A68532D00DA8727 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				5CA5C3912A68658200B867D0 /* Model */,
 				5CA5C3902A68657800B867D0 /* Views */,
 				5CA5C3982A686BE300B867D0 /* Resources */,
+				5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 			children = (
 				5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */,
 				5C3BF1292A68529E00E006C6 /* CoreDataController.swift */,
+				5CBA09502A6DB3670036EF67 /* CoreDataExtensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,7 +300,9 @@
 				5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */,
 				5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */,
 				5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */,
+				5CBA09512A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */,
 				5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */,
+				5CBA094E2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */,
 				5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,9 +313,11 @@
 			files = (
 				5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */,
 				5CA5C3942A68668D00B867D0 /* ContentView.swift in Sources */,
-				5CA5C3932A68667500B867D0 /* Gassi.xcdatamodeld in Sources */,
 				5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */,
+				5CBA09522A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */,
 				5CCD1D282A68532D00DA8727 /* GassiWatchApp.swift in Sources */,
+				5CBA094F2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */,
+				5CBA09442A6D1DA10036EF67 /* Gassi.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
