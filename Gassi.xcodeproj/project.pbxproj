@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0FF5552A784F15008EBD1D /* DogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5542A784F15008EBD1D /* DogView.swift */; };
+		5C0FF5592A7852B7008EBD1D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5582A7852B7008EBD1D /* StringExtensions.swift */; };
+		5C0FF55A2A7852B7008EBD1D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5582A7852B7008EBD1D /* StringExtensions.swift */; };
+		5C0FF55C2A78531D008EBD1D /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF55B2A78531D008EBD1D /* BindingExtensions.swift */; };
+		5C0FF55D2A78531D008EBD1D /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF55B2A78531D008EBD1D /* BindingExtensions.swift */; };
+		5C0FF55F2A7863F1008EBD1D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF55E2A7863F1008EBD1D /* ContentView.swift */; };
+		5C0FF5612A7864B3008EBD1D /* DogItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5602A7864B3008EBD1D /* DogItemView.swift */; };
+		5C0FF5642A78669A008EBD1D /* DogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5632A78669A008EBD1D /* DogListView.swift */; };
+		5C0FF56E2A7AAA28008EBD1D /* BreedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF56D2A7AAA28008EBD1D /* BreedItemView.swift */; };
+		5C0FF5702A7AABE5008EBD1D /* BreedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF56F2A7AABE5008EBD1D /* BreedListView.swift */; };
+		5C0FF5722A7AADD3008EBD1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C0FF5712A7AADD3008EBD1D /* Localizable.strings */; };
+		5C0FF5742A7AB259008EBD1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5732A7AB259008EBD1D /* SettingsView.swift */; };
+		5C0FF5762A7ADF5D008EBD1D /* GassiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5752A7ADF5D008EBD1D /* GassiView.swift */; };
+		5C0FF5782A7ADF82008EBD1D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5772A7ADF82008EBD1D /* EventsView.swift */; };
+		5C0FF57A2A7ADF9F008EBD1D /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5792A7ADF9F008EBD1D /* ReportView.swift */; };
+		5C0FF57C2A7AF8A5008EBD1D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF57B2A7AF8A5008EBD1D /* NavigationController.swift */; };
 		5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1202A68529E00E006C6 /* GassiApp.swift */; };
 		5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
 		5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BF1242A68529E00E006C6 /* Assets.xcassets */; };
@@ -14,7 +30,6 @@
 		5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
 		5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
 		5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
-		5CA5C3942A68668D00B867D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
 		5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
 		5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
 		5CBA09442A6D1DA10036EF67 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
@@ -53,6 +68,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C0FF5542A784F15008EBD1D /* DogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogView.swift; sourceTree = "<group>"; };
+		5C0FF5582A7852B7008EBD1D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		5C0FF55B2A78531D008EBD1D /* BindingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtensions.swift; sourceTree = "<group>"; };
+		5C0FF55E2A7863F1008EBD1D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5C0FF5602A7864B3008EBD1D /* DogItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogItemView.swift; sourceTree = "<group>"; };
+		5C0FF5632A78669A008EBD1D /* DogListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogListView.swift; sourceTree = "<group>"; };
+		5C0FF56D2A7AAA28008EBD1D /* BreedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedItemView.swift; sourceTree = "<group>"; };
+		5C0FF56F2A7AABE5008EBD1D /* BreedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedListView.swift; sourceTree = "<group>"; };
+		5C0FF5712A7AADD3008EBD1D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		5C0FF5732A7AB259008EBD1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5C0FF5752A7ADF5D008EBD1D /* GassiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiView.swift; sourceTree = "<group>"; };
+		5C0FF5772A7ADF82008EBD1D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		5C0FF5792A7ADF9F008EBD1D /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		5C0FF57B2A7AF8A5008EBD1D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5C3BF11D2A68529E00E006C6 /* Gassi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gassi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BF1202A68529E00E006C6 /* GassiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiApp.swift; sourceTree = "<group>"; };
 		5C3BF1222A68529E00E006C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +120,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0FF5572A78528F008EBD1D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C0FF5582A7852B7008EBD1D /* StringExtensions.swift */,
+				5C0FF55B2A78531D008EBD1D /* BindingExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C0FF5662A799F9E008EBD1D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C0FF5672A799FBE008EBD1D /* Dogs */,
+				5C0FF5682A7AA95B008EBD1D /* Breeds */,
+				5C0FF5692A7AA962008EBD1D /* Sexs */,
+				5C0FF56A2A7AA979008EBD1D /* Types */,
+				5C0FF56B2A7AA981008EBD1D /* Subtypes */,
+				5C0FF56C2A7AA9D3008EBD1D /* Events */,
+				5C3BF1222A68529E00E006C6 /* ContentView.swift */,
+				5C0FF5752A7ADF5D008EBD1D /* GassiView.swift */,
+				5C0FF5772A7ADF82008EBD1D /* EventsView.swift */,
+				5C0FF5792A7ADF9F008EBD1D /* ReportView.swift */,
+				5C0FF5732A7AB259008EBD1D /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C0FF5672A799FBE008EBD1D /* Dogs */ = {
+			isa = PBXGroup;
+			children = (
+				5C0FF5632A78669A008EBD1D /* DogListView.swift */,
+				5C0FF5602A7864B3008EBD1D /* DogItemView.swift */,
+				5C0FF5542A784F15008EBD1D /* DogView.swift */,
+			);
+			path = Dogs;
+			sourceTree = "<group>";
+		};
+		5C0FF5682A7AA95B008EBD1D /* Breeds */ = {
+			isa = PBXGroup;
+			children = (
+				5C0FF56F2A7AABE5008EBD1D /* BreedListView.swift */,
+				5C0FF56D2A7AAA28008EBD1D /* BreedItemView.swift */,
+			);
+			path = Breeds;
+			sourceTree = "<group>";
+		};
+		5C0FF5692A7AA962008EBD1D /* Sexs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sexs;
+			sourceTree = "<group>";
+		};
+		5C0FF56A2A7AA979008EBD1D /* Types */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		5C0FF56B2A7AA981008EBD1D /* Subtypes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subtypes;
+			sourceTree = "<group>";
+		};
+		5C0FF56C2A7AA9D3008EBD1D /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		5C3BF1142A68529E00E006C6 = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +219,10 @@
 			isa = PBXGroup;
 			children = (
 				5CA5C3952A6869C000B867D0 /* Gassi.entitlements */,
-				5C3BF1202A68529E00E006C6 /* GassiApp.swift */,
-				5C3BF1242A68529E00E006C6 /* Assets.xcassets */,
 				5C3BF12E2A68529E00E006C6 /* Info.plist */,
+				5C3BF1202A68529E00E006C6 /* GassiApp.swift */,
+				5C0FF5662A799F9E008EBD1D /* Views */,
+				5C3BF1242A68529E00E006C6 /* Assets.xcassets */,
 				5C3BF1262A68529E00E006C6 /* Preview Content */,
 			);
 			path = Gassi;
@@ -135,10 +239,10 @@
 		5CA5C38F2A68657000B867D0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5C0FF5572A78528F008EBD1D /* Extensions */,
 				5CA5C3912A68658200B867D0 /* Model */,
 				5CA5C3902A68657800B867D0 /* Views */,
 				5CA5C3982A686BE300B867D0 /* Resources */,
-				5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -146,7 +250,7 @@
 		5CA5C3902A68657800B867D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5C3BF1222A68529E00E006C6 /* ContentView.swift */,
+				5C0FF57B2A7AF8A5008EBD1D /* NavigationController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +268,8 @@
 		5CA5C3982A686BE300B867D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5C0FF5712A7AADD3008EBD1D /* Localizable.strings */,
+				5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -181,6 +287,7 @@
 				5CA5C3972A6869E200B867D0 /* GassiWatch Watch App.entitlements */,
 				5CA5C3962A6869D500B867D0 /* GassiWatch-Watch-App-Info.plist */,
 				5CCD1D272A68532D00DA8727 /* GassiWatchApp.swift */,
+				5C0FF55E2A7863F1008EBD1D /* ContentView.swift */,
 				5CCD1D2B2A68532D00DA8727 /* Assets.xcassets */,
 				5CCD1D2D2A68532D00DA8727 /* Preview Content */,
 			);
@@ -277,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C3BF1282A68529E00E006C6 /* Preview Assets.xcassets in Resources */,
+				5C0FF5722A7AADD3008EBD1D /* Localizable.strings in Resources */,
 				5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,13 +405,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0FF5742A7AB259008EBD1D /* SettingsView.swift in Sources */,
 				5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */,
+				5C0FF5702A7AABE5008EBD1D /* BreedListView.swift in Sources */,
 				5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */,
 				5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */,
+				5C0FF5592A7852B7008EBD1D /* StringExtensions.swift in Sources */,
 				5CBA09512A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */,
+				5C0FF5782A7ADF82008EBD1D /* EventsView.swift in Sources */,
+				5C0FF5612A7864B3008EBD1D /* DogItemView.swift in Sources */,
 				5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */,
+				5C0FF5552A784F15008EBD1D /* DogView.swift in Sources */,
 				5CBA094E2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */,
+				5C0FF57C2A7AF8A5008EBD1D /* NavigationController.swift in Sources */,
+				5C0FF5642A78669A008EBD1D /* DogListView.swift in Sources */,
+				5C0FF5762A7ADF5D008EBD1D /* GassiView.swift in Sources */,
+				5C0FF57A2A7ADF9F008EBD1D /* ReportView.swift in Sources */,
+				5C0FF56E2A7AAA28008EBD1D /* BreedItemView.swift in Sources */,
 				5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */,
+				5C0FF55C2A78531D008EBD1D /* BindingExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,12 +432,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */,
-				5CA5C3942A68668D00B867D0 /* ContentView.swift in Sources */,
 				5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */,
+				5C0FF55A2A7852B7008EBD1D /* StringExtensions.swift in Sources */,
 				5CBA09522A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */,
 				5CCD1D282A68532D00DA8727 /* GassiWatchApp.swift in Sources */,
+				5C0FF55F2A7863F1008EBD1D /* ContentView.swift in Sources */,
 				5CBA094F2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */,
 				5CBA09442A6D1DA10036EF67 /* Gassi.xcdatamodeld in Sources */,
+				5C0FF55D2A78531D008EBD1D /* BindingExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

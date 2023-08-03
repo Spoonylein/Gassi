@@ -36,14 +36,23 @@ extension GassiDog {
         }
         set {
             if _current != newValue {
+                let oldCurrentDog = _current
                 _current = newValue
+                
+                if let newDog = _current {
+                    newDog.managedObjectContext?.refresh(newDog, mergeChanges: true)
+                }
+                if let oldDog = oldCurrentDog {
+                    oldDog.managedObjectContext?.refresh(oldDog, mergeChanges: true)
+                }
+                
                 UserDefaults.standard.set(_current?.id?.uuidString, forKey: UserDefaultsKeys.currentDogIDString.rawValue)
                 print("currentDogID \(_current?.id?.uuidString ?? "nil") saved in UserDefaults.")
             }
         }
     }
-    
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new dog", breed: GassiBreed? = nil, birthday: Date? = nil, sex: GassiSex? = nil, events: NSSet? = nil) -> GassiDog {
+        
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = localizedString("NewDog"), breed: GassiBreed? = nil, birthday: Date? = nil, sex: GassiSex? = nil, events: NSSet? = nil) -> GassiDog {
         let dog = GassiDog(context: context)
         
         dog.id = id
@@ -58,6 +67,59 @@ extension GassiDog {
     
     static func newDefault(context: NSManagedObjectContext) -> GassiDog {
         return new(context: context, id: UUID(uuidString: GassiIDStrings.defaultDog.rawValue)!, name: "Your dog")
+    }
+    
+    var nameString: String {
+        var result = localizedString("NamelessDog")
+        
+        if let name = self.name {
+            result = name
+        }
+        
+        return result
+    }
+    
+    var breedNameString: String {
+        var result = ""
+        
+        if let breed = self.breed {
+            result = breed.name ?? ""
+        }
+        
+        return result
+    }
+    
+    var sexSign: String {
+        var result = ""
+        
+        switch sex {
+        case GassiSex.female:
+            result = "♀︎"
+        case GassiSex.male:
+            result = "♂︎"
+        default:
+            result = ""
+        }
+        
+        return result
+    }
+    
+    var ageString: String {
+        var result = ""
+        
+        if let birthday = self.birthday, let years = Calendar.current.dateComponents([.year], from: birthday, to: .now).year {
+            if years == 1 {
+                result = "\(years)"
+            } else {
+                result = "\(years)"
+            }
+        }
+        
+        return result
+    }
+    
+    var isCurrent: Bool {
+        return GassiDog.current == self
     }
 }
 
@@ -122,6 +184,16 @@ extension GassiSex {
                 _male = newValue
             }
         }
+    }
+    
+    var nameString: String {
+        var result = ""
+        
+        if let name = self.name {
+            result = name
+        }
+        
+        return result
     }
 }
 

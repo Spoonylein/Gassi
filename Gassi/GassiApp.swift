@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct GassiApp: App {
     @Environment(\.scenePhase) var scenePhase
+    @StateObject var navigationController = NavigationController()
 
     let coreDataController = CoreDataController.shared
 
@@ -17,6 +18,7 @@ struct GassiApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, coreDataController.container.viewContext)
+                .environmentObject(navigationController)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

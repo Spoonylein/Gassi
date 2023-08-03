@@ -1,0 +1,93 @@
+/* 
+  Localizable.strings
+  Gassi
+
+  Created by Jan Löffel on 02.08.23.
+  
+*/
+
+// MARK: Global Strings
+"Name" = "Name";
+"Delete" = "Löschen";
+"Unknown" = "unbekannt";
+
+// MARK: GassiDog
+"Dog" = "Hund";
+"Dogs" = "Hunde";
+"AllDogs" = "Alle Hunde";
+"YourDog" = "Dein Hund";
+"YourDogs" = "Deine Hunde";
+"CurrentDog" = "Aktiver Hund";
+"NamelessDog" = "Namenloser Hund";
+"NewDog" = "Neuer Hund";
+
+// MARK: GassiBreed
+"Breed" = "Rasse";
+"NoBreed" = "keine Rasse";
+
+// MARK: GassiSex
+"Sex" = "Geschlecht";
+"NoSex" = "kein Geschlecht";
+"FemaleSex" = "weiblich";
+"MaleSex" = "männlich";
+"FemaleDog" = "Hündin";
+"MaleDog" = "Rüde";
+
+// MARK: ContentView
+"GassiTabTitle" = "Gassi!";
+"EventsTabTitle" = "Liste";
+"ReportTabTitle" = "Statistiken";
+"SettingsTabTitle" = "Einstellungen";
+
+// MARK: ReportView
+
+// MARK: SettingsView
+"SettingsTitle" = "Einstellungen";
+"SettingsCurrentDog" = "Aktiver Hund";
+"SettingsNotCurrentDog" = "Inaktiver Hund";
+"SettingsDogSectionFooter" = "Wähle den aktiven Hund aus oder bearbeite ihn. Durch Wischen nach links kannst Du einen Hund löschen.";
+
+"SettingsGracePeriod" = "Karenzzeit %@";
+"SettingsGrooming" = "Behalte %d Tage";
+"SettingsWalksSectionHeader" = "GASSIS";
+"SettingsWalksSectionFooter" = "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt.";
+"SettingsResetAllSettings" = "Einstellungen zurücksetzen";
+"SettingsClearData" = "Alle Daten löschen";
+
+// MARK: DogView
+"DogViewTitle" = "Hund bearbeiten";
+"DogName" = "Name des Hundes";
+"DogBirthDate" = "Geburtsdatum";
+"DogNoBirthDate" = "kein Geburtsdatum";
+"DogDetailsNameBirthSectionHeader" = "NAME UND GEBURTSTAG";
+"DogDetailsNameBirthSectionFooter" = "Das Geburtsdatum wird zur Vorhersage der Gassis genutzt.";
+"DogBreed" = "Rasse";
+"DogDetailsBreedSectionHeader" = "RASSE";
+"DogDetailsBreedSectionFooter" = "Wenn unbekannt, einfach 'Mischling' nutzen.";
+
+// MARK: DogItemView
+"DogItemSex" = "Geschlecht: ";
+"DogItemAge" = "Alter: ";
+
+// MARK: DogsListView
+"DogsListViewTitle" = "Hunde";
+
+// MARK: DogsSelectionView
+"DogsSelectionViewTitle" = "Hund auswählen";
+
+// MARK: DogMenuView
+"DogMenuViewEditDogs" = "Hunde bearbeiten...";
+
+// MARK: Default categories
+"pee" = "Pipi";
+"peeSign" = "💦";
+"poo" = "Kacke";
+"pooSign" = "💩";
+"diarrhea" = "Durchfall";
+"diarrheaSign" = "☣️";
+"vomit" = "Erbrechen";
+"vomitSign" = "🤮";
+"treat" = "Leckerli";
+"treatSign" = "🍖";
+"training" = "Training";
+"trainingSign" = "🦮";
