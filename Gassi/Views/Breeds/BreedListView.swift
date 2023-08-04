@@ -9,16 +9,30 @@ import SwiftUI
 
 struct BreedListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
+    @EnvironmentObject var navigationController: NavigationController
+
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var breeds: FetchedResults<GassiBreed>
 
     var body: some View {
         List {
             ForEach(breeds) { breed in
-                BreedItemView(breed: breed)
+                NavigationLink(value: breed) {
+                    BreedItemView(breed: breed)
+                }
             }
             .onDelete(perform: deleteItems)
         }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    let breed = GassiBreed.new(context: viewContext)
+                    navigationController.path.append(breed)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .navigationTitle(LocalizedStringKey("Breeds"))
     }
     
     private func deleteItems(offsets: IndexSet) {

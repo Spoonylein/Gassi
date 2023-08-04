@@ -151,6 +151,7 @@ struct CoreDataController {
         if let breeds = try? container.viewContext.fetch(GassiBreed.fetchRequest()) {
             if breeds.isEmpty {
                 print("No breeds fetched, creating default ones.")
+                let _ = GassiBreed.new(context: container.viewContext, name: "Mischling")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Afghanischer Windhund")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Airedale-Terrier")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Akita Inu")

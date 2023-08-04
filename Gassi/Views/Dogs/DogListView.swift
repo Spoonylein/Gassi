@@ -11,16 +11,30 @@ struct DogListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
 
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
+//    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
+    
+    @FetchRequest private var dogs: FetchedResults<GassiDog>
+    private var showCurrent = false
 
+    init(breed: GassiBreed? = nil, showCurrent: Bool = false) {
+        if let _breed = breed {
+            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], predicate: NSPredicate(format: "breed = %@", _breed), animation: .default)
+        } else {
+            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default)
+        }
+        self.showCurrent = showCurrent
+    }
+    
     var body: some View {
         List {
             ForEach(dogs) { dog in
                 HStack {
-                    Button {
-                        dog.makeCurrent()
-                    } label: {
-                        Image(systemName: dog.isCurrent ? "checkmark.circle" : "circle")
+                    if showCurrent {
+                        Button {
+                            dog.makeCurrent()
+                        } label: {
+                            Image(systemName: dog.isCurrent ? "checkmark.circle" : "circle")
+                        }
                     }
 
                     ControlGroup {

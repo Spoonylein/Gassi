@@ -25,7 +25,12 @@
 
 // MARK: GassiBreed
 "Breed" = "Rasse";
+"Breeds" = "Rassen";
 "NoBreed" = "keine Rasse";
+"NamelessBreed" = "Namenlose Rasse";
+"NewBreed" = "Neue Rasse";
+"DeleteBreed" = "Rasse löschen";
+"DeleteBreedConfirmationMessage" = "Die Rasse wird von allen Hunden entfernt und gelöscht.";
 
 // MARK: GassiSex
 "Sex" = "Geschlecht";
@@ -47,7 +52,7 @@
 "SettingsTitle" = "Einstellungen";
 "SettingsCurrentDog" = "Aktiver Hund";
 "SettingsDogSectionFooter" = "Wähle den aktiven Hund aus oder bearbeite ihn. Durch Wischen nach links kannst Du einen Hund löschen.";
-
+"SettingsFeatureSectionTitle" = "Merkmale";
 "SettingsGracePeriod" = "Karenzzeit %@";
 "SettingsGrooming" = "Behalte %d Tage";
 "SettingsWalksSectionHeader" = "GASSIS";
@@ -70,13 +75,14 @@
 // MARK: DogsListView
 "DogsListViewTitle" = "Hunde";
 
-// MARK: DogsSelectionView
-"DogsSelectionViewTitle" = "Hund auswählen";
+// MARK: BreedView
+"BreedViewTitle" = "Rasse bearbeiten";
+"BreedName" = "Name des Rasse";
 
-// MARK: DogMenuView
-"DogMenuViewEditDogs" = "Hunde bearbeiten...";
+// MARK: BreedListView
+"BreedListViewTitle" = "Rassen";
 
-// MARK: Default categories
+// MARK: Default categories - TODO
 "pee" = "Pipi";
 "peeSign" = "💦";
 "poo" = "Kacke";

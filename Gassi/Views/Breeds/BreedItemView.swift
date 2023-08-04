@@ -13,6 +13,7 @@ struct BreedItemView: View {
     var body: some View {
         HStack {
             Text(breed.name ?? "[no breed name]")
+                .foregroundColor((breed.dogs?.count ?? 0) > 0 ? .primary : .secondary)
             Spacer()
             Image(systemName: "\(breed.dogs?.count ?? 0).circle")
                 .foregroundColor(.secondary)

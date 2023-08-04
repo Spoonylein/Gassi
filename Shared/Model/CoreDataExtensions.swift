@@ -128,7 +128,7 @@ extension GassiDog {
 }
 
 extension GassiBreed {
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new dog", dogs: NSSet? = nil) -> GassiBreed {
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = localizedString("NewBreed"), dogs: NSSet? = nil) -> GassiBreed {
         let breed = GassiBreed(context: context)
 
         breed.id = id
@@ -137,6 +137,17 @@ extension GassiBreed {
         
         return breed
     }
+    
+    var nameString: String {
+        var result = localizedString("NamelessBreed")
+        
+        if let name = self.name {
+            result = name
+        }
+        
+        return result
+    }
+
 }
 
 extension GassiSex {

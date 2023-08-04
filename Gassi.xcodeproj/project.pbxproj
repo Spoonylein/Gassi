@@ -23,6 +23,7 @@
 		5C0FF5782A7ADF82008EBD1D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5772A7ADF82008EBD1D /* EventsView.swift */; };
 		5C0FF57A2A7ADF9F008EBD1D /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5792A7ADF9F008EBD1D /* ReportView.swift */; };
 		5C0FF57C2A7AF8A5008EBD1D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF57B2A7AF8A5008EBD1D /* NavigationController.swift */; };
+		5C0FF57E2A7D1478008EBD1D /* BreedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF57D2A7D1478008EBD1D /* BreedView.swift */; };
 		5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1202A68529E00E006C6 /* GassiApp.swift */; };
 		5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
 		5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BF1242A68529E00E006C6 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		5C0FF5772A7ADF82008EBD1D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		5C0FF5792A7ADF9F008EBD1D /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		5C0FF57B2A7AF8A5008EBD1D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		5C0FF57D2A7D1478008EBD1D /* BreedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedView.swift; sourceTree = "<group>"; };
 		5C3BF11D2A68529E00E006C6 /* Gassi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gassi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BF1202A68529E00E006C6 /* GassiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiApp.swift; sourceTree = "<group>"; };
 		5C3BF1222A68529E00E006C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				5C0FF56F2A7AABE5008EBD1D /* BreedListView.swift */,
 				5C0FF56D2A7AAA28008EBD1D /* BreedItemView.swift */,
+				5C0FF57D2A7D1478008EBD1D /* BreedView.swift */,
 			);
 			path = Breeds;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				5C0FF56E2A7AAA28008EBD1D /* BreedItemView.swift in Sources */,
 				5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */,
 				5C0FF55C2A78531D008EBD1D /* BindingExtensions.swift in Sources */,
+				5C0FF57E2A7D1478008EBD1D /* BreedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

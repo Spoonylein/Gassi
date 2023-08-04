@@ -15,6 +15,8 @@ struct SettingsView: View {
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
     
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var breeds: FetchedResults<GassiBreed>
+    
     @State private var isPresentingConfirm: Bool = false
     
     var body: some View {
@@ -22,13 +24,14 @@ struct SettingsView: View {
             Form {
                 
                 Section {
-                    DogListView()
+                    DogListView(showCurrent: true)
                 } header: {
                     HStack {
                         Label(LocalizedStringKey(dogs.count == 1 ? "YourDog" : "YourDogs"), systemImage: "pawprint.fill")
                         Spacer()
                         Button {
-                            let _ = GassiDog.new(context: viewContext)
+                            let dog = GassiDog.new(context: viewContext)
+                            navigationController.path.append(dog)
                         } label: {
                             Image(systemName: "plus")
                         }
@@ -38,10 +41,26 @@ struct SettingsView: View {
                     Label(LocalizedStringKey("SettingsDogSectionFooter"), systemImage: "info.circle")
                 }
 
+                Section {
+                    NavigationLink(value: [GassiBreed()]) {
+                        Label {
+                            HStack {
+                                Text(LocalizedStringKey("Breeds"))
+                                Spacer()
+                                Text("\(breeds.count)")
+                                    .foregroundColor(.secondary)
+                            }
+                        } icon: {
+                            Image(systemName: "pawprint")
+                        }
+                    }
+                } header: {
+                        Label(LocalizedStringKey("SettingsFeatureSectionTitle"), systemImage: "rectangle.and.text.magnifyingglass")
+                }
+
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
                 }
             }
 
@@ -50,6 +69,12 @@ struct SettingsView: View {
             }
             .navigationDestination(for: GassiDog.self) { dog in
                 DogView(dog: dog)
+            }
+            .navigationDestination(for: [GassiBreed].self) { breeds in
+                BreedListView()
+            }
+            .navigationDestination(for: GassiBreed.self) { breed in
+                BreedView(breed: breed)
             }
             .navigationTitle(LocalizedStringKey("SettingsTitle"))
         }
