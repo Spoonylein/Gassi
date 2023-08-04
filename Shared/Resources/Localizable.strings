@@ -20,6 +20,8 @@
 "CurrentDog" = "Aktiver Hund";
 "NamelessDog" = "Namenloser Hund";
 "NewDog" = "Neuer Hund";
+"DeleteDog" = "Hund löschen";
+"DeleteDogConfirmationMessage" = "Der Hund und alle seine Ereignisse werden unwiderruflich gelöscht und können nicht wiederhergestellt werden.";
 
 // MARK: GassiBreed
 "Breed" = "Rasse";
@@ -44,7 +46,6 @@
 // MARK: SettingsView
 "SettingsTitle" = "Einstellungen";
 "SettingsCurrentDog" = "Aktiver Hund";
-"SettingsNotCurrentDog" = "Inaktiver Hund";
 "SettingsDogSectionFooter" = "Wähle den aktiven Hund aus oder bearbeite ihn. Durch Wischen nach links kannst Du einen Hund löschen.";
 
 "SettingsGracePeriod" = "Karenzzeit %@";
@@ -59,11 +60,8 @@
 "DogName" = "Name des Hundes";
 "DogBirthDate" = "Geburtsdatum";
 "DogNoBirthDate" = "kein Geburtsdatum";
-"DogDetailsNameBirthSectionHeader" = "NAME UND GEBURTSTAG";
-"DogDetailsNameBirthSectionFooter" = "Das Geburtsdatum wird zur Vorhersage der Gassis genutzt.";
-"DogBreed" = "Rasse";
-"DogDetailsBreedSectionHeader" = "RASSE";
-"DogDetailsBreedSectionFooter" = "Wenn unbekannt, einfach 'Mischling' nutzen.";
+"DogViewCurrentDogFooter" = "Neue Ereignisse werden immer dem aktuell aktiven Hund zugewiesen.";
+"DogViewDeleteFooter" = "Der aktive Hund kann nicht gelöscht werden.";
 
 // MARK: DogItemView
 "DogItemSex" = "Geschlecht: ";

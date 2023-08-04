@@ -10,7 +10,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="breed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiBreed" inverseName="dogs" inverseEntity="GassiBreed"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="dog" inverseEntity="GassiEvent"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GassiEvent" inverseName="dog" inverseEntity="GassiEvent"/>
         <relationship name="sex" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GassiSex" inverseName="dogs" inverseEntity="GassiSex"/>
     </entity>
     <entity name="GassiEvent" representedClassName="GassiEvent" syncable="YES" codeGenerationType="class">

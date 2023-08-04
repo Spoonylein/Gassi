@@ -61,7 +61,7 @@ struct CoreDataController {
         // TODO: Check for DOG, SEX, TYPE, SUBTYPE and create default data if missing
         print("Core data store loaded. Checking for default data..")
         if !inMemory, let currentDog = initCurrentDog() {
-            GassiDog.current = currentDog
+            currentDog.makeCurrent()
         } else {
             print("No dog fetched, creating default one.")
             GassiDog.current = GassiDog.newDefault(context: container.viewContext)

@@ -8,80 +8,114 @@
 import SwiftUI
 
 struct DogView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var navigationController: NavigationController
+
     @ObservedObject var dog: GassiDog
     
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
+
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var breeds: FetchedResults<GassiBreed>
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var sexes: FetchedResults<GassiSex>
 
+    @StateObject private var oldCurrentDog: GassiDog = GassiDog.current
+    @State private var showConfirm = false
+    
     var body: some View {
-        List {
-            Label {
-                Text(LocalizedStringKey("Name"))
-                Spacer()
-                TextField(LocalizedStringKey("DogName"), text: Binding<String>.convertOptionalString($dog.name))
-                    .textContentType(.givenName)
-                    .multilineTextAlignment(.trailing)
-            } icon: {
-                Image(systemName: "square.and.pencil")
-            }
-
-            Picker(selection: $dog.breed) {
-                Text(LocalizedStringKey("Unknown"))
-                    .tag(nil as GassiBreed?)
-                ForEach(breeds) { breed in
-                    Text(breed.name ?? "")
-                        .tag(breed as GassiBreed?)
-                }
-            } label: {
+        Form {
+            Section {
                 Label {
-                    Text(LocalizedStringKey("Breed"))
+                    Text(LocalizedStringKey("Name"))
+                    Spacer()
+                    TextField(LocalizedStringKey("DogName"), text: Binding<String>.convertOptionalString($dog.name))
+                        .textContentType(.givenName)
+                        .multilineTextAlignment(.trailing)
                 } icon: {
-                    Image(systemName: "pawprint")
+                    Image(systemName: "square.and.pencil")
                 }
-            }
 
-            Picker(selection: $dog.sex) {
-                Text(LocalizedStringKey("Unknown"))
-                    .tag(nil as GassiSex?)
-                ForEach(sexes) { sex in
-                        Text(sex.nameString)
-                            .tag(sex as GassiSex?)
-                }
-            } label: {
-                Label {
-                    Text(LocalizedStringKey("Sex"))
-                } icon: {
-                    Text("⚤")
-                }
-            }
-            
-            DatePicker(selection: Binding<Date?>.convertOptionalValue($dog.birthday, fallback: .now.addingTimeInterval(86400)), displayedComponents: .date) {
-
-                Label {
-                    Text(dog.birthday != nil ? LocalizedStringKey("DogBirthDate") : LocalizedStringKey("DogNoBirthDate"))
-                } icon: {
-                    Image(systemName: "calendar")
-                }
-            }
-            
-            Label {
-                VStack(alignment: .leading) {
-                    if dog.isCurrent {
-                        Text("SettingsCurrentDog")
-                    } else {
-                        Text("SettingsNotCurrentDog")
-                        Text("Antippen zum Aktivieren.")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
+                Picker(selection: $dog.breed) {
+                    Text(LocalizedStringKey("Unknown"))
+                        .tag(nil as GassiBreed?)
+                    ForEach(breeds) { breed in
+                        Text(breed.name ?? "")
+                            .tag(breed as GassiBreed?)
+                    }
+                } label: {
+                    Label {
+                        Text(LocalizedStringKey("Breed"))
+                    } icon: {
+                        Image(systemName: "pawprint")
                     }
                 }
-            } icon: {
-                Image(systemName: dog.isCurrent ? "checkmark.circle" : "circle")
+
+                Picker(selection: $dog.sex) {
+                    Text(LocalizedStringKey("Unknown"))
+                        .tag(nil as GassiSex?)
+                    ForEach(sexes) { sex in
+                            Text(sex.nameString)
+                                .tag(sex as GassiSex?)
+                    }
+                } label: {
+                    Label {
+                        Text(LocalizedStringKey("Sex"))
+                    } icon: {
+                        Text("⚤")
+                    }
+                }
+                
+                DatePicker(selection: Binding<Date?>.convertOptionalValue($dog.birthday, fallback: .now.addingTimeInterval(86400)), displayedComponents: .date) {
+
+                    Label {
+                        Text(dog.birthday != nil ? LocalizedStringKey("DogBirthDate") : LocalizedStringKey("DogNoBirthDate"))
+                    } icon: {
+                        Image(systemName: "calendar")
+                    }
+                }
+            } header: {
+                Text(dog.sex == GassiSex.female ? LocalizedStringKey("FemaleDog") : LocalizedStringKey("Dog"))
             }
-            .onTapGesture {
-                GassiDog.current = dog
+            
+            Section {
+                Label {
+                    HStack {
+                        Text("SettingsCurrentDog")
+                        Spacer()
+                        Text(GassiDog.current.nameString)
+                    }
+                } icon: {
+                    Image(systemName: dog.isCurrent ? "checkmark.circle" : "circle")
+                }
+                .onTapGesture {
+                    if !dog.isCurrent {
+                        dog.makeCurrent()
+                    } else {
+                        oldCurrentDog.makeCurrent()
+                    }
+                }
+            } footer: {
+                Label(LocalizedStringKey("DogViewCurrentDogFooter"), systemImage: "info.circle")
             }
+            
+            Section {
+                Button(LocalizedStringKey("DeleteDog"), role: .destructive) {
+                    showConfirm = true
+                }
+                .confirmationDialog(LocalizedStringKey("DeleteDog"), isPresented: $showConfirm) {
+                    Button(LocalizedStringKey("DeleteDog"), role: .destructive) {
+                        viewContext.delete(dog)
+                        CoreDataController.shared.save()
+                        navigationController.path.removeLast()
+                    }
+                } message: {
+                    Text(LocalizedStringKey("DeleteDogConfirmationMessage"))
+                }
+                
+            } footer: {
+                Label(LocalizedStringKey("DogViewDeleteFooter"), systemImage: "exclamationmark.circle")
+            }
+            .disabled(dog.isCurrent)
 
         }
         .textFieldStyle(.roundedBorder)

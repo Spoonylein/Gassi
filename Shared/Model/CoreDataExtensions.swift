@@ -121,6 +121,10 @@ extension GassiDog {
     var isCurrent: Bool {
         return GassiDog.current == self
     }
+    
+    func makeCurrent() {
+        GassiDog.current = self
+    }
 }
 
 extension GassiBreed {

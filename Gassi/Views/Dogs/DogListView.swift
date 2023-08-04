@@ -12,13 +12,13 @@ struct DogListView: View {
     @EnvironmentObject var navigationController: NavigationController
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
-    
+
     var body: some View {
         List {
             ForEach(dogs) { dog in
                 HStack {
                     Button {
-                        GassiDog.current = dog
+                        dog.makeCurrent()
                     } label: {
                         Image(systemName: dog.isCurrent ? "checkmark.circle" : "circle")
                     }
@@ -37,6 +37,15 @@ struct DogListView: View {
                     }
                 }
                 .deleteDisabled(dog.isCurrent)
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(role: .destructive) {
+                        viewContext.delete(dog)
+                        CoreDataController.shared.save()
+                    } label: {
+                        Label("Delete", systemImage: "trash.fill")
+                    }
+                    
+                }
                 
             }
             .onDelete(perform: deleteItems)
