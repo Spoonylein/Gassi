@@ -23,11 +23,16 @@ struct SexView: View {
                     Spacer()
                     TextField(LocalizedStringKey("SexName"), text: Binding<String>.convertOptionalString($sex.name))
                         .textInputAutocapitalization(.never)
+                        .padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
             } header: {
-                Text(LocalizedStringKey("Sex"))
+                Label {
+                    Text(LocalizedStringKey("Sex"))
+                } icon: {
+                    Text("⚤")
+                }
             }
             
             Section {
@@ -57,7 +62,7 @@ struct SexView: View {
         }
         .textFieldStyle(.roundedBorder)
         .navigationTitle(sex.name ?? localizedString("SexViewTitle"))
-
+        .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }
 
@@ -65,6 +70,5 @@ struct SexView_Previews: PreviewProvider {
     static var previews: some View {
         SexView(sex: GassiDog.current.sex ?? GassiSex.new(context: CoreDataController.preview.container.viewContext))
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
-        
     }
 }

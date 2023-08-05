@@ -22,11 +22,12 @@ struct BreedView: View {
                     Text(LocalizedStringKey("Name"))
                     Spacer()
                     TextField(LocalizedStringKey("BreedName"), text: Binding<String>.convertOptionalString($breed.name))
+                        .padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
             } header: {
-                Text(LocalizedStringKey("Breed"))
+                Label(LocalizedStringKey("Breed"), systemImage: "pawprint")
             }
             
             Section {
@@ -56,7 +57,7 @@ struct BreedView: View {
         }
         .textFieldStyle(.roundedBorder)
         .navigationTitle(breed.name ?? localizedString("BreedViewTitle"))
-
+        .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }
 

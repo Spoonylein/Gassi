@@ -29,6 +29,7 @@
     <entity name="GassiSubtype" representedClassName="GassiSubtype" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sign" optional="YES" attributeType="String" maxValueString="1"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="subtype" inverseEntity="GassiEvent"/>
         <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiType" inverseName="subtypes" inverseEntity="GassiType"/>
     </entity>
@@ -36,6 +37,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="predict" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sign" optional="YES" attributeType="String" maxValueString="1"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="type" inverseEntity="GassiEvent"/>
         <relationship name="subtypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiSubtype" inverseName="types" inverseEntity="GassiSubtype"/>
     </entity>

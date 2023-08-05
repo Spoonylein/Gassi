@@ -46,6 +46,36 @@
 "DeleteSex" = "Geschlecht löschen";
 "DeleteSexConfirmationMessage" = "Das Geschlecht wird von allen zugewiesenen Hunden entfernt und gelöscht.";
 
+// MARK: GassiType
+"Type" = "Kategorie";
+"Types" = "Kategorien";
+"NoType" = "keine Kategorie";
+"NamelessType" = "Namenlose Kategorie";
+"NewType" = "Neue Kategorie";
+"DeleteType" = "Kategorie löschen";
+"DeleteTypeConfirmationMessage" = "Die Kategorie wird von allen Ereignissen entfernt und gelöscht.";
+"TypeSign" = "🐶";
+"Pee" = "Pipi";
+"PeeSign" = "💦";
+"Poo" = "Kacka";
+"PooSign" = "💩";
+"Vomit" = "Erbrechen";
+"VomitSign" = "🤮";
+"treat" = "Leckerli";
+"treatSign" = "🍖";
+"training" = "Training";
+"trainingSign" = "🦮";
+
+// MARK: GassiSubtype
+"Subtype" = "Unterkategorie";
+"Subtypes" = "Unterkategorien";
+"HardPoo" = "Hart";
+"HardPooSign" = "🫘";
+"SoftPoo" = "Weich";
+"SoftPooSign" = "🟤";
+"Diarrhea" = "Durchfall";
+"DiarrheaSign" = "☣️";
+
 // MARK: GassiEvent
 "Event" = "Ereignis";
 "Events" = "Ereignisse";
@@ -96,16 +126,5 @@
 // MARK: BreedListView
 "BreedListViewTitle" = "Rassen";
 
-// MARK: Default categories - TODO
-"pee" = "Pipi";
-"peeSign" = "💦";
-"poo" = "Kacke";
-"pooSign" = "💩";
-"diarrhea" = "Durchfall";
-"diarrheaSign" = "☣️";
-"vomit" = "Erbrechen";
-"vomitSign" = "🤮";
-"treat" = "Leckerli";
-"treatSign" = "🍖";
-"training" = "Training";
-"trainingSign" = "🦮";
+// MARK: TypeView
+"TypeSignFooter" = "Nutze ein einzelnes Emoticon als Zeichen für diese Kategorie!";

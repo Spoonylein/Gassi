@@ -159,11 +159,12 @@ extension GassiSex {
 }
 
 extension GassiType {
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new type", predict: Bool = false, subtypes: NSSet? = nil, events: NSSet? = nil) -> GassiType {
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = localizedString("NewType"), sign: String = localizedString("TypeSign"), predict: Bool = false, subtypes: NSSet? = nil, events: NSSet? = nil) -> GassiType {
         let type = GassiType(context: context)
         
         type.id = id
         type.name = name
+        type.sign = sign
         type.predict = predict
         if let _subtypes = subtypes { type.addToSubtypes(_subtypes) }
         if let _events = events { type.addToEvents(_events) }
@@ -172,11 +173,11 @@ extension GassiType {
     }
     
     static func newPoo(context: NSManagedObjectContext) -> GassiType {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.pooType.rawValue)!, name: "Poo", predict: true)
+        return new(context: context, id: UUID(uuidString: GassiIDStrings.pooType.rawValue)!, name: "Poo", sign: "💩", predict: true)
     }
     
     static func newPee(context: NSManagedObjectContext) -> GassiType {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.peeType.rawValue)!, name: "Pee", predict: true)
+        return new(context: context, id: UUID(uuidString: GassiIDStrings.peeType.rawValue)!, name: "Pee", sign: "💦", predict: true)
     }
     
     private static var _poo: GassiType? = nil
@@ -211,14 +212,25 @@ extension GassiType {
         }
     }
 
+    var nameString: String {
+        var result = ""
+        
+        if let name = self.name {
+            result = name
+        }
+        
+        return result
+    }
+
 }
 
 extension GassiSubtype {
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", types: NSSet? = nil, events: NSSet? = nil) -> GassiSubtype {
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", sign: String? = nil, types: NSSet? = nil, events: NSSet? = nil) -> GassiSubtype {
         let subtype = GassiSubtype(context: context)
         
         subtype.id = id
         subtype.name = name
+        subtype.sign = sign
         if let _types = types {
             subtype.addToTypes(_types)
         }
@@ -228,15 +240,15 @@ extension GassiSubtype {
     }
     
     static func newHardPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.hardPooSubtype.rawValue)!, name: "hard")
+        return new(context: context, id: UUID(uuidString: GassiIDStrings.hardPooSubtype.rawValue)!, name: "hard", sign: "🫘")
     }
     
     static func newSoftPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.softPooSubtype.rawValue)!, name: "soft")
+        return new(context: context, id: UUID(uuidString: GassiIDStrings.softPooSubtype.rawValue)!, name: "soft", sign: "🟤")
     }
     
     static func newDiarrheaPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.diarrheaPooSubtype.rawValue)!, name: "diarrhea")
+        return new(context: context, id: UUID(uuidString: GassiIDStrings.diarrheaPooSubtype.rawValue)!, name: "diarrhea", sign: "☣️")
     }
     
     private static var _hardPoo: GassiSubtype? = nil

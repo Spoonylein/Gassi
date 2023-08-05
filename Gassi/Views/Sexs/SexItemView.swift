@@ -16,6 +16,7 @@ struct SexItemView: View {
                 .foregroundColor((sex.dogs?.count ?? 0) > 0 ? .primary : .secondary)
             Spacer()
             Text("\(sex.dogs?.count ?? 0)")
+                .font(.footnote)
                 .foregroundColor(.secondary)
         }
     }

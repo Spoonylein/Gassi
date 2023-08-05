@@ -1,23 +1,23 @@
 //
-//  SexListView.swift
+//  TypeListView.swift
 //  Gassi
 //
-//  Created by Jan Löffel on 02.08.23.
+//  Created by Jan Löffel on 05.08.23.
 //
 
 import SwiftUI
 
-struct SexListView: View {
+struct TypeListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
 
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var sexs: FetchedResults<GassiSex>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var types: FetchedResults<GassiType>
 
     var body: some View {
         List {
-            ForEach(sexs) { sex in
-                NavigationLink(value: sex) {
-                    SexItemView(sex: sex)
+            ForEach(types) { type in
+                NavigationLink(value: type) {
+                    TypeItemView(type: type)
                 }
             }
             .onDelete(perform: deleteItems)
@@ -25,30 +25,30 @@ struct SexListView: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    let sex = GassiSex.new(context: viewContext)
-                    navigationController.path.append(sex)
+                    let type = GassiType.new(context: viewContext)
+                    navigationController.path.append(type)
                 } label: {
                     Image(systemName: "plus")
                 }
             }
         }
-        .navigationTitle(LocalizedStringKey("Sexes"))
-        .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
+        .navigationTitle(LocalizedStringKey("Types"))
+            .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
     
     private func deleteItems(offsets: IndexSet) {
         for offset in offsets {
-            let sex = sexs[offset]
-            viewContext.delete(sex)
+            let type = types[offset]
+            viewContext.delete(type)
         }
         CoreDataController.shared.save()
     }
 
 }
 
-struct SexListView_Previews: PreviewProvider {
+struct TypeListView_Previews: PreviewProvider {
     static var previews: some View {
-        SexListView()
+        TypeListView()
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }
 }

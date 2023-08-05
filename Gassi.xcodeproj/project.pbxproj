@@ -33,6 +33,15 @@
 		5C3BF1282A68529E00E006C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BF1272A68529E00E006C6 /* Preview Assets.xcassets */; };
 		5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
 		5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF12B2A68529E00E006C6 /* Gassi.xcdatamodeld */; };
+		5C40379D2A7ECB2A004063E2 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40379C2A7ECB2A004063E2 /* EventListView.swift */; };
+		5C40379F2A7ECB45004063E2 /* EventItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40379E2A7ECB45004063E2 /* EventItemView.swift */; };
+		5C4037A12A7ECB52004063E2 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037A02A7ECB52004063E2 /* EventView.swift */; };
+		5C4037A32A7ECB61004063E2 /* TypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037A22A7ECB61004063E2 /* TypeListView.swift */; };
+		5C4037A52A7ECB6C004063E2 /* TypeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037A42A7ECB6C004063E2 /* TypeItemView.swift */; };
+		5C4037A72A7ECB7A004063E2 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037A62A7ECB7A004063E2 /* TypeView.swift */; };
+		5C4037A92A7ECB8E004063E2 /* SubtypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037A82A7ECB8E004063E2 /* SubtypeListView.swift */; };
+		5C4037AB2A7ECB99004063E2 /* SubtypeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037AA2A7ECB99004063E2 /* SubtypeItemView.swift */; };
+		5C4037AD2A7ECBA9004063E2 /* SubtypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037AC2A7ECBA9004063E2 /* SubtypeView.swift */; };
 		5CA5C3922A68663F00B867D0 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1292A68529E00E006C6 /* CoreDataController.swift */; };
 		5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
 		5CA5C3A32A6872BC00B867D0 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5C3A12A6872BC00B867D0 /* Documentation.docc */; };
@@ -98,6 +107,15 @@
 		5C3BF1292A68529E00E006C6 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		5C3BF12C2A68529E00E006C6 /* Gassi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gassi.xcdatamodel; sourceTree = "<group>"; };
 		5C3BF12E2A68529E00E006C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C40379C2A7ECB2A004063E2 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		5C40379E2A7ECB45004063E2 /* EventItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItemView.swift; sourceTree = "<group>"; };
+		5C4037A02A7ECB52004063E2 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		5C4037A22A7ECB61004063E2 /* TypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeListView.swift; sourceTree = "<group>"; };
+		5C4037A42A7ECB6C004063E2 /* TypeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeItemView.swift; sourceTree = "<group>"; };
+		5C4037A62A7ECB7A004063E2 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		5C4037A82A7ECB8E004063E2 /* SubtypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtypeListView.swift; sourceTree = "<group>"; };
+		5C4037AA2A7ECB99004063E2 /* SubtypeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtypeItemView.swift; sourceTree = "<group>"; };
+		5C4037AC2A7ECBA9004063E2 /* SubtypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtypeView.swift; sourceTree = "<group>"; };
 		5CA5C3952A6869C000B867D0 /* Gassi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gassi.entitlements; sourceTree = "<group>"; };
 		5CA5C3962A6869D500B867D0 /* GassiWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GassiWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5CA5C3972A6869E200B867D0 /* GassiWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GassiWatch Watch App.entitlements"; sourceTree = "<group>"; };
@@ -188,6 +206,9 @@
 		5C0FF56A2A7AA979008EBD1D /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				5C4037A22A7ECB61004063E2 /* TypeListView.swift */,
+				5C4037A42A7ECB6C004063E2 /* TypeItemView.swift */,
+				5C4037A62A7ECB7A004063E2 /* TypeView.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -195,6 +216,9 @@
 		5C0FF56B2A7AA981008EBD1D /* Subtypes */ = {
 			isa = PBXGroup;
 			children = (
+				5C4037A82A7ECB8E004063E2 /* SubtypeListView.swift */,
+				5C4037AA2A7ECB99004063E2 /* SubtypeItemView.swift */,
+				5C4037AC2A7ECBA9004063E2 /* SubtypeView.swift */,
 			);
 			path = Subtypes;
 			sourceTree = "<group>";
@@ -202,6 +226,9 @@
 		5C0FF56C2A7AA9D3008EBD1D /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				5C40379C2A7ECB2A004063E2 /* EventListView.swift */,
+				5C40379E2A7ECB45004063E2 /* EventItemView.swift */,
+				5C4037A02A7ECB52004063E2 /* EventView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -418,22 +445,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C0FF5842A7D5F1D008EBD1D /* BreedView.swift in Sources */,
+				5C4037A72A7ECB7A004063E2 /* TypeView.swift in Sources */,
+				5C4037A52A7ECB6C004063E2 /* TypeItemView.swift in Sources */,
 				5C0FF5832A7D5F19008EBD1D /* BreedItemView.swift in Sources */,
 				5C0FF5742A7AB259008EBD1D /* SettingsView.swift in Sources */,
 				5C3BF12A2A68529E00E006C6 /* CoreDataController.swift in Sources */,
 				5C0FF5702A7AABE5008EBD1D /* SexListView.swift in Sources */,
 				5C3BF12D2A68529E00E006C6 /* Gassi.xcdatamodeld in Sources */,
 				5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */,
+				5C40379D2A7ECB2A004063E2 /* EventListView.swift in Sources */,
 				5C0FF5592A7852B7008EBD1D /* StringExtensions.swift in Sources */,
 				5CBA09512A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */,
 				5C0FF5782A7ADF82008EBD1D /* EventsView.swift in Sources */,
+				5C4037AB2A7ECB99004063E2 /* SubtypeItemView.swift in Sources */,
 				5C0FF5822A7D5F14008EBD1D /* BreedListView.swift in Sources */,
 				5C0FF5612A7864B3008EBD1D /* DogItemView.swift in Sources */,
 				5CA5C3A22A6872BC00B867D0 /* Documentation.docc in Sources */,
 				5C0FF5552A784F15008EBD1D /* DogView.swift in Sources */,
+				5C4037A32A7ECB61004063E2 /* TypeListView.swift in Sources */,
+				5C4037AD2A7ECBA9004063E2 /* SubtypeView.swift in Sources */,
+				5C4037A12A7ECB52004063E2 /* EventView.swift in Sources */,
 				5CBA094E2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */,
 				5C0FF57C2A7AF8A5008EBD1D /* NavigationController.swift in Sources */,
+				5C40379F2A7ECB45004063E2 /* EventItemView.swift in Sources */,
 				5C0FF5642A78669A008EBD1D /* DogListView.swift in Sources */,
+				5C4037A92A7ECB8E004063E2 /* SubtypeListView.swift in Sources */,
 				5C0FF5762A7ADF5D008EBD1D /* GassiView.swift in Sources */,
 				5C0FF57A2A7ADF9F008EBD1D /* ReportView.swift in Sources */,
 				5C0FF56E2A7AAA28008EBD1D /* SexItemView.swift in Sources */,

@@ -30,6 +30,7 @@ struct DogView: View {
                     Spacer()
                     TextField(LocalizedStringKey("DogName"), text: Binding<String>.convertOptionalString($dog.name))
                         .textContentType(.givenName)
+                        .padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
@@ -119,6 +120,7 @@ struct DogView: View {
         }
         .textFieldStyle(.roundedBorder)
         .navigationTitle(dog.name ?? localizedString("DogViewTitle"))
+        .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }
 

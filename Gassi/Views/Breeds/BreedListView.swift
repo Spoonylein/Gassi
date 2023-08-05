@@ -33,6 +33,7 @@ struct BreedListView: View {
             }
         }
         .navigationTitle(LocalizedStringKey("Breeds"))
+        .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
     
     private func deleteItems(offsets: IndexSet) {

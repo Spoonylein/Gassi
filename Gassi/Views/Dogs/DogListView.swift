@@ -33,11 +33,6 @@ struct DogListView: View {
         
         _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], predicate: predicate, animation: .default)
         
-//        if let _breed = breed {
-//            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], predicate: NSPredicate(format: "breed = %@", _breed), animation: .default)
-//        } else {
-//            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default)
-//        }
         self.showCurrent = showCurrent
     }
     
