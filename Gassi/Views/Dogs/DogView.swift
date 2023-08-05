@@ -30,7 +30,6 @@ struct DogView: View {
                     Spacer()
                     TextField(LocalizedStringKey("DogName"), text: Binding<String>.convertOptionalString($dog.name))
                         .textContentType(.givenName)
-                        .multilineTextAlignment(.trailing)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
@@ -74,7 +73,7 @@ struct DogView: View {
                     }
                 }
             } header: {
-                Text(dog.sex == GassiSex.female ? LocalizedStringKey("FemaleDog") : LocalizedStringKey("Dog"))
+                Text(LocalizedStringKey("Dog"))
             }
             
             Section {

@@ -10,11 +10,6 @@ import CoreData
 
 /// Enum of ID strings for default Gassi core data objects
 enum GassiIDStrings: String {
-    case defaultDog = "07031973-1000-1000-1000-000000001000"
-    
-    case femaleSex = "07031973-1000-3000-1000-000000001000"
-    case maleSex = "07031973-1000-3000-2000-000000002000"
-    
     case peeType = "07031973-1000-6000-1000-000000001000"
     case pooType = "07031973-1000-6000-1100-000000002000"
     
@@ -65,10 +60,6 @@ extension GassiDog {
         return dog
     }
     
-    static func newDefault(context: NSManagedObjectContext) -> GassiDog {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.defaultDog.rawValue)!, name: "Your dog")
-    }
-    
     var nameString: String {
         var result = localizedString("NamelessDog")
         
@@ -83,22 +74,17 @@ extension GassiDog {
         var result = ""
         
         if let breed = self.breed {
-            result = breed.name ?? ""
+            result = breed.nameString
         }
         
         return result
     }
     
-    var sexSign: String {
+    var sexNameString: String {
         var result = ""
-        
-        switch sex {
-        case GassiSex.female:
-            result = "♀︎"
-        case GassiSex.male:
-            result = "♂︎"
-        default:
-            result = ""
+
+        if let sex = self.sex {
+            result = sex.nameString
         }
         
         return result
@@ -151,7 +137,7 @@ extension GassiBreed {
 }
 
 extension GassiSex {
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new sex", dogs: NSSet? = nil) -> GassiSex {
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = localizedString("NewSex"), dogs: NSSet? = nil) -> GassiSex {
         let sex = GassiSex(context: context)
 
         sex.id = id
@@ -159,46 +145,6 @@ extension GassiSex {
         if let _dogs = dogs { sex.addToDogs(_dogs) }
         
         return sex
-    }
-    
-    static func newFemale(context: NSManagedObjectContext) -> GassiSex {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.femaleSex.rawValue)!, name: "female")
-    }
-
-    static func newMale(context: NSManagedObjectContext) -> GassiSex {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.maleSex.rawValue)!, name: "male")
-    }
-
-    private static var _female: GassiSex? = nil
-    static var female: GassiSex {
-        get {
-            if _female == nil {
-                return GassiSex()
-            } else {
-                return _female!
-            }
-        }
-        set {
-            if _female != newValue {
-                _female = newValue
-            }
-        }
-    }
-    
-    private static var _male: GassiSex? = nil
-    static var male: GassiSex {
-        get {
-            if _male == nil {
-                return GassiSex()
-            } else {
-                return _male!
-            }
-        }
-        set {
-            if _male != newValue {
-                _male = newValue
-            }
-        }
     }
     
     var nameString: String {

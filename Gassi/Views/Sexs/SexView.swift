@@ -1,5 +1,5 @@
 //
-//  BreedView.swift
+//  SexView.swift
 //  Gassi
 //
 //  Created by Jan Löffel on 04.08.23.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct BreedView: View {
+struct SexView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
 
-    @ObservedObject var breed: GassiBreed
+    @ObservedObject var sex: GassiSex
 
     @State private var showConfirm = false
 
@@ -21,48 +21,49 @@ struct BreedView: View {
                 Label {
                     Text(LocalizedStringKey("Name"))
                     Spacer()
-                    TextField(LocalizedStringKey("BreedName"), text: Binding<String>.convertOptionalString($breed.name))
+                    TextField(LocalizedStringKey("SexName"), text: Binding<String>.convertOptionalString($sex.name))
+                        .textInputAutocapitalization(.never)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
             } header: {
-                Text(LocalizedStringKey("Breed"))
+                Text(LocalizedStringKey("Sex"))
             }
             
             Section {
-                DogListView(breed: breed)
+                DogListView(sex: sex)
             } header: {
-                if (breed.dogs?.count ?? 0) > 0 {
+                if (sex.dogs?.count ?? 0) > 0 {
                     Label(LocalizedStringKey("Dogs"), systemImage: "pawprint.fill")
                 }
             }
             
             Section {
-                Button(LocalizedStringKey("DeleteBreed"), role: .destructive) {
+                Button(LocalizedStringKey("DeleteSex"), role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteBreed"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteBreed"), role: .destructive) {
-                        viewContext.delete(breed)
+                .confirmationDialog(LocalizedStringKey("DeleteSex"), isPresented: $showConfirm) {
+                    Button(LocalizedStringKey("DeleteSex"), role: .destructive) {
+                        viewContext.delete(sex)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteBreedConfirmationMessage"))
+                    Text(LocalizedStringKey("DeleteSexConfirmationMessage"))
                 }
                 
             }
 
         }
         .textFieldStyle(.roundedBorder)
-        .navigationTitle(breed.name ?? localizedString("BreedViewTitle"))
+        .navigationTitle(sex.name ?? localizedString("SexViewTitle"))
 
     }
 }
 
-struct BreedView_Previews: PreviewProvider {
+struct SexView_Previews: PreviewProvider {
     static var previews: some View {
-        BreedView(breed: GassiDog.current.breed ?? GassiBreed.new(context: CoreDataController.preview.container.viewContext))
+        SexView(sex: GassiDog.current.sex ?? GassiSex.new(context: CoreDataController.preview.container.viewContext))
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
         
     }

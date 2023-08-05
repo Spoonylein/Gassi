@@ -16,12 +16,28 @@ struct DogListView: View {
     @FetchRequest private var dogs: FetchedResults<GassiDog>
     private var showCurrent = false
 
-    init(breed: GassiBreed? = nil, showCurrent: Bool = false) {
+    init(breed: GassiBreed? = nil, sex: GassiSex? = nil, showCurrent: Bool = false) {
+        
+        var breedPredicate: NSPredicate = NSPredicate(value: true)
+        var sexPredicate: NSPredicate = NSPredicate(value: true)
+        var predicate: NSCompoundPredicate
+        
         if let _breed = breed {
-            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], predicate: NSPredicate(format: "breed = %@", _breed), animation: .default)
-        } else {
-            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default)
+            breedPredicate = NSPredicate(format: "breed = %@", _breed)
         }
+        if let _sex = sex {
+            sexPredicate = NSPredicate(format: "sex = %@", _sex)
+        }
+
+        predicate = NSCompoundPredicate(type: .and, subpredicates: [breedPredicate, sexPredicate])
+        
+        _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], predicate: predicate, animation: .default)
+        
+//        if let _breed = breed {
+//            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], predicate: NSPredicate(format: "breed = %@", _breed), animation: .default)
+//        } else {
+//            _dogs = FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default)
+//        }
         self.showCurrent = showCurrent
     }
     

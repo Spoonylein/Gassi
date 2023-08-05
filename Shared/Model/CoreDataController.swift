@@ -64,24 +64,11 @@ struct CoreDataController {
             currentDog.makeCurrent()
         } else {
             print("No dog fetched, creating default one.")
-            GassiDog.current = GassiDog.newDefault(context: container.viewContext)
+            GassiDog.current = GassiDog.new(context: container.viewContext, name: localizedString("YourDog"))
         }
         
         initBreeds()
-        
-        if !inMemory, let femaleSex: GassiSex = initGassi(entityName: "GassiSex", defaultIDString: GassiIDStrings.femaleSex.rawValue) {
-            GassiSex.female = femaleSex
-        } else {
-            print("No female sex fetched, creating default one.")
-            GassiSex.female = GassiSex.newFemale(context: container.viewContext)
-        }
-        
-        if !inMemory, let maleSex: GassiSex = initGassi(entityName: "GassiSex", defaultIDString: GassiIDStrings.maleSex.rawValue) {
-            GassiSex.male = maleSex
-        } else {
-            print("No male sex fetched, creating default one.")
-            GassiSex.male = GassiSex.newMale(context: container.viewContext)
-        }
+        initSexes()
         
         if !inMemory, let peeType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiIDStrings.peeType.rawValue) {
             GassiType.pee = peeType
@@ -262,49 +249,15 @@ struct CoreDataController {
         }
     }
     
-    //    private func initFemaleSex() -> GassiSex? {
-    //        var result: GassiSex? = nil
-    //
-    //        if let sexes = try? container.viewContext.fetch(GassiSex.fetchRequest()) {
-    //            if !sexes.isEmpty {
-    //                print("Fetched \(sexes.count) sexes.")
-    //                for sex in sexes {
-    //                    if sex.id?.uuidString == GassiIDStrings.femaleSex.rawValue {
-    //                        result = sex
-    //                    }
-    //                }
-    //            }
-    //        }
-    //
-    //        if result == nil {
-    //            print("No female sex fetched, creating one...")
-    //            result = GassiSex.newFemale(context: container.viewContext)
-    //        }
-    //
-    //        return result
-    //    }
-    //
-    //    private func initMaleSex() -> GassiSex? {
-    //        var result: GassiSex? = nil
-    //
-    //        if let sexes = try? container.viewContext.fetch(GassiSex.fetchRequest()) {
-    //            if !sexes.isEmpty {
-    //                print("Fetched \(sexes.count) sexes.")
-    //                for sex in sexes {
-    //                    if sex.id?.uuidString == GassiIDStrings.maleSex.rawValue {
-    //                        result = sex
-    //                    }
-    //                }
-    //            }
-    //        }
-    //
-    //        if result == nil {
-    //            print("No male sex fetched, creating one...")
-    //            result = GassiSex.newMale(context: container.viewContext)
-    //        }
-    //
-    //        return result
-    //    }
+    private func initSexes() {
+        if let sexes = try? container.viewContext.fetch(GassiSex.fetchRequest()) {
+            if sexes.isEmpty {
+                print("No sexes fetched, creating default ones.")
+                let _ = GassiSex.new(context: container.viewContext, name: localizedString("FemaleSex"))
+                let _ = GassiSex.new(context: container.viewContext, name: localizedString("MaleSex"))
+            }
+        }
+    }
     
     private func initGassi<T: NSManagedObject>(entityName: String, defaultIDString: String = "") -> T? {
         var result: T? = nil

@@ -15,7 +15,7 @@ struct BreedItemView: View {
             Text(breed.name ?? "[no breed name]")
                 .foregroundColor((breed.dogs?.count ?? 0) > 0 ? .primary : .secondary)
             Spacer()
-            Image(systemName: "\(breed.dogs?.count ?? 0).circle")
+            Text("\(breed.dogs?.count ?? 0)")
                 .foregroundColor(.secondary)
         }
     }

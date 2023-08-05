@@ -8,6 +8,7 @@
 
 // MARK: Global Strings
 "Name" = "Name";
+"Designation" = "Bezeichnung";
 "Delete" = "Löschen";
 "Unknown" = "unbekannt";
 
@@ -34,11 +35,20 @@
 
 // MARK: GassiSex
 "Sex" = "Geschlecht";
+"Sexes" = "Geschlechter";
 "NoSex" = "kein Geschlecht";
 "FemaleSex" = "weiblich";
 "MaleSex" = "männlich";
 "FemaleDog" = "Hündin";
 "MaleDog" = "Rüde";
+"NamelessSex" = "Namenloses Geschlecht";
+"NewSex" = "Neues Geschlecht";
+"DeleteSex" = "Geschlecht löschen";
+"DeleteSexConfirmationMessage" = "Das Geschlecht wird von allen zugewiesenen Hunden entfernt und gelöscht.";
+
+// MARK: GassiEvent
+"Event" = "Ereignis";
+"Events" = "Ereignisse";
 
 // MARK: ContentView
 "GassiTabTitle" = "Gassi!";
@@ -78,6 +88,10 @@
 // MARK: BreedView
 "BreedViewTitle" = "Rasse bearbeiten";
 "BreedName" = "Name des Rasse";
+
+// MARK: SexView
+"SexViewTitle" = "Geschlecht bearbeiten";
+"SexName" = "Bezeichnung des Geschlechtes";
 
 // MARK: BreedListView
 "BreedListViewTitle" = "Rassen";
