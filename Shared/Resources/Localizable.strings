@@ -69,6 +69,7 @@
 // MARK: GassiSubtype
 "Subtype" = "Unterkategorie";
 "Subtypes" = "Unterkategorien";
+"NoSubtype" = "keine Unterkategorie";
 "HardPoo" = "Hart";
 "HardPooSign" = "🫘";
 "SoftPoo" = "Weich";
@@ -79,6 +80,12 @@
 // MARK: GassiEvent
 "Event" = "Ereignis";
 "Events" = "Ereignisse";
+"Timestamp" = "Zeitpunkt";
+"NoTimestamp" = "keine Zeitangabe";
+"EditEvent" = "Ereignis bearbeiten";
+"EventFeatureSectionTitle" = "Merkmale";
+"DeleteEvent" = "Ereignis löschen";
+"DeleteEventConfirmationMessage" = "Das Ereignis wird gelöscht und kann nicht wiederhergestellt werden.";
 
 // MARK: ContentView
 "GassiTabTitle" = "Gassi!";
@@ -88,17 +95,22 @@
 
 // MARK: ReportView
 
-// MARK: SettingsView
-"SettingsTitle" = "Einstellungen";
+// MARK: Settings
+"Settings" = "Einstellungen";
 "SettingsCurrentDog" = "Aktiver Hund";
-"SettingsDogSectionFooter" = "Wähle den aktiven Hund aus oder bearbeite ihn. Durch Wischen nach links kannst Du einen Hund löschen.";
+"SettingsDogSectionFooter" = "Wähle den aktiven Hund aus oder bearbeite ihn.";
 "SettingsFeatureSectionTitle" = "Merkmale";
 "SettingsGracePeriod" = "Karenzzeit %@";
 "SettingsGrooming" = "Behalte %d Tage";
 "SettingsWalksSectionHeader" = "GASSIS";
 "SettingsWalksSectionFooter" = "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt.";
-"SettingsResetAllSettings" = "Einstellungen zurücksetzen";
-"SettingsClearData" = "Alle Daten löschen";
+"ResetSettings" = "Einstellungen zurücksetzen";
+"ResetSettingsConfirmationMessage" = "Alle Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen werden gelöscht und beim nächsten Neustart auf Standardwerte zurückgesetzt. Hunde und Ereignisse bleiben erhalten, haben dann jedoch mglw. keine korrekte Zuordnung mehr.";
+"ClearData" = "Alle Daten löschen";
+"ClearDataConfirmationMessage" = "Alle Hunde und Ereignisse werden gelöscht. Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen bleiben erhalten.";
+"QuitApp" = "App beenden";
+"RestartNeeded" = "App muss neu gestartet werden";
+"RestartMessage" = "Die Standardwerte werden beim Neustart der App angelegt. Dazu bitte im AppSwitcher die App beenden (nach oben wischen) und dann die App neu starten.";
 
 // MARK: DogView
 "DogViewTitle" = "Hund bearbeiten";
@@ -127,4 +139,8 @@
 "BreedListViewTitle" = "Rassen";
 
 // MARK: TypeView
-"TypeSignFooter" = "Nutze ein einzelnes Emoticon als Zeichen für diese Kategorie!";
+"TypeViewSign" = "Zeichen";
+"TypeViewPredict" = "Vorhersagen";
+"TypeSignFooter" = "Nutze ein einzelnes Emoticon als Zeichen !";
+"SubtypesFooter" = "Sind Unterkategorien vorhanden, können sie Ereignissen zugewiesen und als Sonderfall dieser Kategorie angezeigt werden.";
+"TypeViewPeePooDeleteFooter" = "Löschst Du diese Kategorie, wird sie beim nächsten Neustart automatisch neu erstellt.";

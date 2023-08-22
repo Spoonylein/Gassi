@@ -29,7 +29,6 @@ struct SubtypeView: View {
             } header: {
                 Label(LocalizedStringKey("Subtype"), systemImage: "list.bullet.indent")
             }
-
             
         }
         .textFieldStyle(.roundedBorder)

@@ -62,7 +62,7 @@ struct SexView: View {
         }
         .textFieldStyle(.roundedBorder)
         .navigationTitle(sex.name ?? localizedString("SexViewTitle"))
-        .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 
@@ -70,5 +70,6 @@ struct SexView_Previews: PreviewProvider {
     static var previews: some View {
         SexView(sex: GassiDog.current.sex ?? GassiSex.new(context: CoreDataController.preview.container.viewContext))
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+            .environmentObject(NavigationController())
     }
 }

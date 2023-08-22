@@ -84,26 +84,7 @@ struct CoreDataController {
             GassiType.poo = GassiType.newPoo(context: container.viewContext)
         }
         
-        if !inMemory, let hardPooSubtype: GassiSubtype = initGassi(entityName: "GassiSubtype", defaultIDString: GassiIDStrings.hardPooSubtype.rawValue) {
-            GassiSubtype.hardPoo = hardPooSubtype
-        } else {
-            print("No hard poo subtype fetched, creating default one.")
-            GassiSubtype.hardPoo = GassiSubtype.newHardPoo(context: container.viewContext)
-        }
-        
-        if !inMemory, let softPooSubtype: GassiSubtype = initGassi(entityName: "GassiSubtype", defaultIDString: GassiIDStrings.softPooSubtype.rawValue) {
-            GassiSubtype.softPoo = softPooSubtype
-        } else {
-            print("No soft poo subtype fetched, creating default one.")
-            GassiSubtype.softPoo = GassiSubtype.newSoftPoo(context: container.viewContext)
-        }
-        
-        if !inMemory, let diarrheaPooSubtype: GassiSubtype = initGassi(entityName: "GassiSubtype", defaultIDString: GassiIDStrings.diarrheaPooSubtype.rawValue) {
-            GassiSubtype.diarrheaPoo = diarrheaPooSubtype
-        } else {
-            print("No diarrhea poo subtype fetched, creating default one.")
-            GassiSubtype.diarrheaPoo = GassiSubtype.newDiarrheaPoo(context: container.viewContext)
-        }
+        initSubtypes()
         
     }
     
@@ -258,7 +239,18 @@ struct CoreDataController {
             }
         }
     }
-    
+
+    private func initSubtypes() {
+        if let subTypes = try? container.viewContext.fetch(GassiSubtype.fetchRequest()) {
+            if subTypes.isEmpty {
+                print("No subtypes fetched, creating default ones.")
+                let _ = GassiSubtype.newHardPoo(context: container.viewContext)
+                let _ = GassiSubtype.newSoftPoo(context: container.viewContext)
+                let _ = GassiSubtype.newDiarrheaPoo(context: container.viewContext)
+            }
+        }
+    }
+
     private func initGassi<T: NSManagedObject>(entityName: String, defaultIDString: String = "") -> T? {
         var result: T? = nil
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
@@ -294,6 +286,55 @@ struct CoreDataController {
     }
     
     // MARK: Delete
+    
+    func resetSettings() {
+        // Clear breeds
+        if let breeds = try? container.viewContext.fetch(GassiBreed.fetchRequest()) {
+            for breed in breeds {
+                container.viewContext.delete(breed)
+            }
+        }
+        // Clear sexes
+        if let sexes = try? container.viewContext.fetch(GassiSex.fetchRequest()) {
+            for sex in sexes {
+                container.viewContext.delete(sex)
+            }
+        }
+        // Clear types
+        if let types = try? container.viewContext.fetch(GassiType.fetchRequest()) {
+            for type in types {
+                container.viewContext.delete(type)
+            }
+        }
+        // Clear subtypes
+        if let subtypes = try? container.viewContext.fetch(GassiSubtype.fetchRequest()) {
+            for subtype in subtypes {
+                container.viewContext.delete(subtype)
+            }
+        }
+        // Clear settings
+        // TODO: reset settings
+        
+        save()
+    }
+
+    func clearData() {
+        // Clear dogs
+        if let dogs = try? container.viewContext.fetch(GassiDog.fetchRequest()) {
+            for dog in dogs {
+                container.viewContext.delete(dog)
+            }
+        }
+        // Clear events
+        if let events = try? container.viewContext.fetch(GassiEvent.fetchRequest()) {
+            for event in events {
+                container.viewContext.delete(event)
+            }
+        }
+
+        save()
+    }
+    
     /// Clears all Core Data
     private func clearCoreData() {
         guard let url = container.persistentStoreDescriptions.first?.url else { return }

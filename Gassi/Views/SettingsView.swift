@@ -23,8 +23,10 @@ struct SettingsView: View {
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var subtypes: FetchedResults<GassiSubtype>
 
-    @State private var isPresentingConfirm: Bool = false
-    
+    @State private var showResetSettingsConfirm: Bool = false
+    @State private var showClearDataConfirm: Bool = false
+    @State private var showRestartNeeded: Bool = false
+
     var body: some View {
         NavigationStack(path: $navigationController.path) {
             Form {
@@ -35,6 +37,12 @@ struct SettingsView: View {
                     HStack {
                         Label(LocalizedStringKey(dogs.count == 1 ? "YourDog" : "YourDogs"), systemImage: "pawprint.fill")
                         Spacer()
+
+                        if dogs.count > 0 {
+                            EditButton()
+                                .textCase(.none)
+                        }
+
                         Button {
                             let dog = GassiDog.new(context: viewContext)
                             navigationController.path.append(dog)
@@ -44,8 +52,9 @@ struct SettingsView: View {
                     }
 
                 } footer: {
-                    Label(LocalizedStringKey("SettingsDogSectionFooter"), systemImage: "info.circle")
+                        Label(LocalizedStringKey("SettingsDogSectionFooter"), systemImage: "info.circle")
                 }
+                
 
                 Section {
                     NavigationLink(value: [GassiBreed()]) {
@@ -95,27 +104,41 @@ struct SettingsView: View {
 
                     }
 
-                    NavigationLink(value: [GassiSubtype()]) {
-                        Label {
-                            HStack {
-                                Text(LocalizedStringKey("Subtypes"))
-                                Spacer()
-                                Text("\(subtypes.count)")
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                            }
-                        } icon: {
-                            Image(systemName: "list.bullet.indent")
-                        }
-
-                    }
-
                     Label("Karenzzeit", systemImage: "clock.arrow.2.circlepath")
                     Label("Behalte x Tage", systemImage: "calendar.badge.plus")
                 } header: {
                     Label(LocalizedStringKey("Events"), systemImage: "calendar")
                 }
 
+                Section {
+                    Button(LocalizedStringKey("ResetSettings"), role: .destructive) {
+                        showResetSettingsConfirm = true
+                    }
+                    .confirmationDialog(LocalizedStringKey("ResetSettings"), isPresented: $showResetSettingsConfirm) {
+                        Button(LocalizedStringKey("ResetSettings"), role: .destructive) {
+                            CoreDataController.shared.resetSettings()
+                            showRestartNeeded = true
+                        }
+                    } message: {
+                        Text(LocalizedStringKey("ResetSettingsConfirmationMessage"))
+                    }
+
+                    Button(LocalizedStringKey("ClearData"), role: .destructive) {
+                        showClearDataConfirm = true
+                    }
+                    .confirmationDialog(LocalizedStringKey("ClearData"), isPresented: $showClearDataConfirm) {
+                        Button(LocalizedStringKey("ClearData"), role: .destructive) {
+                            CoreDataController.shared.clearData()
+                            showRestartNeeded = true
+                        }
+                    } message: {
+                        Text(LocalizedStringKey("ClearDataConfirmationMessage"))
+                    }
+
+                }
+                .alert(isPresented: $showRestartNeeded) {
+                    Alert(title: Text(LocalizedStringKey("RestartNeeded")), message: Text(LocalizedStringKey("RestartMessage")), dismissButton: .default(Text("OK")))
+                }
 
             }
             .toolbar {
@@ -147,9 +170,6 @@ struct SettingsView: View {
             .navigationDestination(for: GassiType.self) { type in
                 TypeView(type: type)
             }
-            .navigationDestination(for: [GassiSubtype].self) { subtypes in
-                SubtypeListView()
-            }
             .navigationDestination(for: GassiSubtype.self) { subtype in
                 SubtypeView(subtype: subtype)
             }
@@ -159,7 +179,7 @@ struct SettingsView: View {
             .navigationDestination(for: GassiEvent.self) { event in
                 EventView(event: event)
             }
-            .navigationTitle(LocalizedStringKey("SettingsTitle"))
+            .navigationTitle(LocalizedStringKey("Settings"))
         }
     }
 }

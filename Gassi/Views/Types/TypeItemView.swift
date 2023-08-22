@@ -10,15 +10,18 @@ import SwiftUI
 struct TypeItemView: View {
     @ObservedObject var type: GassiType
     
+    var showSubtypesCount: Bool = false
+    
     var body: some View {
         HStack {
             Text(type.sign ?? localizedString("TypeSign"))
             Text(type.nameString)
-                .foregroundColor((type.events?.count ?? 0) > 0 ? .primary : .secondary)
-            Spacer()
-            Text("\(type.events?.count ?? 0)")
-                .font(.footnote)
-                .foregroundColor(.secondary)
+            if showSubtypesCount {
+                Spacer()
+                Text("\(type.subtypes?.count ?? 0)")
+                    .font(.footnote)
+                    .foregroundColor((type.subtypes?.count ?? 0) > 0 ? .primary : .secondary)
+            }
         }
     }
 }

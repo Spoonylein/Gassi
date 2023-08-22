@@ -24,6 +24,9 @@ struct BreedListView: View {
         }
         .toolbar {
             ToolbarItem {
+                EditButton()
+            }
+            ToolbarItem {
                 Button {
                     let breed = GassiBreed.new(context: viewContext)
                     navigationController.path.append(breed)
@@ -48,7 +51,9 @@ struct BreedListView: View {
 
 struct BreedListView_Previews: PreviewProvider {
     static var previews: some View {
-        BreedListView()
-            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        NavigationView {
+            BreedListView()
+                .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        }
     }
 }

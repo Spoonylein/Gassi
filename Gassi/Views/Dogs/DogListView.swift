@@ -11,8 +11,6 @@ struct DogListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
 
-//    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
-    
     @FetchRequest private var dogs: FetchedResults<GassiDog>
     private var showCurrent = false
 

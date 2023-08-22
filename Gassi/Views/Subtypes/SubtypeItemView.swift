@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct SubtypeItemView: View {
+    @ObservedObject var subtype: GassiSubtype
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text(subtype.sign ?? localizedString("SubtypeSign"))
+            Text(subtype.nameString)
+        }
     }
 }
 
 struct SubtypeItemView_Previews: PreviewProvider {
     static var previews: some View {
-        SubtypeItemView()
+        SubtypeItemView(subtype: GassiSubtype.newHardPoo(context: CoreDataController.preview.container.viewContext))
+            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }
 }

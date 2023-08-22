@@ -12,10 +12,6 @@ import CoreData
 enum GassiIDStrings: String {
     case peeType = "07031973-1000-6000-1000-000000001000"
     case pooType = "07031973-1000-6000-1100-000000002000"
-    
-    case hardPooSubtype = "07031973-1000-7000-1100-000000001000"
-    case softPooSubtype = "07031973-1000-7000-1100-000000002000"
-    case diarrheaPooSubtype = "07031973-1000-7000-1100-000000003000"
 }
 
 extension GassiDog {
@@ -225,30 +221,28 @@ extension GassiType {
 }
 
 extension GassiSubtype {
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", sign: String? = nil, types: NSSet? = nil, events: NSSet? = nil) -> GassiSubtype {
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", sign: String? = nil, type: GassiType?, events: NSSet? = nil) -> GassiSubtype {
         let subtype = GassiSubtype(context: context)
         
         subtype.id = id
         subtype.name = name
         subtype.sign = sign
-        if let _types = types {
-            subtype.addToTypes(_types)
-        }
+        subtype.type = type
         if let _events = events { subtype.addToEvents(_events) }
         
         return subtype
     }
     
     static func newHardPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.hardPooSubtype.rawValue)!, name: "hard", sign: "🫘")
+        return new(context: context, name: localizedString("HardPoo"), sign: localizedString("HardPooSign"), type: GassiType.poo)
     }
     
     static func newSoftPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.softPooSubtype.rawValue)!, name: "soft", sign: "🟤")
+        return new(context: context, name: localizedString("SoftPoo"), sign: localizedString("SoftPooSign"), type: GassiType.poo)
     }
     
     static func newDiarrheaPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.diarrheaPooSubtype.rawValue)!, name: "diarrhea", sign: "☣️")
+        return new(context: context, name: localizedString("Diarrhea"), sign: localizedString("DiarrheaSign"), type: GassiType.poo)
     }
     
     private static var _hardPoo: GassiSubtype? = nil
@@ -298,6 +292,17 @@ extension GassiSubtype {
             }
         }
     }
+    
+    var nameString: String {
+        var result = ""
+        
+        if let name = self.name {
+            result = name
+        }
+        
+        return result
+    }
+
 }
 
 extension GassiEvent {

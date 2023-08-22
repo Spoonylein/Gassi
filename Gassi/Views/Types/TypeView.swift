@@ -28,7 +28,7 @@ struct TypeView: View {
                 }
                 
                 Label {
-                    Text(LocalizedStringKey("Sign"))
+                    Text(LocalizedStringKey("TypeViewSign"))
                     Spacer()
                     TextField(LocalizedStringKey("TypeSign"), text: Binding<String>.convertOptionalString($type.sign))
                         .font(.largeTitle)
@@ -37,12 +37,48 @@ struct TypeView: View {
                 } icon: {
                     Image(systemName: "hazardsign")
                 }
+                
+                Toggle(isOn: $type.predict) {
+                    Label {
+                        Text(LocalizedStringKey("TypeViewPredict"))
+                            .foregroundColor((type == GassiType.pee || type == GassiType.poo) ? .secondary : .primary)
+                    } icon: {
+                        Image(systemName: "clock.badge.questionmark")
+                    }
+                    
+                }
+                .disabled(type == GassiType.pee || type == GassiType.poo)
             } header: {
                 Label(LocalizedStringKey("Type"), systemImage: "list.bullet")
             } footer: {
                 Label(LocalizedStringKey("TypeSignFooter"), systemImage: "info.circle")
             }
-
+            
+            Section {
+                SubtypeListView(type: type)
+            } header: {
+                HStack {
+                    Label(LocalizedStringKey("Subtypes"), systemImage: "list.bullet.indent")
+                    Spacer()
+                    if (type.subtypes?.count ?? 0) > 0 {
+                        EditButton()
+                            .textCase(.none)
+                    }
+                    Button {
+                        let subtype = GassiSubtype.new(context: viewContext, type: type)
+                        navigationController.path.append(subtype)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            } footer: {
+                if (type.subtypes?.count ?? 0) > 0 {
+                    Label(LocalizedStringKey("SubtypesFooter"), systemImage: "info.circle")
+                } else {
+                    EmptyView()
+                }
+            }
+            
             Section {
                 Button(LocalizedStringKey("DeleteType"), role: .destructive) {
                     showConfirm = true
@@ -56,8 +92,14 @@ struct TypeView: View {
                 } message: {
                     Text(LocalizedStringKey("DeleteTypeConfirmationMessage"))
                 }
+            } footer: {
+                if (type == GassiType.pee || type == GassiType.poo) {
+                    Label(LocalizedStringKey("TypeViewPeePooDeleteFooter"), systemImage: "info.circle")
+                } else {
+                    EmptyView()
+                }
             }
-
+            
         }
         .textFieldStyle(.roundedBorder)
         .navigationTitle(type.name ?? localizedString("TypeViewTitle"))

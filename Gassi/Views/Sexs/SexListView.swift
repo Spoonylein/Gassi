@@ -24,6 +24,9 @@ struct SexListView: View {
         }
         .toolbar {
             ToolbarItem {
+                EditButton()
+            }
+            ToolbarItem {
                 Button {
                     let sex = GassiSex.new(context: viewContext)
                     navigationController.path.append(sex)

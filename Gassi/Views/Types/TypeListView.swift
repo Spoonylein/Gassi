@@ -17,12 +17,15 @@ struct TypeListView: View {
         List {
             ForEach(types) { type in
                 NavigationLink(value: type) {
-                    TypeItemView(type: type)
+                    TypeItemView(type: type, showSubtypesCount: true)
                 }
             }
             .onDelete(perform: deleteItems)
         }
         .toolbar {
+            ToolbarItem {
+                EditButton()
+            }
             ToolbarItem {
                 Button {
                     let type = GassiType.new(context: viewContext)
@@ -50,5 +53,6 @@ struct TypeListView_Previews: PreviewProvider {
     static var previews: some View {
         TypeListView()
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+            .environmentObject(NavigationController())
     }
 }

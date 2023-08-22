@@ -8,13 +8,39 @@
 import SwiftUI
 
 struct EventItemView: View {
+    
+    @ObservedObject var event: GassiEvent
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            HStack(alignment: .center) {
+                if let subtype = event.subtype {
+                    Text(subtype.sign ?? localizedString("TypeSign"))
+                } else {
+                    Text(event.type?.sign ?? localizedString("TypeSign"))
+                }
+                VStack(alignment: .leading) {
+                    Text(event.type?.nameString ?? localizedString("NoType"))
+                    if let subtype = event.subtype {
+                        Text(" - " + subtype.nameString)
+                    }
+                    if dogs.count > 1 {
+                        Text(event.dog?.nameString ?? localizedString("NoDog"))
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                Spacer()
+                Text(event.timestamp?.formatted() ?? localizedString("NoTimestamp"))
+            }
     }
 }
 
 struct EventItemView_Previews: PreviewProvider {
     static var previews: some View {
-        EventItemView()
+        let event = GassiEvent.new(context: CoreDataController.preview.container.viewContext, dog: GassiDog.current, type: GassiType.pee)
+        EventItemView(event: event)
+            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }
 }

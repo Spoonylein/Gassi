@@ -113,7 +113,11 @@ struct DogView: View {
                 }
                 
             } footer: {
-                Label(LocalizedStringKey("DogViewDeleteFooter"), systemImage: "exclamationmark.circle")
+                if GassiDog.current == dog {
+                    Label(LocalizedStringKey("DogViewDeleteFooter"), systemImage: "exclamationmark.circle")
+                } else {
+                    EmptyView()
+                }
             }
             .disabled(dog.isCurrent)
 

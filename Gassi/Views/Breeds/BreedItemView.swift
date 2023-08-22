@@ -13,7 +13,6 @@ struct BreedItemView: View {
     var body: some View {
         HStack {
             Text(breed.nameString)
-                .foregroundColor((breed.dogs?.count ?? 0) > 0 ? .primary : .secondary)
             Spacer()
             Text("\(breed.dogs?.count ?? 0)")
                 .font(.footnote)

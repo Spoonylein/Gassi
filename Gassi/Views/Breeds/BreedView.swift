@@ -51,7 +51,6 @@ struct BreedView: View {
                 } message: {
                     Text(LocalizedStringKey("DeleteBreedConfirmationMessage"))
                 }
-                
             }
 
         }
