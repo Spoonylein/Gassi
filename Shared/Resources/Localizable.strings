@@ -74,8 +74,6 @@
 "DeleteSubtypeConfirmationMessage" = "Die Unterkategorie wird von der Kategorie und allen Ereignissen entfernt und gelöscht.";
 "HardPoo" = "Hart";
 "HardPooSign" = "🫘";
-"SoftPoo" = "Weich";
-"SoftPooSign" = "🟤";
 "Diarrhea" = "Durchfall";
 "DiarrheaSign" = "☣️";
 
@@ -94,6 +92,9 @@
 "EventsTabTitle" = "Liste";
 "ReportTabTitle" = "Statistiken";
 "SettingsTabTitle" = "Einstellungen";
+
+// MARK: GassiView
+"GassiViewNavigationTitle" = "Gassi";
 
 // MARK: ReportView
 
@@ -119,7 +120,7 @@
 "DogName" = "Name des Hundes";
 "DogBirthDate" = "Geburtsdatum";
 "DogNoBirthDate" = "kein Geburtsdatum";
-"DogViewCurrentDogFooter" = "Nur dem aktuell aktiven Hund werden neue Eriegnisse zugewiesen.";
+"DogViewCurrentDogFooter" = "Dem aktuell aktiven Hund werden neue Ereignisse zugewiesen.";
 "DogViewDeleteFooter" = "Der aktive Hund kann nicht gelöscht werden.";
 
 // MARK: DogItemView
@@ -146,10 +147,12 @@
 "TypeSignFooter" = "Nutze ein einzelnes Emoticon als Zeichen !";
 "TypeViewEventsFooter" = "Wenn aktiviert, wird das nächste Auftreten eines Events dieser Kategorie vorhergesagt.";
 "SubtypesFooter" = "Sind Unterkategorien vorhanden, können sie Ereignissen zugewiesen und als Sonderfall dieser Kategorie angezeigt werden.";
+"SubtypesPredictionFooter" = "Ereignisse einer Unterkategorie werden als Ausnahmen betrachtet und in Vorhersagen nicht berücksichtigt.";
 "TypeViewPeePooDeleteFooter" = "Löschst Du diese Kategorie, wird sie beim nächsten Neustart automatisch neu erstellt.";
 
 // MARK: SubtypeView
 "SubtypeViewSign" = "Zeichen";
+"SubtypeSignFooter" = "Nutze ein einzelnes Emoticon als Zeichen !";
 
 // MARK: EventView
 "EventViewTimeAndPlace" = "Zeit und Ort";

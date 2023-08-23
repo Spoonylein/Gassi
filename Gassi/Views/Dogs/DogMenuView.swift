@@ -1,35 +1,36 @@
 //
-//  GassiView.swift
+//  DogMenuView.swift
 //  Gassi
 //
-//  Created by Jan Löffel on 02.08.23.
+//  Created by Jan Löffel on 23.08.23.
 //
 
 import SwiftUI
 
-struct GassiView: View {
+struct DogMenuView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
 
     var body: some View {
-        NavigationStack {
-            Text("GassiView")
-                .toolbar {
-                    ToolbarItem {
-                        DogMenuView()
+        if dogs.count > 1 {
+            Menu(GassiDog.current.nameString) {
+                ForEach(dogs) { dog in
+                    Button(dog.nameString) {
+                        dog.makeCurrent()
                     }
                 }
-                .navigationTitle(LocalizedStringKey("GassiViewNavigationTitle"))
+            }
+        } else {
+            EmptyView()
         }
     }
 }
 
-struct GassiView_Previews: PreviewProvider {
+struct DogMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        GassiView()
-            .environmentObject(NavigationController())
+        DogMenuView()
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }
 }

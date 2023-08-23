@@ -33,7 +33,7 @@ struct ContentView: View {
                 .tabItem {
                     Label(LocalizedStringKey("ReportTabTitle"), systemImage: "chart.bar.xaxis")
                 }.tag(Tabs.reportTab)
-
+            
             SettingsView()
                 .tabItem {
                     Label(LocalizedStringKey("SettingsTabTitle"), systemImage: "gearshape.fill")

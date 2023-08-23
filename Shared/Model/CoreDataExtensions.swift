@@ -228,7 +228,7 @@ extension GassiType {
 }
 
 extension GassiSubtype {
-    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", sign: String? = nil, type: GassiType?, events: NSSet? = nil) -> GassiSubtype {
+    static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", sign: String? = nil, type: GassiType, events: NSSet? = nil) -> GassiSubtype {
         let subtype = GassiSubtype(context: context)
         
         subtype.id = id
@@ -244,62 +244,10 @@ extension GassiSubtype {
         return new(context: context, name: localizedString("HardPoo"), sign: localizedString("HardPooSign"), type: GassiType.poo)
     }
     
-    static func newSoftPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, name: localizedString("SoftPoo"), sign: localizedString("SoftPooSign"), type: GassiType.poo)
-    }
-    
     static func newDiarrheaPoo(context: NSManagedObjectContext) -> GassiSubtype {
         return new(context: context, name: localizedString("Diarrhea"), sign: localizedString("DiarrheaSign"), type: GassiType.poo)
     }
-    
-    private static var _hardPoo: GassiSubtype? = nil
-    static var hardPoo: GassiSubtype {
-        get {
-            if _hardPoo == nil {
-                return GassiSubtype()
-            } else {
-                return _hardPoo!
-            }
-        }
-        set {
-            if _hardPoo != newValue {
-                _hardPoo = newValue
-            }
-        }
-    }
-
-    private static var _softPoo: GassiSubtype? = nil
-    static var softPoo: GassiSubtype {
-        get {
-            if _softPoo == nil {
-                return GassiSubtype()
-            } else {
-                return _softPoo!
-            }
-        }
-        set {
-            if _softPoo != newValue {
-                _softPoo = newValue
-            }
-        }
-    }
-
-    private static var _diarrheaPoo: GassiSubtype? = nil
-    static var diarrheaPoo: GassiSubtype {
-        get {
-            if _diarrheaPoo == nil {
-                return GassiSubtype()
-            } else {
-                return _diarrheaPoo!
-            }
-        }
-        set {
-            if _diarrheaPoo != newValue {
-                _diarrheaPoo = newValue
-            }
-        }
-    }
-    
+        
     var nameString: String {
         var result = ""
         

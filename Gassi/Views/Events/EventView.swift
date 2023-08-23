@@ -18,7 +18,7 @@ struct EventView: View {
     var body: some View {
         Form {
             Section {
-                DogPickerView(event: event)
+                EventDogPickerView(event: event)
                 TypePickerView(event: event)
                 EventSubtypePickerView(event: event, type: event.type)
                     .disabled(event.type?.subtypes?.count == 0)
@@ -59,8 +59,10 @@ struct EventView: View {
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(event: GassiEvent.new(context: CoreDataController.preview.container.viewContext, dog: GassiDog.current, type: GassiType.pee))
-            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
-            .environmentObject(NavigationController())
+        NavigationView {
+            EventView(event: GassiEvent.new(context: CoreDataController.preview.container.viewContext, dog: GassiDog.current, type: GassiType.pee))
+                .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+                .environmentObject(NavigationController())
+        }
     }
 }

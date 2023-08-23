@@ -46,11 +46,9 @@ struct DogListView: View {
                         }
                     }
 
-                    ControlGroup {
+                    Group {
                         DogItemView(dog: dog)
-
                         Spacer()
-                        
                         Image(systemName: "chevron.right")
                             .imageScale(.small)
                             .foregroundColor(.secondary)

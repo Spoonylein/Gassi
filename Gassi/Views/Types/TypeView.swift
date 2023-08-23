@@ -30,7 +30,7 @@ struct TypeView: View {
                 Label {
                     Text(LocalizedStringKey("TypeViewSign"))
                     Spacer()
-                    TextField(LocalizedStringKey("TypeSign"), text: Binding<String>.convertOptionalString($type.sign))
+                    TextField(LocalizedStringKey("TypeViewSign"), text: Binding<String>.convertOptionalString($type.sign), prompt: Text(""))
                         .font(.largeTitle)
                         .frame(width: 50)
                         .padding(.vertical, 5)
@@ -80,7 +80,10 @@ struct TypeView: View {
                 }
             } footer: {
                 if (type.subtypes?.count ?? 0) > 0 {
-                    Label(LocalizedStringKey("SubtypesFooter"), systemImage: "info.circle")
+                    VStack(alignment: .leading) {
+                        Label(LocalizedStringKey("SubtypesFooter"), systemImage: "info.circle")
+                        Label(LocalizedStringKey("SubtypesPredictionFooter"), systemImage: "exclamationmark.triangle")
+                    }
                 } else {
                     EmptyView()
                 }

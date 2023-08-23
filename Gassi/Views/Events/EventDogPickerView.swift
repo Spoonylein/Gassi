@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DogPickerView: View {
+struct EventDogPickerView: View {
     @ObservedObject var event: GassiEvent
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
@@ -28,9 +28,9 @@ struct DogPickerView: View {
     }
 }
 
-struct DogPickerView_Previews: PreviewProvider {
+struct EventDogPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        DogPickerView(event: GassiEvent.new(context: CoreDataController.preview.container.viewContext, dog: GassiDog.current, type: GassiType.pee))
+        EventDogPickerView(event: GassiEvent.new(context: CoreDataController.preview.container.viewContext, dog: GassiDog.current, type: GassiType.pee))
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }
 }

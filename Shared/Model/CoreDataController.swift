@@ -58,22 +58,8 @@ struct CoreDataController {
         }
         
         initBreeds()
-        
         initSexes()
-        if !inMemory, let peeType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.peeID.uuidString) {
-            GassiType.pee = peeType
-        } else {
-            print("No pee type fetched, creating default one.")
-            GassiType.pee = GassiType.newPee(context: container.viewContext)
-        }
-        if !inMemory, let pooType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.pooID.uuidString) {
-            GassiType.poo = pooType
-        } else {
-            print("No poo type fetched, creating default one.")
-            GassiType.poo = GassiType.newPoo(context: container.viewContext)
-        }
-        
-        initSubtypes()
+        initTypes()
         initEventSettings()
         
     }
@@ -230,21 +216,28 @@ struct CoreDataController {
         }
     }
 
-    private func initSubtypes() {
-        if let subTypes = try? container.viewContext.fetch(GassiSubtype.fetchRequest()) {
-            if subTypes.isEmpty {
-                print("No subtypes fetched, creating default ones.")
-                let _ = GassiSubtype.newHardPoo(context: container.viewContext)
-                let _ = GassiSubtype.newSoftPoo(context: container.viewContext)
-                let _ = GassiSubtype.newDiarrheaPoo(context: container.viewContext)
-            }
+    private func initTypes() {
+        if let peeType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.peeID.uuidString) {
+            GassiType.pee = peeType
+        } else {
+            print("No pee type fetched, creating default one.")
+            GassiType.pee = GassiType.newPee(context: container.viewContext)
+        }
+        
+        if let pooType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.pooID.uuidString) {
+            GassiType.poo = pooType
+        } else {
+            print("No poo type fetched, creating default one.")
+            GassiType.poo = GassiType.newPoo(context: container.viewContext)
+            let _ = GassiSubtype.newHardPoo(context: container.viewContext)
+            let _ = GassiSubtype.newDiarrheaPoo(context: container.viewContext)
         }
     }
     
     private func initEventSettings() {
         var eventsGracePeriod: TimeInterval = UserDefaults.standard.double(forKey: UserDefaultsKeys.eventsGracePeriod.rawValue)
         if eventsGracePeriod == 0 {
-            print("No eventsGracePeriod in UserDefaults, creating default value of 900.")
+            print("No eventsGracePeriod in UserDefaults, creating default value of 15 minutes.")
             eventsGracePeriod = GassiEvent.defaultGracePeriod
         }
         GassiEvent.gracePeriod = eventsGracePeriod

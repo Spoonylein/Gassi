@@ -30,7 +30,7 @@ struct SubtypeView: View {
                 Label {
                     Text(LocalizedStringKey("SubtypeViewSign"))
                     Spacer()
-                    TextField(LocalizedStringKey("SubtypeSign"), text: Binding<String>.convertOptionalString($subtype.sign))
+                    TextField(LocalizedStringKey("SubtypeViewSign"), text: Binding<String>.convertOptionalString($subtype.sign), prompt: Text(""))
                         .font(.largeTitle)
                         .frame(width: 50)
                         .padding(.vertical, 5)
@@ -39,6 +39,8 @@ struct SubtypeView: View {
                 }
             } header: {
                 Label(LocalizedStringKey("Subtype"), systemImage: "list.bullet.indent")
+            } footer: {
+                Label(LocalizedStringKey("SubtypeSignFooter"), systemImage: "hazardsign")
             }
 
             Section {
@@ -64,8 +66,9 @@ struct SubtypeView: View {
 
 struct SubtypeView_Previews: PreviewProvider {
     static var previews: some View {
+        let hardPoo = GassiSubtype.newHardPoo(context: CoreDataController.preview.container.viewContext)
         NavigationView {
-            SubtypeView(subtype: GassiSubtype.hardPoo)
+            SubtypeView(subtype: hardPoo)
                 .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
             .environmentObject(NavigationController())
         }

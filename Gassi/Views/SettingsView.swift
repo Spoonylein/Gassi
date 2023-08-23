@@ -173,14 +173,7 @@ struct SettingsView: View {
                 }
 
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                }
-            }
 
-            .navigationDestination(for: [GassiDog].self) { dogs in
-                DogListView()
-            }
             .navigationDestination(for: GassiDog.self) { dog in
                 DogView(dog: dog)
             }
@@ -204,12 +197,6 @@ struct SettingsView: View {
             }
             .navigationDestination(for: GassiSubtype.self) { subtype in
                 SubtypeView(subtype: subtype)
-            }
-            .navigationDestination(for: [GassiEvent].self) { events in
-                EventListView()
-            }
-            .navigationDestination(for: GassiEvent.self) { event in
-                EventView(event: event)
             }
             .navigationTitle(LocalizedStringKey("Settings"))
         }

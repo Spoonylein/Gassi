@@ -39,6 +39,6 @@
         <attribute name="predict" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="sign" optional="YES" attributeType="String"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiEvent" inverseName="type" inverseEntity="GassiEvent"/>
-        <relationship name="subtypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GassiSubtype" inverseName="type" inverseEntity="GassiSubtype"/>
+        <relationship name="subtypes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GassiSubtype" inverseName="type" inverseEntity="GassiSubtype"/>
     </entity>
 </model>
