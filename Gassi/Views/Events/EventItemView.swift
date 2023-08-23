@@ -21,9 +21,12 @@ struct EventItemView: View {
                     Text(event.type?.sign ?? localizedString("TypeSign"))
                 }
                 VStack(alignment: .leading) {
-                    Text(event.type?.nameString ?? localizedString("NoType"))
-                    if let subtype = event.subtype {
-                        Text(" - " + subtype.nameString)
+                    HStack {
+                        Text(event.type?.nameString ?? localizedString("NoType"))
+                        if let subtype = event.subtype {
+                            Text("-")
+                            Text(subtype.nameString)
+                        }
                     }
                     if dogs.count > 1 {
                         Text(event.dog?.nameString ?? localizedString("NoDog"))

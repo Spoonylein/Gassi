@@ -18,11 +18,15 @@ struct EventView: View {
     var body: some View {
         Form {
             Section {
+                DogPickerView(event: event)
                 TypePickerView(event: event)
                 EventSubtypePickerView(event: event, type: event.type)
-                DogPickerView(event: event)
+                    .disabled(event.type?.subtypes?.count == 0)
             } header: {
                 Label(LocalizedStringKey("EventFeatureSectionTitle"), systemImage: "rectangle.and.text.magnifyingglass")
+            }
+            .onChange(of: event.type) { newValue in
+                event.subtype = nil
             }
             
             Section {
@@ -30,7 +34,7 @@ struct EventView: View {
                     Label(LocalizedStringKey("Timestamp"), systemImage: "calendar")
                 }
             } header: {
-                Label(LocalizedStringKey("DateAndLocation"), systemImage: "clock.fill")
+                Label(LocalizedStringKey("EventViewTimeAndPlace"), systemImage: "clock")
             }
             
             Section {

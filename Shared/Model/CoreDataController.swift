@@ -16,16 +16,6 @@ struct CoreDataController {
         let result = CoreDataController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        // TODO: Move to `init`
-        //        let sex_male = newSex(context: viewContext, name: "male", dogs: nil)
-        //        let breed_whippet = newBreed(context: viewContext, name: "Whippet", dogs: nil)
-        //        let type_poo = newType(context: viewContext, name: "Poo", predict: true, subtypes: nil, events: nil)
-        //        let subtype_hard = newSubtype(context: viewContext, name: "hard", types: [type_poo], events: nil)
-        //        for index in 1...9 {
-        //            let _ = newEvent(context: viewContext, timestamp: .now.addingTimeInterval(TimeInterval.random(in: 0...86400)), dog: result.currentDog, type: type_poo)
-        //        }
-        //        let _ = newEvent(context: viewContext, timestamp: .now.addingTimeInterval(TimeInterval.random(in: 0...86400)), dog: result.currentDog, type: type_poo, subtype: subtype_hard)
-        
         return result
     }()
     
@@ -58,7 +48,7 @@ struct CoreDataController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
         
-        // TODO: Check for DOG, SEX, TYPE, SUBTYPE and create default data if missing
+        // Check for DOG, SEX, TYPE, SUBTYPE and create default data if missing
         print("Core data store loaded. Checking for default data..")
         if !inMemory, let currentDog = initCurrentDog() {
             currentDog.makeCurrent()
@@ -68,16 +58,15 @@ struct CoreDataController {
         }
         
         initBreeds()
-        initSexes()
         
-        if !inMemory, let peeType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiIDStrings.peeType.rawValue) {
+        initSexes()
+        if !inMemory, let peeType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.peeID.uuidString) {
             GassiType.pee = peeType
         } else {
             print("No pee type fetched, creating default one.")
             GassiType.pee = GassiType.newPee(context: container.viewContext)
         }
-        
-        if !inMemory, let pooType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiIDStrings.pooType.rawValue) {
+        if !inMemory, let pooType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.pooID.uuidString) {
             GassiType.poo = pooType
         } else {
             print("No poo type fetched, creating default one.")
@@ -85,6 +74,7 @@ struct CoreDataController {
         }
         
         initSubtypes()
+        initEventSettings()
         
     }
     
@@ -250,6 +240,22 @@ struct CoreDataController {
             }
         }
     }
+    
+    private func initEventSettings() {
+        var eventsGracePeriod: TimeInterval = UserDefaults.standard.double(forKey: UserDefaultsKeys.eventsGracePeriod.rawValue)
+        if eventsGracePeriod == 0 {
+            print("No eventsGracePeriod in UserDefaults, creating default value of 900.")
+            eventsGracePeriod = GassiEvent.defaultGracePeriod
+        }
+        GassiEvent.gracePeriod = eventsGracePeriod
+
+        var eventsTimespan: TimeInterval = UserDefaults.standard.double(forKey: UserDefaultsKeys.eventsTimespan.rawValue)
+        if eventsTimespan == 0 {
+            print("No eventsTimespan in UserDefaults, creating default value of 30 days.")
+            eventsTimespan = GassiEvent.defaultTimespan
+        }
+        GassiEvent.timespan = eventsTimespan
+    }
 
     private func initGassi<T: NSManagedObject>(entityName: String, defaultIDString: String = "") -> T? {
         var result: T? = nil
@@ -312,9 +318,10 @@ struct CoreDataController {
                 container.viewContext.delete(subtype)
             }
         }
-        // Clear settings
-        // TODO: reset settings
-        
+        // Settings to defaults
+        GassiEvent.gracePeriod = GassiEvent.defaultGracePeriod
+        GassiEvent.timespan = GassiEvent.defaultTimespan
+
         save()
     }
 

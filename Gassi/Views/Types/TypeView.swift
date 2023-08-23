@@ -37,22 +37,29 @@ struct TypeView: View {
                 } icon: {
                     Image(systemName: "hazardsign")
                 }
-                
-                Toggle(isOn: $type.predict) {
-                    Label {
-                        Text(LocalizedStringKey("TypeViewPredict"))
-                            .foregroundColor((type == GassiType.pee || type == GassiType.poo) ? .secondary : .primary)
-                    } icon: {
-                        Image(systemName: "clock.badge.questionmark")
-                    }
-                    
-                }
-                .disabled(type == GassiType.pee || type == GassiType.poo)
             } header: {
                 Label(LocalizedStringKey("Type"), systemImage: "list.bullet")
             } footer: {
                 Label(LocalizedStringKey("TypeSignFooter"), systemImage: "info.circle")
             }
+            
+            Section {
+                Toggle(isOn: $type.predict) {
+                    Label {
+                        Text(LocalizedStringKey("TypeViewPrediction"))
+                            .foregroundColor(type.isPeeOrPoo ? .secondary : .primary)
+                    } icon: {
+                        Image(systemName: "clock.badge.questionmark")
+                    }
+                    
+                }
+                .disabled(type.isPeeOrPoo)
+            } header: {
+                Label(LocalizedStringKey("Events"), systemImage: "list.bullet.rectangle")
+            } footer: {
+                Label(LocalizedStringKey("TypeViewEventsFooter"), systemImage: "info.circle")
+            }
+
             
             Section {
                 SubtypeListView(type: type)
@@ -93,7 +100,7 @@ struct TypeView: View {
                     Text(LocalizedStringKey("DeleteTypeConfirmationMessage"))
                 }
             } footer: {
-                if (type == GassiType.pee || type == GassiType.poo) {
+                if type.isPeeOrPoo {
                     Label(LocalizedStringKey("TypeViewPeePooDeleteFooter"), systemImage: "info.circle")
                 } else {
                     EmptyView()
@@ -109,7 +116,9 @@ struct TypeView: View {
 
 struct TypeView_Previews: PreviewProvider {
     static var previews: some View {
-        TypeView(type: GassiType.pee)
-            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        NavigationView {
+            TypeView(type: GassiType.pee)
+                .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        }
     }
 }

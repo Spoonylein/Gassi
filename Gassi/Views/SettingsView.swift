@@ -23,6 +23,9 @@ struct SettingsView: View {
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var subtypes: FetchedResults<GassiSubtype>
 
+    @State private var eventsGracePeriod: TimeInterval = GassiEvent.gracePeriod
+    @State private var eventsTimespan: TimeInterval = GassiEvent.timespan
+    
     @State private var showResetSettingsConfirm: Bool = false
     @State private var showClearDataConfirm: Bool = false
     @State private var showRestartNeeded: Bool = false
@@ -50,7 +53,6 @@ struct SettingsView: View {
                             Image(systemName: "plus")
                         }
                     }
-
                 } footer: {
                         Label(LocalizedStringKey("SettingsDogSectionFooter"), systemImage: "info.circle")
                 }
@@ -104,10 +106,40 @@ struct SettingsView: View {
 
                     }
 
-                    Label("Karenzzeit", systemImage: "clock.arrow.2.circlepath")
-                    Label("Behalte x Tage", systemImage: "calendar.badge.plus")
+                    Stepper(value: $eventsGracePeriod, in: 60...86400, step: 60, onEditingChanged: { value in
+                        GassiEvent.gracePeriod = eventsGracePeriod
+                    }) {
+                        Label {
+                            Text(LocalizedStringKey("SettingsGracePeriod"))
+                            Text(TimeInterval.timeSpanString(GassiEvent.gracePeriod, academic: true, showSeconds: false, showNull: false, offset: 0))
+                        } icon: {
+                            Image(systemName: "clock.arrow.2.circlepath")
+                        }
+                        .onLongPressGesture {
+                            eventsGracePeriod = GassiEvent.defaultGracePeriod
+                            GassiEvent.gracePeriod = eventsGracePeriod
+                        }
+                    }
+
+                    Stepper(value: $eventsTimespan, in: 86400...31536000, step: 86400, onEditingChanged: { value in
+                        GassiEvent.timespan = eventsTimespan
+                    }) {
+                        Label {
+                            Text(LocalizedStringKey("SettingsKeep"))
+                            Text(TimeInterval.timeSpanString(GassiEvent.timespan, academic: true, showSeconds: false, showNull: false, offset: 0))
+                        } icon: {
+                            Image(systemName: "calendar.badge.plus")
+                        }
+                        .onLongPressGesture {
+                            eventsTimespan = GassiEvent.defaultTimespan
+                            GassiEvent.timespan = eventsTimespan
+                        }
+                    }
+
                 } header: {
                     Label(LocalizedStringKey("Events"), systemImage: "calendar")
+                } footer: {
+                    Label(LocalizedStringKey("SettingsEventsSectionFooter"), systemImage: "info.circle")
                 }
 
                 Section {

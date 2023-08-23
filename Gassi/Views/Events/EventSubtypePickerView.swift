@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventSubtypePickerView: View {
     @ObservedObject var event: GassiEvent
+    
     var type: GassiType? = nil
     
     @FetchRequest private var subtypes: FetchedResults<GassiSubtype>
@@ -27,6 +28,8 @@ struct EventSubtypePickerView: View {
     
     var body: some View {
         Picker(selection: $event.subtype) {
+            Text(LocalizedStringKey("NoSubtype"))
+                .tag(nil as GassiSubtype?)
             ForEach(subtypes) { subtype in
                 Text((subtype.sign ?? localizedString("TypeSign")) + " " + subtype.nameString)
                     .tag(subtype as GassiSubtype?)

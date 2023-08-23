@@ -70,6 +70,8 @@
 "Subtype" = "Unterkategorie";
 "Subtypes" = "Unterkategorien";
 "NoSubtype" = "keine Unterkategorie";
+"DeleteSubtype" = "Unterkategorie löschen";
+"DeleteSubtypeConfirmationMessage" = "Die Unterkategorie wird von der Kategorie und allen Ereignissen entfernt und gelöscht.";
 "HardPoo" = "Hart";
 "HardPooSign" = "🫘";
 "SoftPoo" = "Weich";
@@ -100,10 +102,10 @@
 "SettingsCurrentDog" = "Aktiver Hund";
 "SettingsDogSectionFooter" = "Wähle den aktiven Hund aus oder bearbeite ihn.";
 "SettingsFeatureSectionTitle" = "Merkmale";
-"SettingsGracePeriod" = "Karenzzeit %@";
-"SettingsGrooming" = "Behalte %d Tage";
-"SettingsWalksSectionHeader" = "GASSIS";
-"SettingsWalksSectionFooter" = "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt.";
+"SettingsGracePeriod" = "Karenzzeit";
+"SettingsKeep" = "Behalte";
+"SettingsEventsSectionHeader" = "Ereignisse";
+"SettingsEventsSectionFooter" = "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt.";
 "ResetSettings" = "Einstellungen zurücksetzen";
 "ResetSettingsConfirmationMessage" = "Alle Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen werden gelöscht und beim nächsten Neustart auf Standardwerte zurückgesetzt. Hunde und Ereignisse bleiben erhalten, haben dann jedoch mglw. keine korrekte Zuordnung mehr.";
 "ClearData" = "Alle Daten löschen";
@@ -117,7 +119,7 @@
 "DogName" = "Name des Hundes";
 "DogBirthDate" = "Geburtsdatum";
 "DogNoBirthDate" = "kein Geburtsdatum";
-"DogViewCurrentDogFooter" = "Neue Ereignisse werden immer dem aktuell aktiven Hund zugewiesen.";
+"DogViewCurrentDogFooter" = "Nur dem aktuell aktiven Hund werden neue Eriegnisse zugewiesen.";
 "DogViewDeleteFooter" = "Der aktive Hund kann nicht gelöscht werden.";
 
 // MARK: DogItemView
@@ -140,7 +142,14 @@
 
 // MARK: TypeView
 "TypeViewSign" = "Zeichen";
-"TypeViewPredict" = "Vorhersagen";
+"TypeViewPrediction" = "Vorhersage";
 "TypeSignFooter" = "Nutze ein einzelnes Emoticon als Zeichen !";
+"TypeViewEventsFooter" = "Wenn aktiviert, wird das nächste Auftreten eines Events dieser Kategorie vorhergesagt.";
 "SubtypesFooter" = "Sind Unterkategorien vorhanden, können sie Ereignissen zugewiesen und als Sonderfall dieser Kategorie angezeigt werden.";
 "TypeViewPeePooDeleteFooter" = "Löschst Du diese Kategorie, wird sie beim nächsten Neustart automatisch neu erstellt.";
+
+// MARK: SubtypeView
+"SubtypeViewSign" = "Zeichen";
+
+// MARK: EventView
+"EventViewTimeAndPlace" = "Zeit und Ort";

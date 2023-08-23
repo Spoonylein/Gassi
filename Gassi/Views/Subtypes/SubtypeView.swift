@@ -26,10 +26,35 @@ struct SubtypeView: View {
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
+                
+                Label {
+                    Text(LocalizedStringKey("SubtypeViewSign"))
+                    Spacer()
+                    TextField(LocalizedStringKey("SubtypeSign"), text: Binding<String>.convertOptionalString($subtype.sign))
+                        .font(.largeTitle)
+                        .frame(width: 50)
+                        .padding(.vertical, 5)
+                } icon: {
+                    Image(systemName: "hazardsign")
+                }
             } header: {
                 Label(LocalizedStringKey("Subtype"), systemImage: "list.bullet.indent")
             }
-            
+
+            Section {
+                Button(LocalizedStringKey("DeleteSubtype"), role: .destructive) {
+                    showConfirm = true
+                }
+                .confirmationDialog(LocalizedStringKey("DeleteSubtype"), isPresented: $showConfirm) {
+                    Button(LocalizedStringKey("DeleteSubtype"), role: .destructive) {
+                        viewContext.delete(subtype)
+                        CoreDataController.shared.save()
+                        navigationController.path.removeLast()
+                    }
+                } message: {
+                    Text(LocalizedStringKey("DeleteSubtypeConfirmationMessage"))
+                }
+            } 
         }
         .textFieldStyle(.roundedBorder)
         .navigationTitle(subtype.name ?? localizedString("SubtypeViewTitle"))
@@ -39,7 +64,10 @@ struct SubtypeView: View {
 
 struct SubtypeView_Previews: PreviewProvider {
     static var previews: some View {
-        SubtypeView(subtype: GassiSubtype.hardPoo)
-            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        NavigationView {
+            SubtypeView(subtype: GassiSubtype.hardPoo)
+                .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+            .environmentObject(NavigationController())
+        }
     }
 }

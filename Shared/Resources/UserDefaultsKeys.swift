@@ -10,5 +10,7 @@ import Foundation
 /// Enum of string keys to store values in `UserDefaults`
 enum UserDefaultsKeys: String {
     case currentDogIDString = "currentDogIDString"
+    case eventsGracePeriod = "eventsGracePeriod"
+    case eventsTimespan = "eventsTimespan"
 }
 

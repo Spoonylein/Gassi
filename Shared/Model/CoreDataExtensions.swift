@@ -9,10 +9,10 @@ import Foundation
 import CoreData
 
 /// Enum of ID strings for default Gassi core data objects
-enum GassiIDStrings: String {
-    case peeType = "07031973-1000-6000-1000-000000001000"
-    case pooType = "07031973-1000-6000-1100-000000002000"
-}
+//enum GassiIDStrings: String {
+//    case peeType = "07031973-1000-6000-1000-000000001000"
+//    case pooType = "07031973-1000-6000-1100-000000002000"
+//}
 
 extension GassiDog {
 
@@ -155,6 +155,9 @@ extension GassiSex {
 }
 
 extension GassiType {
+    static let peeID: UUID = UUID(uuidString: "07031973-1000-6000-1000-000000001000")!
+    static let pooID: UUID = UUID(uuidString: "07031973-1000-6000-1100-000000002000")!
+
     static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = localizedString("NewType"), sign: String = localizedString("TypeSign"), predict: Bool = false, subtypes: NSSet? = nil, events: NSSet? = nil) -> GassiType {
         let type = GassiType(context: context)
         
@@ -169,11 +172,11 @@ extension GassiType {
     }
     
     static func newPoo(context: NSManagedObjectContext) -> GassiType {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.pooType.rawValue)!, name: "Poo", sign: "💩", predict: true)
+        return new(context: context, id: GassiType.pooID, name: "Poo", sign: "💩", predict: true)
     }
     
     static func newPee(context: NSManagedObjectContext) -> GassiType {
-        return new(context: context, id: UUID(uuidString: GassiIDStrings.peeType.rawValue)!, name: "Pee", sign: "💦", predict: true)
+        return new(context: context, id: GassiType.peeID, name: "Pee", sign: "💦", predict: true)
     }
     
     private static var _poo: GassiType? = nil
@@ -216,6 +219,10 @@ extension GassiType {
         }
         
         return result
+    }
+    
+    var isPeeOrPoo: Bool {
+        return self == GassiType.pee || self == GassiType.poo
     }
 
 }
@@ -306,6 +313,39 @@ extension GassiSubtype {
 }
 
 extension GassiEvent {
+    static let defaultGracePeriod: TimeInterval = 15 * 60
+    static let defaultTimespan: TimeInterval = 30 * 24 * 60 * 60
+
+    private static var _gracePeriod: TimeInterval = defaultGracePeriod
+    static var gracePeriod: TimeInterval {
+        get {
+            return _gracePeriod
+        }
+        set {
+            if _gracePeriod != newValue {
+                _gracePeriod = newValue
+                
+                UserDefaults.standard.set(_gracePeriod, forKey: UserDefaultsKeys.eventsGracePeriod.rawValue)
+                print("eventsGracePeriod \(_gracePeriod) saved in UserDefaults.")
+            }
+        }
+    }
+
+    private static var _timespan: TimeInterval = defaultTimespan
+    static var timespan: TimeInterval {
+        get {
+            return _timespan
+        }
+        set {
+            if _timespan != newValue {
+                _timespan = newValue
+                
+                UserDefaults.standard.set(_timespan, forKey: UserDefaultsKeys.eventsTimespan.rawValue)
+                print("eventsTimespan \(_timespan) saved in UserDefaults.")
+            }
+        }
+    }
+
     static func new(context: NSManagedObjectContext, timestamp: Date = Date.now, dog: GassiDog, type: GassiType, subtype: GassiSubtype? = nil) -> GassiEvent {
         let event = GassiEvent(context: context)
         
