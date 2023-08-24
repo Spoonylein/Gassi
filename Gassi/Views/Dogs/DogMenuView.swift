@@ -17,8 +17,10 @@ struct DogMenuView: View {
         if dogs.count > 1 {
             Menu(GassiDog.current.nameString) {
                 ForEach(dogs) { dog in
-                    Button(dog.nameString) {
+                    Button {
                         dog.makeCurrent()
+                    } label: {
+                        Label(dog.nameString, systemImage: dog.isCurrent ? "checkmark.circle" : "circle")
                     }
                 }
             }

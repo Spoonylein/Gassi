@@ -295,14 +295,39 @@ extension GassiEvent {
     }
 
     static func new(context: NSManagedObjectContext, timestamp: Date = Date.now, dog: GassiDog, type: GassiType, subtype: GassiSubtype? = nil) -> GassiEvent {
-        let event = GassiEvent(context: context)
+        // Check for a existing event within grace period and use it instead of creating a new event
+        let fetchRequest: NSFetchRequest = GassiEvent.fetchRequest()
+        let timestampPredicate: NSPredicate = NSPredicate(format: "timestamp > %@", Date.now.addingTimeInterval(-gracePeriod) as CVarArg)
+        let dogPredicate: NSPredicate = NSPredicate(format: "dog == %@", dog)
+        let typePredicate: NSPredicate = NSPredicate(format: "type == %@", type)
+        let subtypePredicate: NSPredicate = (subtype != nil ? NSPredicate(format: "subtype == %@", subtype!) : NSPredicate(format: "subtype == NIL"))
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [timestampPredicate, dogPredicate, typePredicate, subtypePredicate])
         
+        if let gracePeriodEvent = try? context.fetch(fetchRequest).first {
+            gracePeriodEvent.timestamp = timestamp
+            return gracePeriodEvent
+        }
+        
+        let event = GassiEvent(context: context)
         event.id = UUID()
         event.timestamp = timestamp
         event.dog = dog
         event.type = type
         event.subtype = subtype
         
+        groom(in: context)
+        
         return event
     }
+    
+    static func groom(in viewContext: NSManagedObjectContext, to timespan: TimeInterval = GassiEvent.timespan) {
+        // Delete all events older than `days`
+        let fetchRequest: NSFetchRequest = GassiEvent.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "timestamp < %@", Date.now.addingTimeInterval(-timespan) as CVarArg)
+        
+        if let events = try? viewContext.fetch(fetchRequest) {
+            events.forEach(viewContext.delete)
+        }
+    }
+
 }

@@ -17,7 +17,7 @@ struct GassiView: View {
         NavigationStack {
             Text("GassiView")
                 .toolbar {
-                    ToolbarItem {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         DogMenuView()
                     }
                 }

@@ -111,13 +111,14 @@ struct SettingsView: View {
                     }) {
                         Label {
                             Text(LocalizedStringKey("SettingsGracePeriod"))
-                            Text(TimeInterval.timeSpanString(GassiEvent.gracePeriod, academic: true, showSeconds: false, showNull: false, offset: 0))
+                            Spacer()
+                            Text(TimeInterval.timeSpanString(eventsGracePeriod, academic: true, showSeconds: false, showNull: false, offset: 0))
                         } icon: {
                             Image(systemName: "clock.arrow.2.circlepath")
-                        }
-                        .onLongPressGesture {
-                            eventsGracePeriod = GassiEvent.defaultGracePeriod
-                            GassiEvent.gracePeriod = eventsGracePeriod
+                                .onLongPressGesture {
+                                    eventsGracePeriod = GassiEvent.defaultGracePeriod
+                                    GassiEvent.gracePeriod = eventsGracePeriod
+                                }
                         }
                     }
 
@@ -126,13 +127,14 @@ struct SettingsView: View {
                     }) {
                         Label {
                             Text(LocalizedStringKey("SettingsKeep"))
-                            Text(TimeInterval.timeSpanString(GassiEvent.timespan, academic: true, showSeconds: false, showNull: false, offset: 0))
+                            Spacer()
+                            Text(TimeInterval.timeSpanString(eventsTimespan, academic: true, showSeconds: false, showNull: false, offset: 0))
                         } icon: {
                             Image(systemName: "calendar.badge.plus")
-                        }
-                        .onLongPressGesture {
-                            eventsTimespan = GassiEvent.defaultTimespan
-                            GassiEvent.timespan = eventsTimespan
+                                .onLongPressGesture {
+                                    eventsTimespan = GassiEvent.defaultTimespan
+                                    GassiEvent.timespan = eventsTimespan
+                                }
                         }
                     }
 
