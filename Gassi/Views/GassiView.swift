@@ -10,26 +10,34 @@ import SwiftUI
 struct GassiView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
-
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
-
+    
     var body: some View {
-        NavigationStack {
-            Text("GassiView")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        DogMenuView()
-                    }
+        NavigationStack(path: $navigationController.path) {
+            VStack {
+                RecentEventsListView()
+                Spacer()
+                AddGassiView()
+                    .fixedSize()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    DogMenuView()
                 }
-                .navigationTitle(LocalizedStringKey("GassiViewNavigationTitle"))
+            }
+            .navigationDestination(for: GassiEvent.self) { event in
+                EventView(event: event)
+            }
+            .navigationTitle("GassiViewNavigationTitle")
         }
     }
 }
 
 struct GassiView_Previews: PreviewProvider {
     static var previews: some View {
-        GassiView()
-            .environmentObject(NavigationController())
-            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        NavigationView {
+            GassiView()
+                .environmentObject(NavigationController())
+                .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        }
     }
 }

@@ -44,6 +44,7 @@ struct DogListView: View {
                         } label: {
                             Image(systemName: dog.isCurrent ? "checkmark.circle" : "circle")
                         }
+                        .padding(.trailing)
                     }
 
                     Group {

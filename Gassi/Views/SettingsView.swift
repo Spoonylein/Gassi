@@ -7,20 +7,14 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "birthday", ascending: false)], animation: .default) private var dogs: FetchedResults<GassiDog>
-    
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var breeds: FetchedResults<GassiBreed>
-
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var sexes: FetchedResults<GassiSex>
-
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var types: FetchedResults<GassiType>
-
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var subtypes: FetchedResults<GassiSubtype>
 
     @State private var eventsGracePeriod: TimeInterval = GassiEvent.gracePeriod
@@ -38,7 +32,7 @@ struct SettingsView: View {
                     DogListView(showCurrent: true)
                 } header: {
                     HStack {
-                        Label(LocalizedStringKey(dogs.count == 1 ? "YourDog" : "YourDogs"), systemImage: "pawprint.fill")
+                        Label( dogs.count == 1 ? "YourDog" : "YourDogs", systemImage: "pawprint.fill")
                         Spacer()
 
                         if dogs.count > 0 {
@@ -54,7 +48,7 @@ struct SettingsView: View {
                         }
                     }
                 } footer: {
-                        Label(LocalizedStringKey("SettingsDogSectionFooter"), systemImage: "info.circle")
+                        Label("SettingsDogSectionFooter", systemImage: "info.circle")
                 }
                 
 
@@ -62,7 +56,7 @@ struct SettingsView: View {
                     NavigationLink(value: [GassiBreed()]) {
                         Label {
                             HStack {
-                                Text(LocalizedStringKey("Breeds"))
+                                Text("Breeds")
                                 Spacer()
                                 Text("\(breeds.count)")
                                     .font(.footnote)
@@ -76,7 +70,7 @@ struct SettingsView: View {
                     NavigationLink(value: [GassiSex()]) {
                         Label {
                             HStack {
-                                Text(LocalizedStringKey("Sexes"))
+                                Text("Sexes")
                                 Spacer()
                                 Text("\(sexes.count)")
                                     .font(.footnote)
@@ -87,14 +81,14 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                        Label(LocalizedStringKey("SettingsFeatureSectionTitle"), systemImage: "rectangle.and.text.magnifyingglass")
+                        Label("SettingsFeatureSectionTitle", systemImage: "rectangle.and.text.magnifyingglass")
                 }
                 
                 Section {
                     NavigationLink(value: [GassiType()]) {
                         Label {
                             HStack {
-                                Text(LocalizedStringKey("Types"))
+                                Text("Types")
                                 Spacer()
                                 Text("\(types.count)")
                                     .font(.footnote)
@@ -110,7 +104,7 @@ struct SettingsView: View {
                         GassiEvent.gracePeriod = eventsGracePeriod
                     }) {
                         Label {
-                            Text(LocalizedStringKey("SettingsGracePeriod"))
+                            Text("SettingsGracePeriod")
                             Spacer()
                             Text(TimeInterval.timeSpanString(eventsGracePeriod, academic: true, showSeconds: false, showNull: false, offset: 0))
                         } icon: {
@@ -126,7 +120,7 @@ struct SettingsView: View {
                         GassiEvent.timespan = eventsTimespan
                     }) {
                         Label {
-                            Text(LocalizedStringKey("SettingsKeep"))
+                            Text("SettingsKeep")
                             Spacer()
                             Text(TimeInterval.timeSpanString(eventsTimespan, academic: true, showSeconds: false, showNull: false, offset: 0))
                         } icon: {
@@ -139,39 +133,39 @@ struct SettingsView: View {
                     }
 
                 } header: {
-                    Label(LocalizedStringKey("Events"), systemImage: "calendar")
+                    Label("Events", systemImage: "calendar")
                 } footer: {
-                    Label(LocalizedStringKey("SettingsEventsSectionFooter"), systemImage: "info.circle")
+                    Label("SettingsEventsSectionFooter", systemImage: "info.circle")
                 }
 
                 Section {
-                    Button(LocalizedStringKey("ResetSettings"), role: .destructive) {
+                    Button("ResetSettings", role: .destructive) {
                         showResetSettingsConfirm = true
                     }
-                    .confirmationDialog(LocalizedStringKey("ResetSettings"), isPresented: $showResetSettingsConfirm) {
-                        Button(LocalizedStringKey("ResetSettings"), role: .destructive) {
+                    .confirmationDialog("ResetSettings", isPresented: $showResetSettingsConfirm) {
+                        Button("ResetSettings", role: .destructive) {
                             CoreDataController.shared.resetSettings()
                             showRestartNeeded = true
                         }
                     } message: {
-                        Text(LocalizedStringKey("ResetSettingsConfirmationMessage"))
+                        Text("ResetSettingsConfirmationMessage")
                     }
 
-                    Button(LocalizedStringKey("ClearData"), role: .destructive) {
+                    Button("ClearData", role: .destructive) {
                         showClearDataConfirm = true
                     }
-                    .confirmationDialog(LocalizedStringKey("ClearData"), isPresented: $showClearDataConfirm) {
-                        Button(LocalizedStringKey("ClearData"), role: .destructive) {
+                    .confirmationDialog("ClearData", isPresented: $showClearDataConfirm) {
+                        Button("ClearData", role: .destructive) {
                             CoreDataController.shared.clearData()
                             showRestartNeeded = true
                         }
                     } message: {
-                        Text(LocalizedStringKey("ClearDataConfirmationMessage"))
+                        Text("ClearDataConfirmationMessage")
                     }
 
                 }
                 .alert(isPresented: $showRestartNeeded) {
-                    Alert(title: Text(LocalizedStringKey("RestartNeeded")), message: Text(LocalizedStringKey("RestartMessage")), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("RestartNeeded"), message: Text("RestartMessage"), dismissButton: .default(Text("OK")))
                 }
 
             }
@@ -200,7 +194,7 @@ struct SettingsView: View {
             .navigationDestination(for: GassiSubtype.self) { subtype in
                 SubtypeView(subtype: subtype)
             }
-            .navigationTitle(LocalizedStringKey("Settings"))
+            .navigationTitle("Settings")
         }
     }
 }

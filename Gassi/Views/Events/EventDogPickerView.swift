@@ -20,7 +20,7 @@ struct EventDogPickerView: View {
             }
         } label: {
             Label {
-                Text(LocalizedStringKey("Dog"))
+                Text("Dog")
             } icon: {
                 Image(systemName: "pawprint.fill")
             }

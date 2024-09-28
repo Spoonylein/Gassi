@@ -35,7 +35,7 @@ struct TypeListView: View {
                 }
             }
         }
-        .navigationTitle(LocalizedStringKey("Types"))
+        .navigationTitle("Types")
             .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
     

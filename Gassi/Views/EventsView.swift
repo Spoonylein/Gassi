@@ -21,7 +21,7 @@ struct EventsView: View {
                 .navigationDestination(for: GassiEvent.self) { event in
                     EventView(event: event)
                 }
-                .navigationTitle(LocalizedStringKey("Events"))
+                .navigationTitle("Events")
         }
 
     }

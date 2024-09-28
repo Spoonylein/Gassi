@@ -16,26 +16,26 @@ struct EventItemView: View {
     var body: some View {
             HStack(alignment: .center) {
                 if let subtype = event.subtype {
-                    Text(subtype.sign ?? localizedString("TypeSign"))
+                    Text(subtype.sign ?? "TypeSign")
                 } else {
-                    Text(event.type?.sign ?? localizedString("TypeSign"))
+                    Text(event.type?.sign ?? "TypeSign")
                 }
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(event.type?.nameString ?? localizedString("NoType"))
+                        Text(event.type?.nameString ?? "NoType")
                         if let subtype = event.subtype {
                             Text("-")
                             Text(subtype.nameString)
                         }
                     }
                     if dogs.count > 1 {
-                        Text(event.dog?.nameString ?? localizedString("NoDog"))
+                        Text(event.dog?.nameString ?? "NoDog")
                             .font(.footnote)
                             .foregroundColor(.secondary)
                     }
                 }
                 Spacer()
-                Text(event.timestamp?.formatted() ?? localizedString("NoTimestamp"))
+                Text(event.timestamp?.formatted() ?? "NoTimestamp")
             }
     }
 }

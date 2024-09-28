@@ -17,7 +17,6 @@
 		5C0FF5642A78669A008EBD1D /* DogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5632A78669A008EBD1D /* DogListView.swift */; };
 		5C0FF56E2A7AAA28008EBD1D /* SexItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF56D2A7AAA28008EBD1D /* SexItemView.swift */; };
 		5C0FF5702A7AABE5008EBD1D /* SexListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF56F2A7AABE5008EBD1D /* SexListView.swift */; };
-		5C0FF5722A7AADD3008EBD1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C0FF5712A7AADD3008EBD1D /* Localizable.strings */; };
 		5C0FF5742A7AB259008EBD1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5732A7AB259008EBD1D /* SettingsView.swift */; };
 		5C0FF5762A7ADF5D008EBD1D /* GassiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5752A7ADF5D008EBD1D /* GassiView.swift */; };
 		5C0FF5782A7ADF82008EBD1D /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FF5772A7ADF82008EBD1D /* EventsView.swift */; };
@@ -30,6 +29,7 @@
 		5C2F99062A95FE7C008889F5 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F99052A95FE7C008889F5 /* TimeIntervalExtension.swift */; };
 		5C2F99072A95FE7C008889F5 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F99052A95FE7C008889F5 /* TimeIntervalExtension.swift */; };
 		5C2F99092A969802008889F5 /* DogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F99082A969802008889F5 /* DogMenuView.swift */; };
+		5C36DAC52CA2C54B00175380 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5C36DAC42CA2C54B00175380 /* Localizable.xcstrings */; };
 		5C3BF1212A68529E00E006C6 /* GassiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1202A68529E00E006C6 /* GassiApp.swift */; };
 		5C3BF1232A68529E00E006C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BF1222A68529E00E006C6 /* ContentView.swift */; };
 		5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BF1242A68529E00E006C6 /* Assets.xcassets */; };
@@ -45,6 +45,11 @@
 		5C4037A92A7ECB8E004063E2 /* SubtypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037A82A7ECB8E004063E2 /* SubtypeListView.swift */; };
 		5C4037AB2A7ECB99004063E2 /* SubtypeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037AA2A7ECB99004063E2 /* SubtypeItemView.swift */; };
 		5C4037AD2A7ECBA9004063E2 /* SubtypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4037AC2A7ECBA9004063E2 /* SubtypeView.swift */; };
+		5C49B8D42AD09EE3002A6561 /* GassiBreeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C49B8D32AD09EE3002A6561 /* GassiBreeds.json */; };
+		5C71D4542A975602005B1DF6 /* AddGassiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71D4532A975602005B1DF6 /* AddGassiView.swift */; };
+		5C71D4572A97CDB2005B1DF6 /* RecentEventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71D4552A97CDB2005B1DF6 /* RecentEventRowView.swift */; };
+		5C71D4582A97CDB2005B1DF6 /* RecentEventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71D4562A97CDB2005B1DF6 /* RecentEventsListView.swift */; };
+		5C71D45A2A97D5AC005B1DF6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71D4592A97D5AC005B1DF6 /* DateExtension.swift */; };
 		5C86AF632A80246F00A8CCAD /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86AF622A80246F00A8CCAD /* TypePickerView.swift */; };
 		5C86AF652A80254C00A8CCAD /* EventDogPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86AF642A80254C00A8CCAD /* EventDogPickerView.swift */; };
 		5C86AF672A8818D100A8CCAD /* EventSubtypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86AF662A8818D100A8CCAD /* EventSubtypePickerView.swift */; };
@@ -95,7 +100,6 @@
 		5C0FF5632A78669A008EBD1D /* DogListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogListView.swift; sourceTree = "<group>"; };
 		5C0FF56D2A7AAA28008EBD1D /* SexItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexItemView.swift; sourceTree = "<group>"; };
 		5C0FF56F2A7AABE5008EBD1D /* SexListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexListView.swift; sourceTree = "<group>"; };
-		5C0FF5712A7AADD3008EBD1D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5C0FF5732A7AB259008EBD1D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5C0FF5752A7ADF5D008EBD1D /* GassiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiView.swift; sourceTree = "<group>"; };
 		5C0FF5772A7ADF82008EBD1D /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		5C0FF5812A7D5D89008EBD1D /* BreedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedView.swift; sourceTree = "<group>"; };
 		5C2F99052A95FE7C008889F5 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		5C2F99082A969802008889F5 /* DogMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogMenuView.swift; sourceTree = "<group>"; };
+		5C36DAC42CA2C54B00175380 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5C3BF11D2A68529E00E006C6 /* Gassi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gassi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BF1202A68529E00E006C6 /* GassiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiApp.swift; sourceTree = "<group>"; };
 		5C3BF1222A68529E00E006C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,6 +129,11 @@
 		5C4037A82A7ECB8E004063E2 /* SubtypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtypeListView.swift; sourceTree = "<group>"; };
 		5C4037AA2A7ECB99004063E2 /* SubtypeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtypeItemView.swift; sourceTree = "<group>"; };
 		5C4037AC2A7ECBA9004063E2 /* SubtypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtypeView.swift; sourceTree = "<group>"; };
+		5C49B8D32AD09EE3002A6561 /* GassiBreeds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GassiBreeds.json; sourceTree = "<group>"; };
+		5C71D4532A975602005B1DF6 /* AddGassiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGassiView.swift; sourceTree = "<group>"; };
+		5C71D4552A97CDB2005B1DF6 /* RecentEventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEventRowView.swift; sourceTree = "<group>"; };
+		5C71D4562A97CDB2005B1DF6 /* RecentEventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEventsListView.swift; sourceTree = "<group>"; };
+		5C71D4592A97D5AC005B1DF6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5C86AF622A80246F00A8CCAD /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		5C86AF642A80254C00A8CCAD /* EventDogPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDogPickerView.swift; sourceTree = "<group>"; };
 		5C86AF662A8818D100A8CCAD /* EventSubtypePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSubtypePickerView.swift; sourceTree = "<group>"; };
@@ -163,6 +173,7 @@
 				5C0FF5582A7852B7008EBD1D /* StringExtensions.swift */,
 				5C0FF55B2A78531D008EBD1D /* BindingExtensions.swift */,
 				5C2F99052A95FE7C008889F5 /* TimeIntervalExtension.swift */,
+				5C71D4592A97D5AC005B1DF6 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +256,9 @@
 				5C4037A02A7ECB52004063E2 /* EventView.swift */,
 				5C86AF642A80254C00A8CCAD /* EventDogPickerView.swift */,
 				5C86AF662A8818D100A8CCAD /* EventSubtypePickerView.swift */,
+				5C71D4532A975602005B1DF6 /* AddGassiView.swift */,
+				5C71D4562A97CDB2005B1DF6 /* RecentEventsListView.swift */,
+				5C71D4552A97CDB2005B1DF6 /* RecentEventRowView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -323,7 +337,8 @@
 		5CA5C3982A686BE300B867D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5C0FF5712A7AADD3008EBD1D /* Localizable.strings */,
+				5C49B8D32AD09EE3002A6561 /* GassiBreeds.json */,
+				5C36DAC42CA2C54B00175380 /* Localizable.xcstrings */,
 				5CBA094D2A6DA6E50036EF67 /* UserDefaultsKeys.swift */,
 			);
 			path = Resources;
@@ -404,7 +419,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					5C3BF11C2A68529E00E006C6 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -416,11 +431,12 @@
 			};
 			buildConfigurationList = 5C3BF1182A68529E00E006C6 /* Build configuration list for PBXProject "Gassi" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 5C3BF1142A68529E00E006C6;
 			productRefGroup = 5C3BF11E2A68529E00E006C6 /* Products */;
@@ -438,8 +454,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C49B8D42AD09EE3002A6561 /* GassiBreeds.json in Resources */,
+				5C36DAC52CA2C54B00175380 /* Localizable.xcstrings in Resources */,
 				5C3BF1282A68529E00E006C6 /* Preview Assets.xcassets in Resources */,
-				5C0FF5722A7AADD3008EBD1D /* Localizable.strings in Resources */,
 				5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +479,7 @@
 			files = (
 				5C0FF5842A7D5F1D008EBD1D /* BreedView.swift in Sources */,
 				5C4037A72A7ECB7A004063E2 /* TypeView.swift in Sources */,
+				5C71D4542A975602005B1DF6 /* AddGassiView.swift in Sources */,
 				5C4037A52A7ECB6C004063E2 /* TypeItemView.swift in Sources */,
 				5C0FF5832A7D5F19008EBD1D /* BreedItemView.swift in Sources */,
 				5C86AF652A80254C00A8CCAD /* EventDogPickerView.swift in Sources */,
@@ -474,7 +492,9 @@
 				5C40379D2A7ECB2A004063E2 /* EventListView.swift in Sources */,
 				5C0FF5592A7852B7008EBD1D /* StringExtensions.swift in Sources */,
 				5CBA09512A6DB3670036EF67 /* CoreDataExtensions.swift in Sources */,
+				5C71D4572A97CDB2005B1DF6 /* RecentEventRowView.swift in Sources */,
 				5C0FF5782A7ADF82008EBD1D /* EventsView.swift in Sources */,
+				5C71D45A2A97D5AC005B1DF6 /* DateExtension.swift in Sources */,
 				5C4037AB2A7ECB99004063E2 /* SubtypeItemView.swift in Sources */,
 				5C0FF5822A7D5F14008EBD1D /* BreedListView.swift in Sources */,
 				5C0FF5612A7864B3008EBD1D /* DogItemView.swift in Sources */,
@@ -484,6 +504,7 @@
 				5C4037AD2A7ECBA9004063E2 /* SubtypeView.swift in Sources */,
 				5C4037A12A7ECB52004063E2 /* EventView.swift in Sources */,
 				5C86AF672A8818D100A8CCAD /* EventSubtypePickerView.swift in Sources */,
+				5C71D4582A97CDB2005B1DF6 /* RecentEventsListView.swift in Sources */,
 				5CBA094E2A6DA6E50036EF67 /* UserDefaultsKeys.swift in Sources */,
 				5C0FF57C2A7AF8A5008EBD1D /* NavigationController.swift in Sources */,
 				5C40379F2A7ECB45004063E2 /* EventItemView.swift in Sources */,
@@ -532,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -564,6 +586,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -578,12 +601,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -592,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -624,6 +650,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -632,11 +659,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -645,7 +674,6 @@
 		5C3BF1322A68529E00E006C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Gassi/Gassi.entitlements;
@@ -677,7 +705,6 @@
 		5C3BF1332A68529E00E006C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Gassi/Gassi.entitlements;

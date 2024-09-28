@@ -26,17 +26,19 @@ struct DogView: View {
         Form {
             Section {
                 Label {
-                    Text(LocalizedStringKey("Name"))
-                    Spacer()
-                    TextField(LocalizedStringKey("DogName"), text: Binding<String>.convertOptionalString($dog.name))
-                        .textContentType(.givenName)
-                        .padding(.vertical, 5)
+                    HStack(spacing: 10) {
+                        Text("Name")
+                        Spacer()
+                        TextField("DogName", text: Binding<String>.convertOptionalString($dog.name))
+                            .textContentType(.givenName)
+                            .padding(.vertical, 5)
+                    }
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
 
                 Picker(selection: $dog.breed) {
-                    Text(LocalizedStringKey("Unknown"))
+                    Text("Unknown")
                         .tag(nil as GassiBreed?)
                     ForEach(breeds) { breed in
                         Text(breed.name ?? "")
@@ -44,14 +46,14 @@ struct DogView: View {
                     }
                 } label: {
                     Label {
-                        Text(LocalizedStringKey("Breed"))
+                        Text("Breed")
                     } icon: {
                         Image(systemName: "pawprint")
                     }
                 }
 
                 Picker(selection: $dog.sex) {
-                    Text(LocalizedStringKey("Unknown"))
+                    Text("Unknown")
                         .tag(nil as GassiSex?)
                     ForEach(sexes) { sex in
                             Text(sex.nameString)
@@ -59,22 +61,26 @@ struct DogView: View {
                     }
                 } label: {
                     Label {
-                        Text(LocalizedStringKey("Sex"))
+                        Text("Sex")
                     } icon: {
                         Text("⚤")
                     }
                 }
                 
                 DatePicker(selection: Binding<Date?>.convertOptionalValue($dog.birthday, fallback: .now.addingTimeInterval(86400)), displayedComponents: .date) {
-
                     Label {
-                        Text(dog.birthday != nil ? LocalizedStringKey("DogBirthDate") : LocalizedStringKey("DogNoBirthDate"))
+                        Text(dog.birthday != nil ? "DogBirthDate" : "DogNoBirthDate")
                     } icon: {
                         Image(systemName: "calendar")
                     }
                 }
+                
             } header: {
-                Text(LocalizedStringKey("Dog"))
+                Text("Dog")
+            } footer: {
+                if dog.birthday == nil {
+                    Label("DogViewDogNoBirthDate", systemImage: "info.circle")
+                }
             }
             
             Section {
@@ -95,26 +101,26 @@ struct DogView: View {
                     }
                 }
             } footer: {
-                Label(LocalizedStringKey("DogViewCurrentDogFooter"), systemImage: "info.circle")
+                Label("DogViewCurrentDogFooter", systemImage: "info.circle")
             }
             
             Section {
-                Button(LocalizedStringKey("DeleteDog"), role: .destructive) {
+                Button("DeleteDog", role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteDog"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteDog"), role: .destructive) {
+                .confirmationDialog("DeleteDog", isPresented: $showConfirm) {
+                    Button("DeleteDog", role: .destructive) {
                         viewContext.delete(dog)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteDogConfirmationMessage"))
+                    Text("DeleteDogConfirmationMessage")
                 }
                 
             } footer: {
                 if GassiDog.current == dog {
-                    Label(LocalizedStringKey("DogViewDeleteFooter"), systemImage: "exclamationmark.triangle")
+                    Label("DogViewDeleteFooter", systemImage: "exclamationmark.triangle")
                 } else {
                     EmptyView()
                 }
@@ -123,7 +129,7 @@ struct DogView: View {
 
         }
         .textFieldStyle(.roundedBorder)
-        .navigationTitle(dog.name ?? localizedString("DogViewTitle"))
+        .navigationTitle(dog.name ?? "DogViewTitle")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }

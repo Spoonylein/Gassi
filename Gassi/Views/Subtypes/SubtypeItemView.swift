@@ -12,7 +12,8 @@ struct SubtypeItemView: View {
     
     var body: some View {
         HStack {
-            Text(subtype.sign ?? localizedString("SubtypeSign"))
+            // Double check
+            Text(subtype.sign ?? "SubtypeSign")
             Text(subtype.nameString)
         }
     }

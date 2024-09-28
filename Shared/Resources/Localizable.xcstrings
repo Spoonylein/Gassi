@@ -1,0 +1,1289 @@
+{
+  "sourceLanguage" : "de",
+  "strings" : {
+    "\t%@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\t%1$@ %2$@"
+          }
+        }
+      }
+    },
+    " " : {
+
+    },
+    "-" : {
+
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "⚤" : {
+
+    },
+    "AddGassiTapAndHold" : {
+      "comment" : "MARK: AddGassiView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Hinzufügen Tippen und halten"
+          }
+        }
+      }
+    },
+    "AllDogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Hunde"
+          }
+        }
+      }
+    },
+    "Breed" : {
+      "comment" : "MARK: GassiBreed",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasse"
+          }
+        }
+      }
+    },
+    "BreedListViewTitle" : {
+      "comment" : "MARK: BreedListView",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rassen"
+          }
+        }
+      }
+    },
+    "BreedName" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name des Rasse"
+          }
+        }
+      }
+    },
+    "Breeds" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rassen"
+          }
+        }
+      }
+    },
+    "BreedViewTitle" : {
+      "comment" : "MARK: BreedView",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasse bearbeiten"
+          }
+        }
+      }
+    },
+    "ClearData" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten löschen"
+          }
+        }
+      }
+    },
+    "ClearDataConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Hunde und Ereignisse werden gelöscht. Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen bleiben erhalten."
+          }
+        }
+      }
+    },
+    "CurrentDog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiver Hund"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
+    },
+    "DeleteBreed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasse löschen"
+          }
+        }
+      }
+    },
+    "DeleteBreedConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rasse wird von allen Hunden entfernt und gelöscht."
+          }
+        }
+      }
+    },
+    "DeleteDog" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hund löschen"
+          }
+        }
+      }
+    },
+    "DeleteDogConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Hund und alle seine Ereignisse werden unwiderruflich gelöscht und können nicht wiederhergestellt werden."
+          }
+        }
+      }
+    },
+    "DeleteEvent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignis löschen"
+          }
+        }
+      }
+    },
+    "DeleteEventConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Ereignis wird gelöscht und kann nicht wiederhergestellt werden."
+          }
+        }
+      }
+    },
+    "DeleteSex" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschlecht löschen"
+          }
+        }
+      }
+    },
+    "DeleteSexConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Geschlecht wird von allen zugewiesenen Hunden entfernt und gelöscht."
+          }
+        }
+      }
+    },
+    "DeleteSubtype" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterkategorie löschen"
+          }
+        }
+      }
+    },
+    "DeleteSubtypeConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Unterkategorie wird von der Kategorie und allen Ereignissen entfernt und gelöscht."
+          }
+        }
+      }
+    },
+    "DeleteType" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategorie löschen"
+          }
+        }
+      }
+    },
+    "DeleteTypeConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kategorie wird von allen Ereignissen entfernt und gelöscht."
+          }
+        }
+      }
+    },
+    "Designation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezeichnung"
+          }
+        }
+      }
+    },
+    "Diarrhea" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchfall"
+          }
+        }
+      }
+    },
+    "DiarrheaSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "☣️"
+          }
+        }
+      }
+    },
+    "Dog" : {
+      "comment" : "MARK: GassiDog",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hund"
+          }
+        }
+      }
+    },
+    "DogBirthDate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geburtsdatum"
+          }
+        }
+      }
+    },
+    "DogItemAge" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alter: "
+          }
+        }
+      }
+    },
+    "DogItemSex" : {
+      "comment" : "MARK: DogItemView",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschlecht: "
+          }
+        }
+      }
+    },
+    "DogName" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name des Hundes"
+          }
+        }
+      }
+    },
+    "DogNoBirthDate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kein Geburtsdatum"
+          }
+        }
+      }
+    },
+    "Dogs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hunde"
+          }
+        }
+      }
+    },
+    "DogsListViewTitle" : {
+      "comment" : "MARK: DogsListView",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hunde"
+          }
+        }
+      }
+    },
+    "DogViewCurrentDogFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur dem aktiven Hund werden neue Ereignisse zugewiesen."
+          }
+        }
+      }
+    },
+    "DogViewDeleteFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der aktive Hund kann nicht gelöscht werden."
+          }
+        }
+      }
+    },
+    "DogViewDogNoBirthDate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für diesen Hund wurde noch kein Geburtsdatum gesetzt."
+          }
+        }
+      }
+    },
+    "DogViewTitle" : {
+      "comment" : "MARK: DogView",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hund bearbeiten"
+          }
+        }
+      }
+    },
+    "EditEvent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignis bearbeiten"
+          }
+        }
+      }
+    },
+    "Event" : {
+      "comment" : "MARK: GassiEvent",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignis"
+          }
+        }
+      }
+    },
+    "EventFeatureSectionTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merkmale"
+          }
+        }
+      }
+    },
+    "Events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse"
+          }
+        }
+      }
+    },
+    "EventsTabTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste"
+          }
+        }
+      }
+    },
+    "EventViewTimeAndPlace" : {
+      "comment" : "MARK: EventView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit und Ort"
+          }
+        }
+      }
+    },
+    "FemaleDog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hündin"
+          }
+        }
+      }
+    },
+    "FemaleSex" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "weiblich"
+          }
+        }
+      }
+    },
+    "GassiTabTitle" : {
+      "comment" : "MARK: ContentView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gassi!"
+          }
+        }
+      }
+    },
+    "GassiViewNavigationTitle" : {
+      "comment" : "MARK: GassiView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gassi"
+          }
+        }
+      }
+    },
+    "HardPoo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hart"
+          }
+        }
+      }
+    },
+    "HardPooSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🫘"
+          }
+        }
+      }
+    },
+    "Hello, World!" : {
+
+    },
+    "justNow" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gerade eben"
+          }
+        }
+      }
+    },
+    "lastEvent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "letztes Ereignis"
+          }
+        }
+      }
+    },
+    "MaleDog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rüde"
+          }
+        }
+      }
+    },
+    "MaleSex" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "männlich"
+          }
+        }
+      }
+    },
+    "Name" : {
+
+    },
+    "NamelessBreed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namenlose Rasse"
+          }
+        }
+      }
+    },
+    "NamelessDog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namenloser Hund"
+          }
+        }
+      }
+    },
+    "NamelessSex" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namenloses Geschlecht"
+          }
+        }
+      }
+    },
+    "NamelessType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namenlose Kategorie"
+          }
+        }
+      }
+    },
+    "NewBreed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Rasse"
+          }
+        }
+      }
+    },
+    "NewDog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Hund"
+          }
+        }
+      }
+    },
+    "NewSex" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Geschlecht"
+          }
+        }
+      }
+    },
+    "NewType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Kategorie"
+          }
+        }
+      }
+    },
+    "nextEvent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nächstes Ereignis"
+          }
+        }
+      }
+    },
+    "NoBreed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "keine Rasse"
+          }
+        }
+      }
+    },
+    "NoGassiEvent " : {
+
+    },
+    "NoPredictionPossible" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zu wenig Daten"
+          }
+        }
+      }
+    },
+    "NoSex" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kein Geschlecht"
+          }
+        }
+      }
+    },
+    "NoSubtype" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "keine Unterkategorie"
+          }
+        }
+      }
+    },
+    "NoTimestamp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "keine Zeitangabe"
+          }
+        }
+      }
+    },
+    "NoType" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "keine Kategorie"
+          }
+        }
+      }
+    },
+    "now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jetzt"
+          }
+        }
+      }
+    },
+    "OK" : {
+
+    },
+    "Pee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pipi"
+          }
+        }
+      }
+    },
+    "PeeSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💦"
+          }
+        }
+      }
+    },
+    "Poo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kacka"
+          }
+        }
+      }
+    },
+    "PooSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💩"
+          }
+        }
+      }
+    },
+    "QuitApp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App beenden"
+          }
+        }
+      }
+    },
+    "ReportTabTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiken"
+          }
+        }
+      }
+    },
+    "ResetSettings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen zurücksetzen"
+          }
+        }
+      }
+    },
+    "ResetSettingsConfirmationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen werden gelöscht und beim nächsten Neustart auf Standardwerte zurückgesetzt. Hunde und Ereignisse bleiben erhalten, haben dann jedoch mglw. keine korrekte Zuordnung mehr."
+          }
+        }
+      }
+    },
+    "RestartMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Standardwerte werden beim Neustart der App angelegt. Dazu bitte im AppSwitcher die App beenden und dann die App neu starten."
+          }
+        }
+      }
+    },
+    "RestartNeeded" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App muss neu gestartet werden"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "MARK: Settings",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
+    "SettingsCurrentDog" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiver Hund"
+          }
+        }
+      }
+    },
+    "SettingsDogSectionFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle den aktiven Hund aus oder bearbeite ihn."
+          }
+        }
+      }
+    },
+    "SettingsEventsSectionFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt."
+          }
+        }
+      }
+    },
+    "SettingsEventsSectionHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse"
+          }
+        }
+      }
+    },
+    "SettingsFeatureSectionTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merkmale"
+          }
+        }
+      }
+    },
+    "SettingsGracePeriod" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karenzzeit"
+          }
+        }
+      }
+    },
+    "SettingsKeep" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behalte"
+          }
+        }
+      }
+    },
+    "SettingsTabTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
+    "Sex" : {
+      "comment" : "MARK: GassiSex",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschlecht"
+          }
+        }
+      }
+    },
+    "Sexes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschlechter"
+          }
+        }
+      }
+    },
+    "SexName" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezeichnung des Geschlechtes"
+          }
+        }
+      }
+    },
+    "SexViewTitle" : {
+      "comment" : "MARK: SexView",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschlecht bearbeiten"
+          }
+        }
+      }
+    },
+    "Subtype" : {
+      "comment" : "MARK: GassiSubtype",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterkategorie"
+          }
+        }
+      }
+    },
+    "SubtypeName" : {
+
+    },
+    "Subtypes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterkategorien"
+          }
+        }
+      }
+    },
+    "SubtypesFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sind Unterkategorien vorhanden, können sie Ereignissen zugewiesen und als Sonderfall dieser Kategorie angezeigt werden."
+          }
+        }
+      }
+    },
+    "SubtypeSignFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze ein einzelnes Emoticon als Zeichen !"
+          }
+        }
+      }
+    },
+    "SubtypesPredictionFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse einer Unterkategorie werden als Sonderfälle betrachtet und in Vorhersagen nicht berücksichtigt."
+          }
+        }
+      }
+    },
+    "SubtypeViewSign" : {
+      "comment" : "MARK: SubtypeView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeichen"
+          }
+        }
+      }
+    },
+    "Timestamp" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitpunkt"
+          }
+        }
+      }
+    },
+    "training" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Training"
+          }
+        }
+      }
+    },
+    "trainingSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🦮"
+          }
+        }
+      }
+    },
+    "treat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leckerli"
+          }
+        }
+      }
+    },
+    "treatSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🍖"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "comment" : "MARK: GassiType",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategorie"
+          }
+        }
+      }
+    },
+    "TypeName" : {
+
+    },
+    "Types" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategorien"
+          }
+        }
+      }
+    },
+    "TypeSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🐶"
+          }
+        }
+      }
+    },
+    "TypeSignFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze ein einzelnes Emoticon als Zeichen !"
+          }
+        }
+      }
+    },
+    "TypeViewEventsFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn aktiviert, wird das nächste Auftreten eines Events dieser Kategorie vorhergesagt."
+          }
+        }
+      }
+    },
+    "TypeViewPeePooDeleteFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschst Du diese Kategorie, wird sie beim nächsten Neustart automatisch neu erstellt."
+          }
+        }
+      }
+    },
+    "TypeViewPrediction" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhersage"
+          }
+        }
+      }
+    },
+    "TypeViewSign" : {
+      "comment" : "MARK: TypeView",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeichen"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unbekannt"
+          }
+        }
+      }
+    },
+    "Vomit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erbrechen"
+          }
+        }
+      }
+    },
+    "VomitSign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤮"
+          }
+        }
+      }
+    },
+    "YourDog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Hund"
+          }
+        }
+      }
+    },
+    "YourDogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Hunde"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

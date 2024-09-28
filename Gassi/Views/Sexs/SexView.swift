@@ -19,9 +19,9 @@ struct SexView: View {
         Form {
             Section {
                 Label {
-                    Text(LocalizedStringKey("Name"))
+                    Text("Name")
                     Spacer()
-                    TextField(LocalizedStringKey("SexName"), text: Binding<String>.convertOptionalString($sex.name))
+                    TextField("SexName", text: Binding<String>.convertOptionalString($sex.name))
                         .textInputAutocapitalization(.never)
                         .padding(.vertical, 5)
                 } icon: {
@@ -29,7 +29,7 @@ struct SexView: View {
                 }
             } header: {
                 Label {
-                    Text(LocalizedStringKey("Sex"))
+                    Text("Sex")
                 } icon: {
                     Text("⚤")
                 }
@@ -39,29 +39,29 @@ struct SexView: View {
                 DogListView(sex: sex)
             } header: {
                 if (sex.dogs?.count ?? 0) > 0 {
-                    Label(LocalizedStringKey("Dogs"), systemImage: "pawprint.fill")
+                    Label("Dogs", systemImage: "pawprint.fill")
                 }
             }
             
             Section {
-                Button(LocalizedStringKey("DeleteSex"), role: .destructive) {
+                Button("DeleteSex", role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteSex"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteSex"), role: .destructive) {
+                .confirmationDialog("DeleteSex", isPresented: $showConfirm) {
+                    Button("DeleteSex", role: .destructive) {
                         viewContext.delete(sex)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteSexConfirmationMessage"))
+                    Text("DeleteSexConfirmationMessage")
                 }
                 
             }
 
         }
         .textFieldStyle(.roundedBorder)
-        .navigationTitle(sex.name ?? localizedString("SexViewTitle"))
+        .navigationTitle(sex.name ?? "SexViewTitle")
         .toolbar(.hidden, for: .tabBar)
     }
 }

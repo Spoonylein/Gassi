@@ -1,9 +1,7 @@
-# ``Gassi Data Model``
-
+# Gassi Data Model
 Description of the Core Data Model used with Gassi.
 
 ## Overview
-
 The Default Data UUID is composed out of following parts:
 - Birthday of Spoony    07031973
 - App                   07031973-1000   Gassi

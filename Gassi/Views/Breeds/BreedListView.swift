@@ -34,8 +34,24 @@ struct BreedListView: View {
                     Image(systemName: "plus")
                 }
             }
+/*            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    let encoder = JSONEncoder()
+                    var breedURL = Bundle.main.url(forResource: "GassiBreeds", withExtension: "json")!.path()
+                    print(breedURL)
+                    for breed in breeds {
+                        if let encoded = try? encoder.encode(breed) {
+                            // save `encoded` somewhere
+                            print(String(data: encoded, encoding: .ascii))
+                            String(data: encoded, encoding: .utf8)?.write(to: &breedURL)
+                        }
+                    }
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            } */
         }
-        .navigationTitle(LocalizedStringKey("Breeds"))
+        .navigationTitle("Breeds")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
     

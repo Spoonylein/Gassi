@@ -25,13 +25,13 @@ struct DogItemView: View {
                 HStack {
                     if dog.sex != nil {
                         HStack(spacing: 0) {
-//                            Text(LocalizedStringKey("DogItemSex"))
+//                            Text("DogItemSex")
                             Text(dog.sexNameString)
                         }
                     }
                     if dog.birthday != nil {
                         HStack(spacing: 0) {
-                            Text(LocalizedStringKey("DogItemAge"))
+                            Text("DogItemAge")
                             Text(dog.ageString)
                         }
                     }

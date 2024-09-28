@@ -28,15 +28,15 @@ struct EventSubtypePickerView: View {
     
     var body: some View {
         Picker(selection: $event.subtype) {
-            Text(LocalizedStringKey("NoSubtype"))
+            Text("NoSubtype")
                 .tag(nil as GassiSubtype?)
             ForEach(subtypes) { subtype in
-                Text((subtype.sign ?? localizedString("TypeSign")) + " " + subtype.nameString)
+                Text((subtype.sign ?? "TypeSign") + " " + subtype.nameString)
                     .tag(subtype as GassiSubtype?)
             }
         } label: {
             Label {
-                Text(LocalizedStringKey("Subtype"))
+                Text("Subtype")
             } icon: {
                 Image(systemName: "list.bullet.indent")
             }

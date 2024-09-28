@@ -14,15 +14,16 @@ struct TypePickerView: View {
 
     var body: some View {
         Picker(selection: $event.type) {
-            Text(LocalizedStringKey("NoType"))
+            Text("NoType")
                 .tag(nil as GassiType?)
             ForEach(types) { type in
-                Text((type.sign ?? localizedString("TypeSign")) + " " + type.nameString)
+                // Double Check !
+                Text((type.sign ?? "TypeSign") + " " + type.nameString)
                     .tag(type as GassiType?)
             }
         } label: {
             Label {
-                Text(LocalizedStringKey("Type"))
+                Text("Type")
             } icon: {
                 Image(systemName: "list.bullet")
             }

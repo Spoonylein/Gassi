@@ -16,6 +16,9 @@ struct CoreDataController {
         let result = CoreDataController(inMemory: true)
         let viewContext = result.container.viewContext
         
+        let _ = GassiEvent.new(context: viewContext, dog: GassiDog.current, type: GassiType.pee)
+        let _ = GassiEvent.new(context: viewContext, dog: GassiDog.current, type: GassiType.poo)
+
         return result
     }()
     
@@ -50,7 +53,7 @@ struct CoreDataController {
         
         // Check for DOG, SEX, TYPE, SUBTYPE and create default data if missing
         print("Core data store loaded. Checking for default data..")
-        if !inMemory, let currentDog = initCurrentDog() {
+        if let currentDog = initCurrentDog() {
             currentDog.makeCurrent()
         } else {
             print("No dog fetched, creating default one.")
@@ -168,7 +171,7 @@ struct CoreDataController {
                 let _ = GassiBreed.new(context: container.viewContext, name: "Neufundländer")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Papillon")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Parson-Russell-Terrier")
-                let _ = GassiBreed.new(context: container.viewContext, name: "Pekingese")
+                let _ = GassiBreed.new(context: container.viewContext, name: "Pekinese")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Pharaonenhund")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Pinscher")
                 let _ = GassiBreed.new(context: container.viewContext, name: "Pitbull")

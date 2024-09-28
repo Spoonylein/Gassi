@@ -19,18 +19,18 @@ struct TypeView: View {
         Form {
             Section {
                 Label {
-                    Text(LocalizedStringKey("Name"))
+                    Text("Name")
                     Spacer()
-                    TextField(LocalizedStringKey("TypeName"), text: Binding<String>.convertOptionalString($type.name))
+                    TextField("TypeName", text: Binding<String>.convertOptionalString($type.name))
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
                 
                 Label {
-                    Text(LocalizedStringKey("TypeViewSign"))
+                    Text("TypeViewSign")
                     Spacer()
-                    TextField(LocalizedStringKey("TypeViewSign"), text: Binding<String>.convertOptionalString($type.sign), prompt: Text(""))
+                    TextField("TypeViewSign", text: Binding<String>.convertOptionalString($type.sign), prompt: Text(" "))
                         .font(.largeTitle)
                         .frame(width: 50)
                         .padding(.vertical, 5)
@@ -38,15 +38,15 @@ struct TypeView: View {
                     Image(systemName: "hazardsign")
                 }
             } header: {
-                Label(LocalizedStringKey("Type"), systemImage: "list.bullet")
+                Label("Type", systemImage: "list.bullet")
             } footer: {
-                Label(LocalizedStringKey("TypeSignFooter"), systemImage: "info.circle")
+                Label("TypeSignFooter", systemImage: "info.circle")
             }
             
             Section {
                 Toggle(isOn: $type.predict) {
                     Label {
-                        Text(LocalizedStringKey("TypeViewPrediction"))
+                        Text("TypeViewPrediction")
                             .foregroundColor(type.isPeeOrPoo ? .secondary : .primary)
                     } icon: {
                         Image(systemName: "clock.badge.questionmark")
@@ -55,9 +55,9 @@ struct TypeView: View {
                 }
                 .disabled(type.isPeeOrPoo)
             } header: {
-                Label(LocalizedStringKey("Events"), systemImage: "list.bullet.rectangle")
+                Label("Events", systemImage: "list.bullet.rectangle")
             } footer: {
-                Label(LocalizedStringKey("TypeViewEventsFooter"), systemImage: "info.circle")
+                Label("TypeViewEventsFooter", systemImage: "info.circle")
             }
 
             
@@ -65,7 +65,7 @@ struct TypeView: View {
                 SubtypeListView(type: type)
             } header: {
                 HStack {
-                    Label(LocalizedStringKey("Subtypes"), systemImage: "list.bullet.indent")
+                    Label("Subtypes", systemImage: "list.bullet.indent")
                     Spacer()
                     if (type.subtypes?.count ?? 0) > 0 {
                         EditButton()
@@ -81,8 +81,8 @@ struct TypeView: View {
             } footer: {
                 if (type.subtypes?.count ?? 0) > 0 {
                     VStack(alignment: .leading) {
-                        Label(LocalizedStringKey("SubtypesFooter"), systemImage: "info.circle")
-                        Label(LocalizedStringKey("SubtypesPredictionFooter"), systemImage: "exclamationmark.triangle")
+                        Label("SubtypesFooter", systemImage: "info.circle")
+                        Label("SubtypesPredictionFooter", systemImage: "exclamationmark.triangle")
                     }
                 } else {
                     EmptyView()
@@ -90,21 +90,21 @@ struct TypeView: View {
             }
             
             Section {
-                Button(LocalizedStringKey("DeleteType"), role: .destructive) {
+                Button("DeleteType", role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteType"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteType"), role: .destructive) {
+                .confirmationDialog("DeleteType", isPresented: $showConfirm) {
+                    Button("DeleteType", role: .destructive) {
                         viewContext.delete(type)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteTypeConfirmationMessage"))
+                    Text("DeleteTypeConfirmationMessage")
                 }
             } footer: {
                 if type.isPeeOrPoo {
-                    Label(LocalizedStringKey("TypeViewPeePooDeleteFooter"), systemImage: "info.circle")
+                    Label("TypeViewPeePooDeleteFooter", systemImage: "info.circle")
                 } else {
                     EmptyView()
                 }
@@ -112,7 +112,7 @@ struct TypeView: View {
             
         }
         .textFieldStyle(.roundedBorder)
-        .navigationTitle(type.name ?? localizedString("TypeViewTitle"))
+        .navigationTitle(type.name ?? "TypeViewTitle")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }

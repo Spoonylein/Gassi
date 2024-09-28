@@ -21,22 +21,22 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             GassiView()
                 .tabItem {
-                    Label(LocalizedStringKey("GassiTabTitle"), systemImage: "pawprint.fill")
+                    Label("GassiTabTitle", systemImage: "pawprint.fill")
                 }.tag(Tabs.gassiTab)
             
             EventsView()
                 .tabItem {
-                    Label(LocalizedStringKey("EventsTabTitle"), systemImage: "list.dash")
+                    Label("EventsTabTitle", systemImage: "list.dash")
                 }.tag(Tabs.eventsTab)
             
             ReportView()
                 .tabItem {
-                    Label(LocalizedStringKey("ReportTabTitle"), systemImage: "chart.bar.xaxis")
+                    Label("ReportTabTitle", systemImage: "chart.bar.xaxis")
                 }.tag(Tabs.reportTab)
             
             SettingsView()
                 .tabItem {
-                    Label(LocalizedStringKey("SettingsTabTitle"), systemImage: "gearshape.fill")
+                    Label("SettingsTabTitle", systemImage: "gearshape.fill")
                 }.tag(Tabs.settingsTab)
         }
     }

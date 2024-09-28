@@ -19,18 +19,18 @@ struct SubtypeView: View {
         Form {
             Section {
                 Label {
-                    Text(LocalizedStringKey("Name"))
+                    Text("Name")
                     Spacer()
-                    TextField(LocalizedStringKey("SubtypeName"), text: Binding<String>.convertOptionalString($subtype.name))
+                    TextField("SubtypeName", text: Binding<String>.convertOptionalString($subtype.name))
                         .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
                 
                 Label {
-                    Text(LocalizedStringKey("SubtypeViewSign"))
+                    Text("SubtypeViewSign")
                     Spacer()
-                    TextField(LocalizedStringKey("SubtypeViewSign"), text: Binding<String>.convertOptionalString($subtype.sign), prompt: Text(""))
+                    TextField("SubtypeViewSign", text: Binding<String>.convertOptionalString($subtype.sign), prompt: Text(" "))
                         .font(.largeTitle)
                         .frame(width: 50)
                         .padding(.vertical, 5)
@@ -38,28 +38,28 @@ struct SubtypeView: View {
                     Image(systemName: "hazardsign")
                 }
             } header: {
-                Label(LocalizedStringKey("Subtype"), systemImage: "list.bullet.indent")
+                Label("Subtype", systemImage: "list.bullet.indent")
             } footer: {
-                Label(LocalizedStringKey("SubtypeSignFooter"), systemImage: "hazardsign")
+                Label("SubtypeSignFooter", systemImage: "hazardsign")
             }
 
             Section {
-                Button(LocalizedStringKey("DeleteSubtype"), role: .destructive) {
+                Button("DeleteSubtype", role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteSubtype"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteSubtype"), role: .destructive) {
+                .confirmationDialog("DeleteSubtype", isPresented: $showConfirm) {
+                    Button("DeleteSubtype", role: .destructive) {
                         viewContext.delete(subtype)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteSubtypeConfirmationMessage"))
+                    Text("DeleteSubtypeConfirmationMessage")
                 }
             } 
         }
         .textFieldStyle(.roundedBorder)
-        .navigationTitle(subtype.name ?? localizedString("SubtypeViewTitle"))
+        .navigationTitle(subtype.name ?? "SubtypeViewTitle")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }

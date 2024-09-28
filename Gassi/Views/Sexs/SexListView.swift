@@ -35,7 +35,7 @@ struct SexListView: View {
                 }
             }
         }
-        .navigationTitle(LocalizedStringKey("Sexes"))
+        .navigationTitle("Sexes")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
     

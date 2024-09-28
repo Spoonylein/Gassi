@@ -23,7 +23,7 @@ struct EventView: View {
                 EventSubtypePickerView(event: event, type: event.type)
                     .disabled(event.type?.subtypes?.count == 0)
             } header: {
-                Label(LocalizedStringKey("EventFeatureSectionTitle"), systemImage: "rectangle.and.text.magnifyingglass")
+                Label("EventFeatureSectionTitle", systemImage: "rectangle.and.text.magnifyingglass")
             }
             .onChange(of: event.type) { newValue in
                 event.subtype = nil
@@ -31,28 +31,28 @@ struct EventView: View {
             
             Section {
                 DatePicker(selection: Binding<Date?>.convertOptionalValue($event.timestamp, fallback: .now), displayedComponents: [.date, .hourAndMinute]) {
-                    Label(LocalizedStringKey("Timestamp"), systemImage: "calendar")
+                    Label("Timestamp", systemImage: "calendar")
                 }
             } header: {
-                Label(LocalizedStringKey("EventViewTimeAndPlace"), systemImage: "clock")
+                Label("EventViewTimeAndPlace", systemImage: "clock")
             }
             
             Section {
-                Button(LocalizedStringKey("DeleteEvent"), role: .destructive) {
+                Button("DeleteEvent", role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteEvent"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteEvent"), role: .destructive) {
+                .confirmationDialog("DeleteEvent", isPresented: $showConfirm) {
+                    Button("DeleteEvent", role: .destructive) {
                         viewContext.delete(event)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteEventConfirmationMessage"))
+                    Text("DeleteEventConfirmationMessage")
                 }
             }
         }
-        .navigationTitle(LocalizedStringKey("EditEvent"))
+        .navigationTitle("EditEvent")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }

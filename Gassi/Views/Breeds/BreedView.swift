@@ -19,43 +19,43 @@ struct BreedView: View {
         Form {
             Section {
                 Label {
-                    Text(LocalizedStringKey("Name"))
+                    Text("Name")
                     Spacer()
-                    TextField(LocalizedStringKey("BreedName"), text: Binding<String>.convertOptionalString($breed.name))
+                    TextField("BreedName", text: Binding<String>.convertOptionalString($breed.name))
                         .padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
             } header: {
-                Label(LocalizedStringKey("Breed"), systemImage: "pawprint")
+                Label("Breed", systemImage: "pawprint")
             }
             
             Section {
                 DogListView(breed: breed)
             } header: {
                 if (breed.dogs?.count ?? 0) > 0 {
-                    Label(LocalizedStringKey("Dogs"), systemImage: "pawprint.fill")
+                    Label("Dogs", systemImage: "pawprint.fill")
                 }
             }
             
             Section {
-                Button(LocalizedStringKey("DeleteBreed"), role: .destructive) {
+                Button("DeleteBreed", role: .destructive) {
                     showConfirm = true
                 }
-                .confirmationDialog(LocalizedStringKey("DeleteBreed"), isPresented: $showConfirm) {
-                    Button(LocalizedStringKey("DeleteBreed"), role: .destructive) {
+                .confirmationDialog("DeleteBreed", isPresented: $showConfirm) {
+                    Button("DeleteBreed", role: .destructive) {
                         viewContext.delete(breed)
                         CoreDataController.shared.save()
                         navigationController.path.removeLast()
                     }
                 } message: {
-                    Text(LocalizedStringKey("DeleteBreedConfirmationMessage"))
+                    Text("DeleteBreedConfirmationMessage")
                 }
             }
 
         }
         .textFieldStyle(.roundedBorder)
-        .navigationTitle(breed.name ?? localizedString("BreedViewTitle"))
+        .navigationTitle(breed.name ?? "BreedViewTitle")
         .toolbar(SwiftUI.Visibility.hidden, for: SwiftUI.ToolbarPlacement.tabBar)
     }
 }
