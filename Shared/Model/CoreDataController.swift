@@ -24,11 +24,13 @@ struct CoreDataController {
     
     // MARK: Properties
     /// The container encapsulating the core data stacK (i.e. the runtime database)
-    let container: NSPersistentCloudKitContainer
-    
+//    let container: NSPersistentCloudKitContainer
+    let container: NSPersistentContainer
+
     // MARK: Create and Read
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Gassi")
+//        container = NSPersistentCloudKitContainer(name: "Gassi")
+        container = NSPersistentContainer(name: "Gassi")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
