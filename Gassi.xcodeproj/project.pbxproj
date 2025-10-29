@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,6 +68,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5C9F5BBA2EB2CCAD00AEE0F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C3BF1152A68529E00E006C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C3BF11C2A68529E00E006C6;
+			remoteInfo = Gassi;
+		};
 		5CCD1D302A68532D00DA8727 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C3BF1152A68529E00E006C6 /* Project object */;
@@ -137,6 +144,7 @@
 		5C86AF622A80246F00A8CCAD /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		5C86AF642A80254C00A8CCAD /* EventDogPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDogPickerView.swift; sourceTree = "<group>"; };
 		5C86AF662A8818D100A8CCAD /* EventSubtypePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSubtypePickerView.swift; sourceTree = "<group>"; };
+		5C9F5BB42EB2CCAD00AEE0F8 /* GassiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GassiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA5C3952A6869C000B867D0 /* Gassi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gassi.entitlements; sourceTree = "<group>"; };
 		5CA5C3962A6869D500B867D0 /* GassiWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GassiWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5CA5C3972A6869E200B867D0 /* GassiWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GassiWatch Watch App.entitlements"; sourceTree = "<group>"; };
@@ -149,8 +157,19 @@
 		5CCD1D2E2A68532D00DA8727 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5C9F5BB52EB2CCAD00AEE0F8 /* GassiUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = GassiUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		5C3BF11A2A68529E00E006C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C9F5BB12EB2CCAD00AEE0F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -270,6 +289,7 @@
 				5CA5C38F2A68657000B867D0 /* Shared */,
 				5C3BF11F2A68529E00E006C6 /* Gassi */,
 				5CCD1D262A68532D00DA8727 /* GassiWatch Watch App */,
+				5C9F5BB52EB2CCAD00AEE0F8 /* GassiUITests */,
 				5C3BF11E2A68529E00E006C6 /* Products */,
 				5CCD1D1C2A6852DF00DA8727 /* Frameworks */,
 			);
@@ -280,6 +300,7 @@
 			children = (
 				5C3BF11D2A68529E00E006C6 /* Gassi.app */,
 				5CCD1D252A68532C00DA8727 /* GassiWatch Watch App.app */,
+				5C9F5BB42EB2CCAD00AEE0F8 /* GassiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,6 +415,29 @@
 			productReference = 5C3BF11D2A68529E00E006C6 /* Gassi.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5C9F5BB32EB2CCAD00AEE0F8 /* GassiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C9F5BBE2EB2CCAD00AEE0F8 /* Build configuration list for PBXNativeTarget "GassiUITests" */;
+			buildPhases = (
+				5C9F5BB02EB2CCAD00AEE0F8 /* Sources */,
+				5C9F5BB12EB2CCAD00AEE0F8 /* Frameworks */,
+				5C9F5BB22EB2CCAD00AEE0F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C9F5BBB2EB2CCAD00AEE0F8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5C9F5BB52EB2CCAD00AEE0F8 /* GassiUITests */,
+			);
+			name = GassiUITests;
+			packageProductDependencies = (
+			);
+			productName = GassiUITests;
+			productReference = 5C9F5BB42EB2CCAD00AEE0F8 /* GassiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5CCD1D242A68532C00DA8727 /* GassiWatch Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CCD1D332A68532D00DA8727 /* Build configuration list for PBXNativeTarget "GassiWatch Watch App" */;
@@ -418,11 +462,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					5C3BF11C2A68529E00E006C6 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					5C9F5BB32EB2CCAD00AEE0F8 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 5C3BF11C2A68529E00E006C6;
 					};
 					5CCD1D242A68532C00DA8727 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -445,6 +493,7 @@
 			targets = (
 				5C3BF11C2A68529E00E006C6 /* Gassi */,
 				5CCD1D242A68532C00DA8727 /* GassiWatch Watch App */,
+				5C9F5BB32EB2CCAD00AEE0F8 /* GassiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -458,6 +507,13 @@
 				5C36DAC52CA2C54B00175380 /* Localizable.xcstrings in Resources */,
 				5C3BF1282A68529E00E006C6 /* Preview Assets.xcassets in Resources */,
 				5C3BF1252A68529E00E006C6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C9F5BB22EB2CCAD00AEE0F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +577,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C9F5BB02EB2CCAD00AEE0F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5CCD1D212A68532C00DA8727 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,6 +604,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5C9F5BBB2EB2CCAD00AEE0F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C3BF11C2A68529E00E006C6 /* Gassi */;
+			targetProxy = 5C9F5BBA2EB2CCAD00AEE0F8 /* PBXContainerItemProxy */;
+		};
 		5CCD1D312A68532D00DA8727 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5CCD1D242A68532C00DA8727 /* GassiWatch Watch App */;
@@ -733,6 +801,53 @@
 			};
 			name = Release;
 		};
+		5C9F5BBC2EB2CCAD00AEE0F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J642D97843;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.GassiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gassi;
+			};
+			name = Debug;
+		};
+		5C9F5BBD2EB2CCAD00AEE0F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J642D97843;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.GassiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gassi;
+			};
+			name = Release;
+		};
 		5CCD1D342A68532D00DA8727 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -814,6 +929,15 @@
 			buildConfigurations = (
 				5C3BF1322A68529E00E006C6 /* Debug */,
 				5C3BF1332A68529E00E006C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C9F5BBE2EB2CCAD00AEE0F8 /* Build configuration list for PBXNativeTarget "GassiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C9F5BBC2EB2CCAD00AEE0F8 /* Debug */,
+				5C9F5BBD2EB2CCAD00AEE0F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
