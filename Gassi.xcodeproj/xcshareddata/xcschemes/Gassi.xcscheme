@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../../Gassi.xctestplan"
+            reference = "container:GassiUITests/Gassi.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "EDC2119E-9348-4AFA-8FEA-17DEF69EFD28",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Gassi.xcodeproj",
+        "identifier" : "5C9F5BB32EB2CCAD00AEE0F8",
+        "name" : "GassiUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
