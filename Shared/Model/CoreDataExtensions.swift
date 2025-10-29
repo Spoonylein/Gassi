@@ -587,13 +587,17 @@ extension GassiEvent {
                 distancesSum += distanceToNextEvent
                 
 #if DEBUG
-                print("EventIndex: \(index) in Interval \(intervalIndex), \(event.timestamp?.formatted(date: .numeric, time: .shortened)), Distance to next event: \(TimeInterval.timeSpanString(distanceToNextEvent))")
+                print(
+                    "EventIndex: \(index) in Interval \(intervalIndex), \(event.timestamp?.formatted(date: .numeric, time: .shortened) ?? "nil"), Distance to next event: \(TimeInterval.timeSpanString(distanceToNextEvent))"
+                )
 #endif
                 
             } else {
                 
 #if DEBUG
-                print("EventIndex: \(index) in Interval \(intervalIndex), \(event.timestamp?.formatted(date: .numeric, time: .shortened))")
+                print(
+                    "EventIndex: \(index) in Interval \(intervalIndex), \(event.timestamp?.formatted(date: .numeric, time: .shortened) ?? "nil")"
+                )
 #endif
                 
             }
@@ -646,7 +650,7 @@ extension GassiEvent {
             }
         }
         
-        print(self.timestamp, result?.timestamp)
+        print(self.timestamp ?? "nil", result?.timestamp ?? "nil")
         return result
     }
     

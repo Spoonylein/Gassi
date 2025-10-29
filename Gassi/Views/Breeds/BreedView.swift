@@ -20,9 +20,9 @@ struct BreedView: View {
             Section {
                 Label {
                     Text("Name")
-                    Spacer()
+                    //Spacer()
                     TextField("BreedName", text: Binding<String>.convertOptionalString($breed.name))
-                        .padding(.vertical, 5)
+                        //.padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }

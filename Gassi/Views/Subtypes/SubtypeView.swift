@@ -20,27 +20,27 @@ struct SubtypeView: View {
             Section {
                 Label {
                     Text("Name")
-                    Spacer()
+                    //Spacer()
                     TextField("SubtypeName", text: Binding<String>.convertOptionalString($subtype.name))
-                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
+                        //.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0))
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
                 
                 Label {
                     Text("SubtypeViewSign")
-                    Spacer()
+                    //Spacer()
                     TextField("SubtypeViewSign", text: Binding<String>.convertOptionalString($subtype.sign), prompt: Text(" "))
                         .font(.largeTitle)
                         .frame(width: 50)
-                        .padding(.vertical, 5)
+                        //.padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "hazardsign")
                 }
             } header: {
                 Label("Subtype", systemImage: "list.bullet.indent")
             } footer: {
-                Label("SubtypeSignFooter", systemImage: "hazardsign")
+                Label("SubtypeSignFooter", systemImage: "info.circle")
             }
 
             Section {

@@ -105,7 +105,7 @@ struct SettingsView: View {
                     }) {
                         Label {
                             Text("SettingsGracePeriod")
-                            Spacer()
+                            //Spacer()
                             Text(TimeInterval.timeSpanString(eventsGracePeriod, academic: true, showSeconds: false, showNull: false, offset: 0))
                         } icon: {
                             Image(systemName: "clock.arrow.2.circlepath")
@@ -121,7 +121,7 @@ struct SettingsView: View {
                     }) {
                         Label {
                             Text("SettingsKeep")
-                            Spacer()
+                            //Spacer()
                             Text(TimeInterval.timeSpanString(eventsTimespan, academic: true, showSeconds: false, showNull: false, offset: 0))
                         } icon: {
                             Image(systemName: "calendar.badge.plus")

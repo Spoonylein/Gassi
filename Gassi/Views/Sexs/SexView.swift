@@ -20,10 +20,10 @@ struct SexView: View {
             Section {
                 Label {
                     Text("Name")
-                    Spacer()
+                    //Spacer()
                     TextField("SexName", text: Binding<String>.convertOptionalString($sex.name))
                         .textInputAutocapitalization(.never)
-                        .padding(.vertical, 5)
+                        //.padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }

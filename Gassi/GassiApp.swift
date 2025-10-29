@@ -20,12 +20,12 @@ struct GassiApp: App {
                 .environment(\.managedObjectContext, coreDataController.container.viewContext)
                 .environmentObject(navigationController)
         }
-        .onChange(of: scenePhase) { phase in
-            switch phase {
+        .onChange(of: scenePhase) { oldScenePhase, newScenePhase in
+            switch newScenePhase {
             case .background:
-                coreDataController.save()
+                    coreDataController.save()
             default:
-                print(phase)
+                    print(newScenePhase)
             }
         }
     }

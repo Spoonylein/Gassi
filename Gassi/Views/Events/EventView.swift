@@ -25,7 +25,7 @@ struct EventView: View {
             } header: {
                 Label("EventFeatureSectionTitle", systemImage: "rectangle.and.text.magnifyingglass")
             }
-            .onChange(of: event.type) { newValue in
+            .onChange(of: event.type) { oldEventType, newEventType in
                 event.subtype = nil
             }
             

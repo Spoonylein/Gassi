@@ -20,20 +20,20 @@ struct TypeView: View {
             Section {
                 Label {
                     Text("Name")
-                    Spacer()
+                    //Spacer()
                     TextField("TypeName", text: Binding<String>.convertOptionalString($type.name))
-                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                        //.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                 } icon: {
                     Image(systemName: "square.and.pencil")
                 }
                 
                 Label {
                     Text("TypeViewSign")
-                    Spacer()
+                    //Spacer()
                     TextField("TypeViewSign", text: Binding<String>.convertOptionalString($type.sign), prompt: Text(" "))
                         .font(.largeTitle)
                         .frame(width: 50)
-                        .padding(.vertical, 5)
+                        //.padding(.vertical, 5)
                 } icon: {
                     Image(systemName: "hazardsign")
                 }
