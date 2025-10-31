@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDGassiCategory" representedClassName="CDGassiCategory" syncable="YES">
+        <attribute name="cd_id" optional="YES" attributeType="UUID" usesScalarValueType="NO" elementID="id"/>
+        <attribute name="cd_isDefault" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="isDefault"/>
+        <attribute name="cd_name" optional="YES" attributeType="String" elementID="name"/>
+        <attribute name="cd_sign" optional="YES" attributeType="String" elementID="sign"/>
+        <relationship name="cd_events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDGassiEvent" inverseName="cd_category" inverseEntity="CDGassiEvent" elementID="events"/>
+        <relationship name="cd_favorite1InSetting" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiSettings" inverseName="cd_favoriteCategory1" inverseEntity="CDGassiSettings" elementID="favorite1InSetting"/>
+        <relationship name="cd_favorite2InSetting" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiSettings" inverseName="cd_favoriteCategory2" inverseEntity="CDGassiSettings" elementID="favorite2InSetting"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="cd_id"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="cd_name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CDGassiDog" representedClassName="CDGassiDog" syncable="YES">
+        <attribute name="cd_birthDate" optional="YES" attributeType="Date" usesScalarValueType="NO" elementID="birthDate"/>
+        <attribute name="cd_breed" optional="YES" attributeType="String" elementID="breed"/>
+        <attribute name="cd_id" optional="YES" attributeType="UUID" usesScalarValueType="NO" elementID="id"/>
+        <attribute name="cd_name" optional="YES" attributeType="String" defaultValueString="My Dog" elementID="name"/>
+        <relationship name="cd_events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDGassiEvent" inverseName="cd_dog" inverseEntity="CDGassiEvent" elementID="events"/>
+        <relationship name="cd_setting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDGassiSettings" inverseName="cd_currentDog" inverseEntity="CDGassiSettings" elementID="setting"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="cd_id"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="cd_name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CDGassiEvent" representedClassName="CDGassiEvent" syncable="YES">
+        <attribute name="cd_id" optional="YES" attributeType="UUID" usesScalarValueType="NO" elementID="id"/>
+        <attribute name="cd_latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cd_longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cd_timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" elementID="timestamp"/>
+        <relationship name="cd_category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiCategory" inverseName="cd_events" inverseEntity="CDGassiCategory" elementID="category"/>
+        <relationship name="cd_dog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiDog" inverseName="cd_events" inverseEntity="CDGassiDog" elementID="dog"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="cd_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CDGassiSettings" representedClassName="CDGassiSettings" syncable="YES">
+        <attribute name="cd_gracePeriod" optional="YES" attributeType="Double" defaultValueString="900" usesScalarValueType="YES" elementID="gracePeriod"/>
+        <attribute name="cd_groomingDays" optional="YES" attributeType="Integer 16" defaultValueString="365" usesScalarValueType="YES" elementID="groomingDays"/>
+        <attribute name="cd_id" optional="YES" attributeType="UUID" usesScalarValueType="NO" elementID="id"/>
+        <relationship name="cd_currentDog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiDog" inverseName="cd_setting" inverseEntity="CDGassiDog" elementID="currentDog"/>
+        <relationship name="cd_favoriteCategory1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiCategory" inverseName="cd_favorite1InSetting" inverseEntity="CDGassiCategory" elementID="favoriteCategory1"/>
+        <relationship name="cd_favoriteCategory2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGassiCategory" inverseName="cd_favorite2InSetting" inverseEntity="CDGassiCategory" elementID="favoriteCategory2"/>
+    </entity>
+    <fetchRequest name="DefaultCategoriesFetchRequest" entity="CDGassiCategory" predicateString="cd_isDefault == 0"/>
+</model>

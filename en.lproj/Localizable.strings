@@ -1,0 +1,159 @@
+/* 
+  Localizable.strings
+  Gassi
+
+  Created by Jan Löffel on 09.08.22.
+  
+*/
+
+// MARK: ContentView
+"GassiTabTitle" = "Gassi!";
+"EventsTabTitle" = "List";
+"ReportTabTitle" = "Report";
+"SettingsTabTitle" = "Settings";
+
+// MARK: GassiView
+"GassiViewTitle" = "Gassi";
+"Settings" = "Settings";
+
+// MARK: RecentEventsView
+"lastGassi" = "LAST";
+"justNow" = "just now";
+"now" = "NOW";
+"NoGassiEvent" = "[no Gassis]";
+"nextGassi" = "NEXT";
+"NoPredictionPossible" = "Not enough data to make prediction.";
+
+// MARK: DogMoodView
+"DogMoodViewYourDog" = "Your dog";
+"DogMoodViewAllYourDogsAre" = "Your dogs are";
+"DogMoodViewIs" = " is";
+
+// MARK: AddGassiView
+"AddGassiTapAndHold" = "Tap and hold to add";
+
+// MARK: EventsListView
+"EventsListViewTitle" = "Gassis";
+"EventsListViewCategoryFilter" = "Filter";
+"EventsListViewAllCategories" = "All categories";
+"EventsListViewIsShownAsMap" = "Show as map";
+
+// MARK: EventDetailsView
+"EventDetailsViewTitle" = "Gassi Editor";
+"Timestamp" = "Date";
+"EventDetailsViewLocation" = "Location";
+"EventDetailsViewNoLocationName" = "[no location]";
+"EventDetailsDateSectionHeader" = "DATE AND LOCATION";
+"EventDetailsDateSectionFooter" = "The newest Gassi will appear at topmost position in Gassi list.";
+"EventDetailsDateSectionFooterNoLocation" = "Allow use of location services in device settings.";
+"EventDetailsCategory" = "Category";
+"EventDetailsDog" = "Dog";
+"EventDetailsCategorySectionHeader" = "CATEGORY AND DOG";
+"EventDetailsCategorySectionFooter" = "Assign Gassi to the appropriate dog and category.";
+
+// MARK: LocationView
+"LocationViewTitle" = "Location Editor";
+"LocationViewLocationName" = "Name";
+"LocationViewMapFooter" = "Tap to set new location.\nTap and hold for current position.";
+
+// MARK: CategoriesListView
+"CategoriesListViewTitle" ="Categories";
+"CategoriesListSectionHeader" = "CATEGORIES OF GASSI EVENTS";
+"CategoriesListSectionFooter" = "Favorite categories are marked with a star and shown on main view.\nDefault categories are marked with bold text. They are predictable and can not be deleted.";
+"AddCategory" = "Add Category";
+
+// MARK: CategoriesSelectionView
+"CategoriesSelectionViewTitle" = "Select category";
+
+//MARK: CategoryDetailsView
+"CategoryDetailsViewTitle" = "Category Editor";
+"CategoryName" = "Name";
+"CategorySign" = "Sign";
+"CategoryDetailsNameSectionHeader" = "NAME AND SIGN";
+"CategoryDetailsNameSectionFooter" = "Use an Emoji as sign to identify the category visually. The sign has to be one single character.";
+"CategoryFavorite" = "Favorite";
+"CategoryDefault" = "Default";
+"CategoryDetailsFavoriteSectionHeader" = "FAVORITE AND DEFAULT";
+"CategoryDetailsFavoriteSectionFooter" = "Favorite categories show up at Gassi main view to quickly add the appropriate event.\nDefault Categories are used to predict the next Gassi.";
+"CategoryDetailsEventsSectionHeader" = "WALKS";
+"CategoryDetailsEventsSectionFooter" = "Only walks from this category are shown.";
+
+// MARK: ReportView
+"ReportViewTitle" = "Report";
+"ReportViewNotEnoughData" = "Not enough data to generate report";
+"ReportViewTimespan" = "Time period";
+"ReportViewEventDays" = "Days with Gassis";
+"ReportViewSummarySectionHeader" = "SUMMARY";
+"ReportViewDayDistribution" = "Daily distribution";
+"ReportViewByCategorySectionHeader" = "BY CATEGORY";
+"ReportViewEventCountByCategory" = "Gassi count";
+"ReportViewEventsPerDayByCategory" = "Gassis per day";
+"ReportViewMinEventsPerDayByCategory" = "min";
+"ReportViewAvgEventsPerDayByCategory" = "Ø";
+"ReportViewMaxEventsPerDayByCategory" = "max";
+"ReportViewDistancePerDayByCategory" = "Time intervals";
+"ReportViewMinDistancePerDayByCategory" = "min";
+"ReportViewAvgDistancePerDayByCategory" = "Ø";
+"ReportViewMaxDistancePerDayByCategory" = "max";
+"ReportViewOnDate" = " on ";
+
+// MARK: SettingsView
+"SettingsViewTitle" = "Settings";
+"SettingsDogs" = "Dogs";
+"SettingsCurrentDog" = "Current dog";
+"SettingsDogSectionHeader" = "DOGS";
+"SettingsDogSectionFooter" = "If you own more than one dog create dogs here. You can choose your dog here or in the upper left corner of Gassi main view.";
+"SettingsCategories" = "Categories";
+"SettingsCategoriesSectionHeader" = "CATEGORIES AND FAVORITES";
+"SettingsFavorites" = "Favorites";
+"SettingsFirstFavorite" = "1st Favorite";
+"SettingsSecondFavorite" = "2nd Favorite";
+"SettingsCategoriesSectionFooter" = "Favorite categories show up at Gassi main view to quickly add the appropriate event.";
+"SettingsGracePeriod" = "Grace Period %@";
+"SettingsGrooming" = "Keep %d days";
+"SettingsWalksSectionHeader" = "GASSIS";
+"SettingsWalksSectionFooter" = "Multiple Gassis within the grace period are processed as one Gassi.";
+"ResetAllSettings" = "Reset all settings";
+"ClearData" = "Clear all data";
+
+// MARK: DogDetailsView
+"DogDetailsViewTitle" = "Dog Editor";
+"DogName" = "Name";
+"DogBirthDate" = "Birth Date";
+"DogDetailsNameBirthSectionHeader" = "NAME AND BIRTH";
+"DogDetailsNameBirthSectionFooter" = "Birth date ist important predicting Gassi intervals.";
+"DogBreed" = "Breed";
+"DogDetailsBreedSectionHeader" = "BREED";
+"DogDetailsBreedSectionFooter" = "If unclear, you may just use something like 'Mix'.";
+
+// MARK: DogsListView
+"DogsListViewTitle" = "Dogs";
+
+// MARK: DogsSelectionView
+"DogsSelectionViewTitle" = "Select dog";
+
+// MARK: DogMenuView
+"DogMenuViewEditDogs" = "Edit dogs...";
+
+// MARK: Global Strings
+"Dog" = "Dog";
+"DogBreed" = "Dog";
+"Category" = "Category";
+"NoName" = "[no name]";
+"AllDogs" = "All Dogs";
+"YourDog" = "Your Dog";
+"Delete" = "Delete";
+
+// MARK: Default categories
+"pee" = "Pee";
+"peeSign" = "💦";
+"poo" = "Poo";
+"pooSign" = "💩";
+"diarrhea" = "Diarrhea";
+"diarrheaSign" = "☣️";
+"vomit" = "Vomit";
+"vomitSign" = "🤮";
+"treat" = "Treat";
+"treatSign" = "🍖";
+"training" = "Training";
+"trainingSign" = "🦮";

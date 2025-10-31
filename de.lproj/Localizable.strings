@@ -1,0 +1,160 @@
+/* 
+  Localizable.strings
+  Gassi
+
+  Created by Jan Löffel on 09.08.22.
+  
+*/
+
+// MARK: ContentView
+"GassiTabTitle" = "Gassi!";
+"EventsTabTitle" = "Liste";
+"ReportTabTitle" = "Statistiken";
+"SettingsTabTitle" = "Einstellungen";
+
+// MARK: GassiView
+"GassiViewTitle" = "Gassi";
+"Settings" = "Einstellungen";
+
+// MARK: RecentEventsView
+"lastGassi" = "ZULETZT";
+"justNow" = "gerade eben";
+"now" = "JETZT";
+"NoGassiEvent" = "[kein Gassi]";
+"nextGassi" = "NÄCHSTES";
+"NoPredictionPossible" = "Nicht genügend Daten für eine Vorhersage.";
+
+// MARK: DogMoodView
+"DogMoodViewYourDog" = "Dein Hund";
+"DogMoodViewAllYourDogsAre" = "Deine Hunde sind";
+"DogMoodViewIs" = " ist";
+
+// MARK: AddGassiView
+"AddGassiTapAndHold" = "Zum Hinzufügen tippen und halten";
+
+// MARK: EventsListView
+"EventsListViewTitle" = "Gassis";
+"EventsListViewCategoryFilter" = "Filter";
+"EventsListViewAllCategories" = "Alle Kategorien";
+"EventsListViewIsShownAsMap" = "Als Karte anzeigen";
+
+// MARK: EventDetailsView
+"EventDetailsViewTitle" = "Gassi bearbeiten";
+"Timestamp" = "Zeitpunkt";
+"EventDetailsViewLocation" = "Ort";
+"EventDetailsViewNoLocationName" = "[kein Ort]";
+"EventDetailsDateSectionHeader" = "ZEITPUNKT UND ORT";
+"EventDetailsDateSectionFooter" = "Das neueste Gassi steht in der Liste immer ganz oben.";
+"EventDetailsDateSectionFooterNoLocation" = "Bitte Nutzung der Ortungsdienste in den Geräteeinstellungen erlauben.";
+"EventDetailsCategory" = "Kategorie";
+"EventDetailsDog" = "Hund";
+"EventDetailsCategorySectionHeader" = "KATEGORIE UND HUND";
+"EventDetailsCategorySectionFooter" = "Setzen des Hundes und der entsprechenden Kategorie für dieses Gassi.";
+
+// MARK: LocationView
+"LocationViewTitle" = "Ort bearbeiten";
+"LocationViewLocationName" = "Bezeichnung";
+"LocationViewMapFooter" = "Tippen um Ort zu setzen.\nTippen und halten um aktuellen Standort zu setzen.";
+
+// MARK: CategoriesListView
+"CategoriesListViewTitle" ="Kategorien";
+"CategoriesListSectionHeader" = "KATEGORIEN FÜR GASSIs";
+"CategoriesListSectionFooter" = "Favoriten sind mit einem Stern markiert und auf der Hauptansicht sichtbar.\nStandardkategorien sind fett dargestellt. Sie werden zur Vorhersage des nächsten Gassi verwendet und lassen sich nicht löschen.";
+"AddCategory" = "Kategorie hinzufügen";
+
+// MARK: CategoriesSelectionView
+"CategoriesSelectionViewTitle" = "Kategorie auswählen";
+
+//MARK: CategoryDetailsView
+"CategoryDetailsViewTitle" = "Kategorie bearbeiten";
+"CategoryName" = "Name";
+"CategorySign" = "Zeichen";
+"CategoryDetailsNameSectionHeader" = "NAME und ZEICHEN";
+"CategoryDetailsNameSectionFooter" = "Nutze ein Emoji als Bild für die Kategorie. Es darf max. 1 Zeichen beinhalten.";
+"CategoryFavorite" = "Favorit";
+"CategoryDefault" = "Standard";
+"CategoryDetailsFavoriteSectionHeader" = "FAVORIT UND STANDARD";
+"CategoryDetailsFavoriteSectionFooter" = "Favoriten erscheinen auf der Gassi-Hauptansicht um schnell Gassigänge hinzuzufügen.\nStandardkategorien werden zur Vorhersage des nächsten Gassi genutzt.";
+"CategoryDetailsEventsSectionHeader" = "GASSIS";
+"CategoryDetailsEventsSectionFooter" = "Nur Gassis dieser Kategorie werden angezeigt.";
+
+// MARK: ReportView
+"ReportViewTitle" = "Statistiken";
+"ReportViewNotEnoughData" = "Nicht genügend Daten um Statistik zu berechnen";
+"ReportViewTimespan" = "Zeitraum";
+"ReportViewEventDays" = "Tage mit Gassis";
+"ReportViewSummarySectionHeader" = "ZUSAMMENFASSUNG";
+"ReportViewDayDistribution" = "Tägliche Verteilung";
+"ReportViewByCategorySectionHeader" = "NACH KATEGORIE";
+"ReportViewEventCountByCategory" = "Anzahl Gassis";
+"ReportViewEventsPerDayByCategory" = "Gassis pro Tag";
+"ReportViewMinEventsPerDayByCategory" = "min";
+"ReportViewAvgEventsPerDayByCategory" = "Ø";
+"ReportViewMaxEventsPerDayByCategory" = "max";
+"ReportViewDistancePerDayByCategory" = "Zeitabstände";
+"ReportViewMinDistancePerDayByCategory" = "min";
+"ReportViewAvgDistancePerDayByCategory" = "Ø";
+"ReportViewMaxDistancePerDayByCategory" = "max";
+"ReportViewOnDate" = " am ";
+
+
+// MARK: SettingsView
+"SettingsViewTitle" = "Einstellungen";
+"SettingsDogs" = "Hunde";
+"SettingsCurrentDog" = "Aktueller Hund";
+"SettingsDogSectionHeader" = "HUNDE";
+"SettingsDogSectionFooter" = "Wenn Du mehrere Hunde besitzt, lege sie hier an. Du kannst einen Hund hier oder links oben in der Gassi-Hauptansicht auswählen.";
+"SettingsCategories" = "Kategorien";
+"SettingsCategoriesSectionHeader" = "KATEGORIEN UND FAVORITEN";
+"SettingsFavorites" = "Favoriten";
+"SettingsFirstFavorite" = "1. Favorit";
+"SettingsSecondFavorite" = "2. Favorit";
+"SettingsCategoriesSectionFooter" = "Favoriten erscheinen auf der Gassi-Hauptansicht um schnell Gassis hinzuzufügen.";
+"SettingsGracePeriod" = "Karenzzeit %@";
+"SettingsGrooming" = "Behalte %d Tage";
+"SettingsWalksSectionHeader" = "GASSIS";
+"SettingsWalksSectionFooter" = "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt.";
+"ResetAllSettings" = "Einstellungen zurücksetzen";
+"ClearData" = "Alle Daten löschen";
+
+// MARK: DogDetailsView
+"DogDetailsViewTitle" = "Hund bearbeiten";
+"DogName" = "Name";
+"DogBirthDate" = "Geburtsdatum";
+"DogDetailsNameBirthSectionHeader" = "NAME UND GEBURTSTAG";
+"DogDetailsNameBirthSectionFooter" = "Das Geburtsdatum wird zur Vorhersage der Gassis genutzt.";
+"DogBreed" = "Rasse";
+"DogDetailsBreedSectionHeader" = "RASSE";
+"DogDetailsBreedSectionFooter" = "Wenn unbekannt, einfach 'Mischling' nutzen.";
+
+// MARK: DogsListView
+"DogsListViewTitle" = "Hunde";
+
+// MARK: DogsSelectionView
+"DogsSelectionViewTitle" = "Hund auswählen";
+
+// MARK: DogMenuView
+"DogMenuViewEditDogs" = "Hunde bearbeiten...";
+
+// MARK: Global Strings
+"Dog" = "Dog";
+"DogBreed" = "Dog";
+"Category" = "Kategorie";
+"NoName" = "[kein Name]";
+"AllDogs" = "Alle Hunde";
+"YourDog" = "Dein Hund";
+"Delete" = "Löschen";
+
+// MARK: Default categories
+"pee" = "Pipi";
+"peeSign" = "💦";
+"poo" = "Kacke";
+"pooSign" = "💩";
+"diarrhea" = "Durchfall";
+"diarrheaSign" = "☣️";
+"vomit" = "Erbrechen";
+"vomitSign" = "🤮";
+"treat" = "Leckerli";
+"treatSign" = "🍖";
+"training" = "Training";
+"trainingSign" = "🦮";

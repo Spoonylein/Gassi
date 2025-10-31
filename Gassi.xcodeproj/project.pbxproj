@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C2C355128D7C272007359B2 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2C355028D7C272007359B2 /* ReportController.swift */; };
+		5C36B41628D25B7900DCDA23 /* RecentEventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C36B41528D25B7900DCDA23 /* RecentEventRowView.swift */; };
+		5C51C2D528A2AB4500037A40 /* GassiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C51C2D428A2AB4500037A40 /* GassiApp.swift */; };
+		5C51C2D728A2AB4500037A40 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C51C2D628A2AB4500037A40 /* ContentView.swift */; };
+		5C51C2D928A2AB4600037A40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C51C2D828A2AB4600037A40 /* Assets.xcassets */; };
+		5C51C2DC28A2AB4600037A40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C51C2DB28A2AB4600037A40 /* Preview Assets.xcassets */; };
+		5C51C2DE28A2AB4600037A40 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C51C2DD28A2AB4600037A40 /* CoreDataController.swift */; };
+		5C731E4428CC8F9200B061B3 /* CDGassiSettings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E3C28CC8F9200B061B3 /* CDGassiSettings+CoreDataClass.swift */; };
+		5C731E4528CC8F9200B061B3 /* CDGassiSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E3D28CC8F9200B061B3 /* CDGassiSettings+CoreDataProperties.swift */; };
+		5C731E4628CC8F9200B061B3 /* CDGassiDog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E3E28CC8F9200B061B3 /* CDGassiDog+CoreDataClass.swift */; };
+		5C731E4728CC8F9200B061B3 /* CDGassiDog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E3F28CC8F9200B061B3 /* CDGassiDog+CoreDataProperties.swift */; };
+		5C731E4828CC8F9200B061B3 /* CDGassiEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E4028CC8F9200B061B3 /* CDGassiEvent+CoreDataClass.swift */; };
+		5C731E4928CC8F9200B061B3 /* CDGassiEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E4128CC8F9200B061B3 /* CDGassiEvent+CoreDataProperties.swift */; };
+		5C731E4A28CC8F9200B061B3 /* CDGassiCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E4228CC8F9200B061B3 /* CDGassiCategory+CoreDataClass.swift */; };
+		5C731E4B28CC8F9200B061B3 /* CDGassiCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C731E4328CC8F9200B061B3 /* CDGassiCategory+CoreDataProperties.swift */; };
+		5C85A2D828CD2FB800104BBC /* Gassi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C85A2D628CD2FB800104BBC /* Gassi.xcdatamodeld */; };
+		5C8E561C28E8C6B0002C3718 /* SpoonFW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8E561B28E8C6B0002C3718 /* SpoonFW.framework */; };
+		5C8E561D28E8C6B0002C3718 /* SpoonFW.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8E561B28E8C6B0002C3718 /* SpoonFW.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CAD326F28A5786500BCB9E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAD327128A5786500BCB9E8 /* Localizable.strings */; };
+		5CAD327528A582EA00BCB9E8 /* CDGassiEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD327428A582EA00BCB9E8 /* CDGassiEventExtension.swift */; };
+		5CAD327728A58DD700BCB9E8 /* CDGassiCategoryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD327628A58DD700BCB9E8 /* CDGassiCategoryExtension.swift */; };
+		5CAD328028A58FEC00BCB9E8 /* EventsItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD327B28A58FEC00BCB9E8 /* EventsItemsView.swift */; };
+		5CAD328528A5904500BCB9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD328328A5904500BCB9E8 /* AppDelegate.swift */; };
+		5CAD328628A5904500BCB9E8 /* ActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD328428A5904500BCB9E8 /* ActionService.swift */; };
+		5CAD328D28A5914300BCB9E8 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CAD328C28A5914300BCB9E8 /* Intents.framework */; };
+		5CAD329028A5914300BCB9E8 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD328F28A5914300BCB9E8 /* IntentHandler.swift */; };
+		5CAD329428A5914300BCB9E8 /* GassiIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5CAD328B28A5914300BCB9E8 /* GassiIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5CAD329B28A592E900BCB9E8 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD329A28A592E900BCB9E8 /* Intents.intentdefinition */; };
+		5CAD329C28A5966800BCB9E8 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD329A28A592E900BCB9E8 /* Intents.intentdefinition */; };
+		5CAD329D28A5975500BCB9E8 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD328F28A5914300BCB9E8 /* IntentHandler.swift */; };
+		5CAD32A128A7E2AF00BCB9E8 /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32A028A7E2AF00BCB9E8 /* CategoriesListView.swift */; };
+		5CAD32A328A7E2D700BCB9E8 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32A228A7E2D700BCB9E8 /* ReportView.swift */; };
+		5CAD32A528A7E3D500BCB9E8 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32A428A7E3D500BCB9E8 /* EventDetailsView.swift */; };
+		5CAD32A728A7E3E500BCB9E8 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32A628A7E3E500BCB9E8 /* EventRowView.swift */; };
+		5CAD32A928A7E3F800BCB9E8 /* CategoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32A828A7E3F800BCB9E8 /* CategoryRowView.swift */; };
+		5CAD32AB28A7E40500BCB9E8 /* CategoryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32AA28A7E40500BCB9E8 /* CategoryDetailsView.swift */; };
+		5CAD32AD28AA29D900BCB9E8 /* GassiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32AC28AA29D900BCB9E8 /* GassiView.swift */; };
+		5CAD32AF28AA42EC00BCB9E8 /* AddGassiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32AE28AA42EC00BCB9E8 /* AddGassiView.swift */; };
+		5CAD32B128AA44AE00BCB9E8 /* DogMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32B028AA44AE00BCB9E8 /* DogMoodView.swift */; };
+		5CAD32B328AA85D100BCB9E8 /* CDGassiDogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32B228AA85D100BCB9E8 /* CDGassiDogExtension.swift */; };
+		5CAD32B528AA861200BCB9E8 /* CDGassiSettingsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32B428AA861200BCB9E8 /* CDGassiSettingsExtension.swift */; };
+		5CAD32B728AD14A500BCB9E8 /* CategoriesSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32B628AD14A500BCB9E8 /* CategoriesSelectionView.swift */; };
+		5CAD32B928AD86A600BCB9E8 /* RecentEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD32B828AD86A600BCB9E8 /* RecentEventsView.swift */; };
+		5CC53E9B28B2521F00FB2613 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53E9A28B2521F00FB2613 /* SettingsView.swift */; };
+		5CC53E9D28B28A3D00FB2613 /* DogsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53E9C28B28A3D00FB2613 /* DogsListView.swift */; };
+		5CC53E9F28B28A5300FB2613 /* DogRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53E9E28B28A5300FB2613 /* DogRowView.swift */; };
+		5CC53EA128B28A6600FB2613 /* DogDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53EA028B28A6600FB2613 /* DogDetailsView.swift */; };
+		5CC53EA328B3D09A00FB2613 /* DogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53EA228B3D09A00FB2613 /* DogMenuView.swift */; };
+		5CC53EA528B3FAC900FB2613 /* EventDogSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53EA428B3FAC900FB2613 /* EventDogSelectionView.swift */; };
+		5CC53EA728B4024800FB2613 /* SettingsDogSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC53EA628B4024800FB2613 /* SettingsDogSelectionView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CAD329228A5914300BCB9E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C51C2C928A2AB4500037A40 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CAD328A28A5914300BCB9E8;
+			remoteInfo = GassiIntent;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C4687A228A2AD3B007F2B92 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5C8E561D28E8C6B0002C3718 /* SpoonFW.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CAD329828A5914300BCB9E8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5CAD329428A5914300BCB9E8 /* GassiIntent.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5C2C355028D7C272007359B2 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
+		5C36B41528D25B7900DCDA23 /* RecentEventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEventRowView.swift; sourceTree = "<group>"; };
+		5C51C2D128A2AB4500037A40 /* Gassi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gassi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C51C2D428A2AB4500037A40 /* GassiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiApp.swift; sourceTree = "<group>"; };
+		5C51C2D628A2AB4500037A40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5C51C2D828A2AB4600037A40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C51C2DB28A2AB4600037A40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C51C2DD28A2AB4600037A40 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		5C731E3C28CC8F9200B061B3 /* CDGassiSettings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiSettings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C731E3D28CC8F9200B061B3 /* CDGassiSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C731E3E28CC8F9200B061B3 /* CDGassiDog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiDog+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C731E3F28CC8F9200B061B3 /* CDGassiDog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiDog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C731E4028CC8F9200B061B3 /* CDGassiEvent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C731E4128CC8F9200B061B3 /* CDGassiEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C731E4228CC8F9200B061B3 /* CDGassiCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C731E4328CC8F9200B061B3 /* CDGassiCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGassiCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C85A2D728CD2FB800104BBC /* Gassi 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Gassi 2.xcdatamodel"; sourceTree = "<group>"; };
+		5C8E561B28E8C6B0002C3718 /* SpoonFW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpoonFW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAD327028A5786500BCB9E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5CAD327228A5788600BCB9E8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5CAD327428A582EA00BCB9E8 /* CDGassiEventExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDGassiEventExtension.swift; sourceTree = "<group>"; };
+		5CAD327628A58DD700BCB9E8 /* CDGassiCategoryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDGassiCategoryExtension.swift; sourceTree = "<group>"; };
+		5CAD327B28A58FEC00BCB9E8 /* EventsItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsItemsView.swift; sourceTree = "<group>"; };
+		5CAD328328A5904500BCB9E8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5CAD328428A5904500BCB9E8 /* ActionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionService.swift; sourceTree = "<group>"; };
+		5CAD328B28A5914300BCB9E8 /* GassiIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GassiIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAD328C28A5914300BCB9E8 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		5CAD328F28A5914300BCB9E8 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		5CAD329128A5914300BCB9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CAD329928A5929600BCB9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5CAD329A28A592E900BCB9E8 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		5CAD32A028A7E2AF00BCB9E8 /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
+		5CAD32A228A7E2D700BCB9E8 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		5CAD32A428A7E3D500BCB9E8 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		5CAD32A628A7E3E500BCB9E8 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
+		5CAD32A828A7E3F800BCB9E8 /* CategoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRowView.swift; sourceTree = "<group>"; };
+		5CAD32AA28A7E40500BCB9E8 /* CategoryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsView.swift; sourceTree = "<group>"; };
+		5CAD32AC28AA29D900BCB9E8 /* GassiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GassiView.swift; sourceTree = "<group>"; };
+		5CAD32AE28AA42EC00BCB9E8 /* AddGassiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGassiView.swift; sourceTree = "<group>"; };
+		5CAD32B028AA44AE00BCB9E8 /* DogMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogMoodView.swift; sourceTree = "<group>"; };
+		5CAD32B228AA85D100BCB9E8 /* CDGassiDogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDGassiDogExtension.swift; sourceTree = "<group>"; };
+		5CAD32B428AA861200BCB9E8 /* CDGassiSettingsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDGassiSettingsExtension.swift; sourceTree = "<group>"; };
+		5CAD32B628AD14A500BCB9E8 /* CategoriesSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSelectionView.swift; sourceTree = "<group>"; };
+		5CAD32B828AD86A600BCB9E8 /* RecentEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEventsView.swift; sourceTree = "<group>"; };
+		5CC53E9A28B2521F00FB2613 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5CC53E9C28B28A3D00FB2613 /* DogsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsListView.swift; sourceTree = "<group>"; };
+		5CC53E9E28B28A5300FB2613 /* DogRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogRowView.swift; sourceTree = "<group>"; };
+		5CC53EA028B28A6600FB2613 /* DogDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDetailsView.swift; sourceTree = "<group>"; };
+		5CC53EA228B3D09A00FB2613 /* DogMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogMenuView.swift; sourceTree = "<group>"; };
+		5CC53EA428B3FAC900FB2613 /* EventDogSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDogSelectionView.swift; sourceTree = "<group>"; };
+		5CC53EA628B4024800FB2613 /* SettingsDogSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDogSelectionView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C51C2CE28A2AB4500037A40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8E561C28E8C6B0002C3718 /* SpoonFW.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CAD328828A5914300BCB9E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CAD328D28A5914300BCB9E8 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C46879E28A2AD3B007F2B92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C8E561B28E8C6B0002C3718 /* SpoonFW.framework */,
+				5CAD328C28A5914300BCB9E8 /* Intents.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C51C2C828A2AB4500037A40 = {
+			isa = PBXGroup;
+			children = (
+				5CAD327128A5786500BCB9E8 /* Localizable.strings */,
+				5C51C2D328A2AB4500037A40 /* Gassi */,
+				5CAD328E28A5914300BCB9E8 /* GassiIntent */,
+				5C51C2D228A2AB4500037A40 /* Products */,
+				5C46879E28A2AD3B007F2B92 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5C51C2D228A2AB4500037A40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C51C2D128A2AB4500037A40 /* Gassi.app */,
+				5CAD328B28A5914300BCB9E8 /* GassiIntent.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C51C2D328A2AB4500037A40 /* Gassi */ = {
+			isa = PBXGroup;
+			children = (
+				5CAD329928A5929600BCB9E8 /* Info.plist */,
+				5C51C2D428A2AB4500037A40 /* GassiApp.swift */,
+				5CAD328328A5904500BCB9E8 /* AppDelegate.swift */,
+				5CAD328428A5904500BCB9E8 /* ActionService.swift */,
+				5CAD327828A58F1100BCB9E8 /* Views */,
+				5CAD327328A57E7B00BCB9E8 /* Model */,
+				5C51C2D828A2AB4600037A40 /* Assets.xcassets */,
+				5C51C2DA28A2AB4600037A40 /* Preview Content */,
+			);
+			path = Gassi;
+			sourceTree = "<group>";
+		};
+		5C51C2DA28A2AB4600037A40 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5C51C2DB28A2AB4600037A40 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5CAD327328A57E7B00BCB9E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C51C2DD28A2AB4600037A40 /* CoreDataController.swift */,
+				5C2C355028D7C272007359B2 /* ReportController.swift */,
+				5C85A2D628CD2FB800104BBC /* Gassi.xcdatamodeld */,
+				5C731E3C28CC8F9200B061B3 /* CDGassiSettings+CoreDataClass.swift */,
+				5C731E3D28CC8F9200B061B3 /* CDGassiSettings+CoreDataProperties.swift */,
+				5C731E3E28CC8F9200B061B3 /* CDGassiDog+CoreDataClass.swift */,
+				5C731E3F28CC8F9200B061B3 /* CDGassiDog+CoreDataProperties.swift */,
+				5C731E4028CC8F9200B061B3 /* CDGassiEvent+CoreDataClass.swift */,
+				5C731E4128CC8F9200B061B3 /* CDGassiEvent+CoreDataProperties.swift */,
+				5C731E4228CC8F9200B061B3 /* CDGassiCategory+CoreDataClass.swift */,
+				5C731E4328CC8F9200B061B3 /* CDGassiCategory+CoreDataProperties.swift */,
+				5CAD327428A582EA00BCB9E8 /* CDGassiEventExtension.swift */,
+				5CAD327628A58DD700BCB9E8 /* CDGassiCategoryExtension.swift */,
+				5CAD32B228AA85D100BCB9E8 /* CDGassiDogExtension.swift */,
+				5CAD32B428AA861200BCB9E8 /* CDGassiSettingsExtension.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5CAD327828A58F1100BCB9E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C51C2D628A2AB4500037A40 /* ContentView.swift */,
+				5CAD32AC28AA29D900BCB9E8 /* GassiView.swift */,
+				5CAD32B828AD86A600BCB9E8 /* RecentEventsView.swift */,
+				5C36B41528D25B7900DCDA23 /* RecentEventRowView.swift */,
+				5CAD32B028AA44AE00BCB9E8 /* DogMoodView.swift */,
+				5CAD32AE28AA42EC00BCB9E8 /* AddGassiView.swift */,
+				5CAD327B28A58FEC00BCB9E8 /* EventsItemsView.swift */,
+				5CAD32A628A7E3E500BCB9E8 /* EventRowView.swift */,
+				5CAD32A428A7E3D500BCB9E8 /* EventDetailsView.swift */,
+				5CC53EA428B3FAC900FB2613 /* EventDogSelectionView.swift */,
+				5CAD32A228A7E2D700BCB9E8 /* ReportView.swift */,
+				5CAD32A028A7E2AF00BCB9E8 /* CategoriesListView.swift */,
+				5CAD32B628AD14A500BCB9E8 /* CategoriesSelectionView.swift */,
+				5CAD32A828A7E3F800BCB9E8 /* CategoryRowView.swift */,
+				5CAD32AA28A7E40500BCB9E8 /* CategoryDetailsView.swift */,
+				5CC53E9A28B2521F00FB2613 /* SettingsView.swift */,
+				5CC53EA628B4024800FB2613 /* SettingsDogSelectionView.swift */,
+				5CC53E9C28B28A3D00FB2613 /* DogsListView.swift */,
+				5CC53E9E28B28A5300FB2613 /* DogRowView.swift */,
+				5CC53EA028B28A6600FB2613 /* DogDetailsView.swift */,
+				5CC53EA228B3D09A00FB2613 /* DogMenuView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CAD328E28A5914300BCB9E8 /* GassiIntent */ = {
+			isa = PBXGroup;
+			children = (
+				5CAD329128A5914300BCB9E8 /* Info.plist */,
+				5CAD329A28A592E900BCB9E8 /* Intents.intentdefinition */,
+				5CAD328F28A5914300BCB9E8 /* IntentHandler.swift */,
+			);
+			path = GassiIntent;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C51C2D028A2AB4500037A40 /* Gassi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C51C2E428A2AB4600037A40 /* Build configuration list for PBXNativeTarget "Gassi" */;
+			buildPhases = (
+				5C51C2CD28A2AB4500037A40 /* Sources */,
+				5C51C2CE28A2AB4500037A40 /* Frameworks */,
+				5C51C2CF28A2AB4500037A40 /* Resources */,
+				5C4687A228A2AD3B007F2B92 /* Embed Frameworks */,
+				5CAD329828A5914300BCB9E8 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CAD329328A5914300BCB9E8 /* PBXTargetDependency */,
+			);
+			name = Gassi;
+			productName = Gassi;
+			productReference = 5C51C2D128A2AB4500037A40 /* Gassi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5CAD328A28A5914300BCB9E8 /* GassiIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CAD329528A5914300BCB9E8 /* Build configuration list for PBXNativeTarget "GassiIntent" */;
+			buildPhases = (
+				5CAD328728A5914300BCB9E8 /* Sources */,
+				5CAD328828A5914300BCB9E8 /* Frameworks */,
+				5CAD328928A5914300BCB9E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GassiIntent;
+			productName = GassiIntent;
+			productReference = 5CAD328B28A5914300BCB9E8 /* GassiIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C51C2C928A2AB4500037A40 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					5C51C2D028A2AB4500037A40 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					5CAD328A28A5914300BCB9E8 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 5C51C2CC28A2AB4500037A40 /* Build configuration list for PBXProject "Gassi" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				de,
+				Base,
+			);
+			mainGroup = 5C51C2C828A2AB4500037A40;
+			productRefGroup = 5C51C2D228A2AB4500037A40 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C51C2D028A2AB4500037A40 /* Gassi */,
+				5CAD328A28A5914300BCB9E8 /* GassiIntent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C51C2CF28A2AB4500037A40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C51C2DC28A2AB4600037A40 /* Preview Assets.xcassets in Resources */,
+				5CAD326F28A5786500BCB9E8 /* Localizable.strings in Resources */,
+				5C51C2D928A2AB4600037A40 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CAD328928A5914300BCB9E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C51C2CD28A2AB4500037A40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CAD329C28A5966800BCB9E8 /* Intents.intentdefinition in Sources */,
+				5CC53EA328B3D09A00FB2613 /* DogMenuView.swift in Sources */,
+				5CAD32A128A7E2AF00BCB9E8 /* CategoriesListView.swift in Sources */,
+				5CAD32B728AD14A500BCB9E8 /* CategoriesSelectionView.swift in Sources */,
+				5CC53EA728B4024800FB2613 /* SettingsDogSelectionView.swift in Sources */,
+				5C731E4628CC8F9200B061B3 /* CDGassiDog+CoreDataClass.swift in Sources */,
+				5C731E4928CC8F9200B061B3 /* CDGassiEvent+CoreDataProperties.swift in Sources */,
+				5CAD32AF28AA42EC00BCB9E8 /* AddGassiView.swift in Sources */,
+				5CAD32AD28AA29D900BCB9E8 /* GassiView.swift in Sources */,
+				5C36B41628D25B7900DCDA23 /* RecentEventRowView.swift in Sources */,
+				5CAD32A728A7E3E500BCB9E8 /* EventRowView.swift in Sources */,
+				5CAD32A928A7E3F800BCB9E8 /* CategoryRowView.swift in Sources */,
+				5CAD32B328AA85D100BCB9E8 /* CDGassiDogExtension.swift in Sources */,
+				5CAD329D28A5975500BCB9E8 /* IntentHandler.swift in Sources */,
+				5CC53EA528B3FAC900FB2613 /* EventDogSelectionView.swift in Sources */,
+				5CC53E9D28B28A3D00FB2613 /* DogsListView.swift in Sources */,
+				5C731E4828CC8F9200B061B3 /* CDGassiEvent+CoreDataClass.swift in Sources */,
+				5CAD32AB28A7E40500BCB9E8 /* CategoryDetailsView.swift in Sources */,
+				5C85A2D828CD2FB800104BBC /* Gassi.xcdatamodeld in Sources */,
+				5CAD32B928AD86A600BCB9E8 /* RecentEventsView.swift in Sources */,
+				5CAD328528A5904500BCB9E8 /* AppDelegate.swift in Sources */,
+				5CAD327728A58DD700BCB9E8 /* CDGassiCategoryExtension.swift in Sources */,
+				5C731E4428CC8F9200B061B3 /* CDGassiSettings+CoreDataClass.swift in Sources */,
+				5CAD328628A5904500BCB9E8 /* ActionService.swift in Sources */,
+				5C731E4A28CC8F9200B061B3 /* CDGassiCategory+CoreDataClass.swift in Sources */,
+				5CAD328028A58FEC00BCB9E8 /* EventsItemsView.swift in Sources */,
+				5CC53E9B28B2521F00FB2613 /* SettingsView.swift in Sources */,
+				5C51C2DE28A2AB4600037A40 /* CoreDataController.swift in Sources */,
+				5CAD32B528AA861200BCB9E8 /* CDGassiSettingsExtension.swift in Sources */,
+				5C51C2D728A2AB4500037A40 /* ContentView.swift in Sources */,
+				5CC53E9F28B28A5300FB2613 /* DogRowView.swift in Sources */,
+				5CC53EA128B28A6600FB2613 /* DogDetailsView.swift in Sources */,
+				5C2C355128D7C272007359B2 /* ReportController.swift in Sources */,
+				5CAD32A528A7E3D500BCB9E8 /* EventDetailsView.swift in Sources */,
+				5CAD32B128AA44AE00BCB9E8 /* DogMoodView.swift in Sources */,
+				5CAD32A328A7E2D700BCB9E8 /* ReportView.swift in Sources */,
+				5C731E4528CC8F9200B061B3 /* CDGassiSettings+CoreDataProperties.swift in Sources */,
+				5CAD327528A582EA00BCB9E8 /* CDGassiEventExtension.swift in Sources */,
+				5C731E4B28CC8F9200B061B3 /* CDGassiCategory+CoreDataProperties.swift in Sources */,
+				5C731E4728CC8F9200B061B3 /* CDGassiDog+CoreDataProperties.swift in Sources */,
+				5C51C2D528A2AB4500037A40 /* GassiApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CAD328728A5914300BCB9E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CAD329B28A592E900BCB9E8 /* Intents.intentdefinition in Sources */,
+				5CAD329028A5914300BCB9E8 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CAD329328A5914300BCB9E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CAD328A28A5914300BCB9E8 /* GassiIntent */;
+			targetProxy = 5CAD329228A5914300BCB9E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5CAD327128A5786500BCB9E8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CAD327028A5786500BCB9E8 /* en */,
+				5CAD327228A5788600BCB9E8 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5C51C2E228A2AB4600037A40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C51C2E328A2AB4600037A40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C51C2E528A2AB4600037A40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gassi/Preview Content\"";
+				DEVELOPMENT_TEAM = J642D97843;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gassi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Gassi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.Gassi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5C51C2E628A2AB4600037A40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gassi/Preview Content\"";
+				DEVELOPMENT_TEAM = J642D97843;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gassi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Gassi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.Gassi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5CAD329628A5914300BCB9E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J642D97843;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GassiIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GassiIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.Gassi.GassiIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CAD329728A5914300BCB9E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J642D97843;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GassiIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GassiIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SpoonSOFT.Gassi.GassiIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C51C2CC28A2AB4500037A40 /* Build configuration list for PBXProject "Gassi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C51C2E228A2AB4600037A40 /* Debug */,
+				5C51C2E328A2AB4600037A40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C51C2E428A2AB4600037A40 /* Build configuration list for PBXNativeTarget "Gassi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C51C2E528A2AB4600037A40 /* Debug */,
+				5C51C2E628A2AB4600037A40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CAD329528A5914300BCB9E8 /* Build configuration list for PBXNativeTarget "GassiIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CAD329628A5914300BCB9E8 /* Debug */,
+				5CAD329728A5914300BCB9E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5C85A2D628CD2FB800104BBC /* Gassi.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5C85A2D728CD2FB800104BBC /* Gassi 2.xcdatamodel */,
+			);
+			currentVersion = 5C85A2D728CD2FB800104BBC /* Gassi 2.xcdatamodel */;
+			path = Gassi.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5C51C2C928A2AB4500037A40 /* Project object */;
+}
