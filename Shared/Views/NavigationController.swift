@@ -44,11 +44,11 @@ class NavigationController: ObservableObject {
         var message: String {
             switch self {
             case .idle:
-                return "Prediction idle"
+                return localizedString("PredictionStatusIdle", standardString: "Prognose inaktiv")
             case .running:
-                return "Recalculating predictions"
+                return localizedString("PredictionStatusRunning", standardString: "Prognosen werden neu berechnet")
             case .success:
-                return "Predictions successful"
+                return localizedString("PredictionStatusSuccess", standardString: "Prognosen erfolgreich")
             case .failure(let message):
                 return message
             }
@@ -90,7 +90,9 @@ class NavigationController: ObservableObject {
         }
 
         guard receivedPredictionResults == expectedPredictionResults else { return }
-        predictionStatus = successfulPredictionResults == expectedPredictionResults ? .success : .failure(firstFailureReason ?? "Prediction failed")
+        predictionStatus = successfulPredictionResults == expectedPredictionResults
+            ? .success
+            : .failure(firstFailureReason ?? localizedString("PredictionStatusFailure", standardString: "Prognose fehlgeschlagen"))
     }
     
 }

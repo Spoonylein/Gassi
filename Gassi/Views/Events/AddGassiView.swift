@@ -10,6 +10,7 @@ import SwiftUI
 struct AddGassiView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
+    @State private var saveErrorMessage: String?
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)], animation: .default) private var types: FetchedResults<GassiType>
     
@@ -17,12 +18,9 @@ struct AddGassiView: View {
     
     var body: some View {
         VStack {
-            Label("AddGassiTapAndHold", systemImage: "info.circle")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-            
             HStack {
                 Button {
+                    addItem(type: GassiType.poo)
                 } label: {
                     VStack {
                         Text(GassiType.poo.sign ?? "")
@@ -31,16 +29,6 @@ struct AddGassiView: View {
                             .font(.title)
                     }
                 }
-                .simultaneousGesture(LongPressGesture().onChanged { _ in
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
-                    
-                })
-                .simultaneousGesture(LongPressGesture().onEnded { _ in
-                    let generator = UINotificationFeedbackGenerator()
-                    addItem(type: GassiType.poo)
-                    generator.notificationOccurred(.success)
-                })
                 .liquidGlassControl()
                 
                 Spacer()
@@ -64,17 +52,14 @@ struct AddGassiView: View {
                     Image(systemName: "ellipsis")
                         .font(.title)
                         .padding()
-                } primaryAction: { }
-                .simultaneousGesture(LongPressGesture().onChanged { _ in
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
-                })
+                }
                 .menuOrder(.fixed)
                 .liquidGlassControl()
                                 
                 Spacer()
                 
                 Button {
+                    addItem(type: GassiType.pee)
                 } label: {
                     VStack {
                         Text(GassiType.pee.sign ?? "")
@@ -83,24 +68,42 @@ struct AddGassiView: View {
                             .font(.title)
                     }
                 }
-                .simultaneousGesture(LongPressGesture().onChanged { _ in
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
-                    
-                })
-                .simultaneousGesture(LongPressGesture().onEnded { _ in
-                    let generator = UINotificationFeedbackGenerator()
-                    addItem(type: GassiType.pee)
-                    generator.notificationOccurred(.success)
-                })
                 .liquidGlassControl()
             }
         }
         .padding()
+        .alert("Ereignis konnte nicht gespeichert werden", isPresented: saveErrorPresented) {
+            Button("OK", role: .cancel) {
+                saveErrorMessage = nil
+            }
+        } message: {
+            if let saveErrorMessage {
+                Text(saveErrorMessage)
+            }
+        }
     }
     
     private func addItem(type: GassiType, subtype: GassiSubtype? = nil) {
         let _ = GassiEvent.new(context: viewContext, dog: GassiDog.current, type: type, subtype: subtype)
+        do {
+            try viewContext.save()
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        } catch {
+            viewContext.rollback()
+            saveErrorMessage = error.localizedDescription
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        }
+    }
+
+    private var saveErrorPresented: Binding<Bool> {
+        Binding(
+            get: { saveErrorMessage != nil },
+            set: { isPresented in
+                if !isPresented {
+                    saveErrorMessage = nil
+                }
+            }
+        )
     }
 }
 

@@ -18,7 +18,8 @@ struct RecentEventsListView: View {
         List {
             Section {
                 ForEach(predictableTypes) { type in
-                    RecentEventRowView(type: type)
+                    RecentEventRowView(type: type, dog: GassiDog.current)
+                        .id(recentEventRowID(type: type))
                 }
             } header: {
                 HStack {
@@ -53,7 +54,13 @@ struct RecentEventsListView: View {
     }
 
     private var predictionRefreshTaskID: String {
-        "\(predictableTypes.count)-\(navigationController.nextPredictionRefreshID.uuidString)"
+        "\(GassiDog.current.id?.uuidString ?? GassiDog.current.objectID.uriRepresentation().absoluteString)-\(predictableTypes.count)-\(navigationController.nextPredictionRefreshID.uuidString)"
+    }
+
+    private func recentEventRowID(type: GassiType) -> String {
+        let dogID = GassiDog.current.id?.uuidString ?? GassiDog.current.objectID.uriRepresentation().absoluteString
+        let typeID = type.id?.uuidString ?? type.objectID.uriRepresentation().absoluteString
+        return "\(dogID)-\(typeID)"
     }
 
     private func containsEventChanges(_ notification: Notification) -> Bool {

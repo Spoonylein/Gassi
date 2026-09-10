@@ -11,17 +11,22 @@ struct RecentEventRowView: View {
     @EnvironmentObject var navigationController: NavigationController
 
     @ObservedObject var type: GassiType
+    @ObservedObject var dog: GassiDog
     @State private var nextEventDate: Date?
     @State private var predictionFailureReason: GassiPredictionFailureReason?
 
     @FetchRequest private var events: FetchedResults<GassiEvent>
 
-    init(type: GassiType) {
+    init(type: GassiType, dog: GassiDog) {
         self.type = type
+        self.dog = dog
 
         _events = FetchRequest(
             sortDescriptors: [NSSortDescriptor(key: "timestamp", ascending: false)],
-            predicate: NSPredicate(format: "type == %@", type),
+            predicate: NSCompoundPredicate(type: .and, subpredicates: [
+                NSPredicate(format: "type == %@", type),
+                NSPredicate(format: "dog == %@", dog)
+            ]),
             animation: .default
         )
     }
@@ -35,7 +40,7 @@ struct RecentEventRowView: View {
                 lastEventView(lastEvent, now: now)
 
                 Spacer()
-                typeSummaryView(for: lastEvent)
+                typeSummaryView()
                 Spacer()
 
                 predictionView(now: now)
@@ -68,12 +73,10 @@ struct RecentEventRowView: View {
         }
     }
 
-    private func typeSummaryView(for lastEvent: GassiEvent?) -> some View {
+    private func typeSummaryView() -> some View {
         VStack {
-            if let dogName = lastEvent?.dog?.name {
-                Text(dogName)
-                    .font(.footnote)
-            }
+            Text(dog.nameString)
+                .font(.footnote)
 
             Text(type.sign ?? "")
                 .font(.system(size: 48.0))
@@ -94,7 +97,7 @@ struct RecentEventRowView: View {
                 footnoteText(nextEventDate.formatted(date: .numeric, time: .shortened))
             }
         } else {
-            Text(predictionFailureReason?.message ?? "NoPredictionPossible")
+            Text(predictionFailureReason?.message ?? localizedString("NoPredictionPossible", standardString: "zu wenig Daten"))
                 .multilineTextAlignment(.trailing)
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -175,8 +178,9 @@ struct RecentEventRowView: View {
             .sorted()
             .map { String(Int($0.timeIntervalSinceReferenceDate)) }
             .joined(separator: "|")
+        let dogID = dog.id?.uuidString ?? dog.objectID.uriRepresentation().absoluteString
 
-        return "\(eventsID)-\(navigationController.nextPredictionRefreshID.uuidString)"
+        return "\(dogID)-\(eventsID)-\(navigationController.nextPredictionRefreshID.uuidString)"
     }
 
     fileprivate static let badgeInsets = EdgeInsets(top: 2.5, leading: 5, bottom: 2.5, trailing: 5)
@@ -206,7 +210,7 @@ private extension Text {
 
 struct RecentEventRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RecentEventRowView(type: GassiType.pee)
+        RecentEventRowView(type: GassiType.pee, dog: GassiDog.current)
             .environmentObject(NavigationController())
             .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
     }

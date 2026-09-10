@@ -52,6 +52,13 @@ struct CoreDataController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+        _ = NotificationCenter.default.addObserver(
+            forName: .NSManagedObjectContextObjectsDidChange,
+            object: container.viewContext,
+            queue: nil
+        ) { notification in
+            GassiEvent.reconcilePredictionFeedback(for: notification)
+        }
         
         // Check for DOG, SEX, TYPE, SUBTYPE and create default data if missing
         print("Core data store loaded. Checking for default data..")
@@ -222,21 +229,70 @@ struct CoreDataController {
     }
 
     private func initTypes() {
-        if let peeType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.peeID.uuidString) {
-            GassiType.pee = peeType
+        let peeType: GassiType
+        if let existingPeeType: GassiType = initGassi(entityName: "GassiType", defaultID: GassiType.peeID) {
+            peeType = existingPeeType
         } else {
             print("No pee type fetched, creating default one.")
-            GassiType.pee = GassiType.newPee(context: container.viewContext)
+            peeType = GassiType.newPee(context: container.viewContext)
         }
+        configure(type: peeType, id: GassiType.peeID, name: "Pee", sign: "💦", predict: true)
+        GassiType.pee = peeType
         
-        if let pooType: GassiType = initGassi(entityName: "GassiType", defaultIDString: GassiType.pooID.uuidString) {
-            GassiType.poo = pooType
+        let pooType: GassiType
+        if let existingPooType: GassiType = initGassi(entityName: "GassiType", defaultID: GassiType.pooID) {
+            pooType = existingPooType
         } else {
             print("No poo type fetched, creating default one.")
-            GassiType.poo = GassiType.newPoo(context: container.viewContext)
-            let _ = GassiSubtype.newHardPoo(context: container.viewContext)
-            let _ = GassiSubtype.newDiarrheaPoo(context: container.viewContext)
+            pooType = GassiType.newPoo(context: container.viewContext)
         }
+        configure(type: pooType, id: GassiType.pooID, name: "Poo", sign: "💩", predict: true)
+        GassiType.poo = pooType
+
+        restoreDefaultPooSubtypes()
+    }
+
+    private func configure(type: GassiType, id: UUID, name: String, sign: String, predict: Bool) {
+        type.id = id
+        type.name = name
+        type.sign = sign
+        type.predict = predict
+    }
+
+    private func restoreDefaultPooSubtypes() {
+        _ = restoreDefaultPooSubtype(
+            id: GassiSubtype.hardPooID,
+            name: localizedString("HardPoo"),
+            sign: localizedString("HardPooSign")
+        )
+        _ = restoreDefaultPooSubtype(
+            id: GassiSubtype.diarrheaPooID,
+            name: localizedString("Diarrhea"),
+            sign: localizedString("DiarrheaSign")
+        )
+    }
+
+    private func restoreDefaultPooSubtype(id: UUID, name: String, sign: String) -> GassiSubtype {
+        let subtype = fetchDefaultPooSubtype(id: id, name: name) ?? GassiSubtype.new(context: container.viewContext, id: id, type: GassiType.poo)
+        subtype.id = id
+        subtype.name = name
+        subtype.sign = sign
+        subtype.type = GassiType.poo
+        return subtype
+    }
+
+    private func fetchDefaultPooSubtype(id: UUID, name: String) -> GassiSubtype? {
+        let fetchRequest = GassiSubtype.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSCompoundPredicate(type: .or, subpredicates: [
+            NSPredicate(format: "id == %@", id as CVarArg),
+            NSCompoundPredicate(type: .and, subpredicates: [
+                NSPredicate(format: "type == %@", GassiType.poo),
+                NSPredicate(format: "name == %@", name)
+            ])
+        ])
+
+        return try? container.viewContext.fetch(fetchRequest).first
     }
     
     private func initEventSettings() {
@@ -255,10 +311,10 @@ struct CoreDataController {
         GassiEvent.timespan = eventsTimespan
     }
 
-    private func initGassi<T: NSManagedObject>(entityName: String, defaultIDString: String = "") -> T? {
+    private func initGassi<T: NSManagedObject>(entityName: String, defaultID: UUID) -> T? {
         var result: T? = nil
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "id = %@", defaultIDString)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", defaultID as CVarArg)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
         if let items = try? container.viewContext.fetch(fetchRequest) {
@@ -289,34 +345,13 @@ struct CoreDataController {
         }
     }
     
-    // MARK: Delete
+    // MARK: Reset
     
     func resetSettings() {
-        // Clear breeds
-        if let breeds = try? container.viewContext.fetch(GassiBreed.fetchRequest()) {
-            for breed in breeds {
-                container.viewContext.delete(breed)
-            }
-        }
-        // Clear sexes
-        if let sexes = try? container.viewContext.fetch(GassiSex.fetchRequest()) {
-            for sex in sexes {
-                container.viewContext.delete(sex)
-            }
-        }
-        // Clear types
-        if let types = try? container.viewContext.fetch(GassiType.fetchRequest()) {
-            for type in types {
-                container.viewContext.delete(type)
-            }
-        }
-        // Clear subtypes
-        if let subtypes = try? container.viewContext.fetch(GassiSubtype.fetchRequest()) {
-            for subtype in subtypes {
-                container.viewContext.delete(subtype)
-            }
-        }
-        // Settings to defaults
+        initBreeds()
+        initSexes()
+        initTypes()
+
         GassiEvent.gracePeriod = GassiEvent.defaultGracePeriod
         GassiEvent.timespan = GassiEvent.defaultTimespan
 

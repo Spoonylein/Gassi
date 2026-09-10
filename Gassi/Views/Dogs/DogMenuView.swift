@@ -19,6 +19,7 @@ struct DogMenuView: View {
                 ForEach(dogs) { dog in
                     Button {
                         dog.makeCurrent()
+                        navigationController.recalculateNextPrediction()
                     } label: {
                         Label(dog.nameString, systemImage: dog.isCurrent ? "checkmark.circle" : "circle")
                     }

@@ -35,6 +35,7 @@
     },
     "AddGassiTapAndHold" : {
       "comment" : "MARK: AddGassiView",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -441,6 +442,9 @@
         }
       }
     },
+    "Ereignis konnte nicht gespeichert werden" : {
+
+    },
     "Event" : {
       "comment" : "MARK: GassiEvent",
       "extractionState" : "manual",
@@ -842,6 +846,7 @@
       }
     },
     "ReportTabTitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

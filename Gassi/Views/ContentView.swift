@@ -11,7 +11,6 @@ struct ContentView: View {
     private enum Tabs: String {
         case gassiTab = "GassiTab"
         case eventsTab = "EventsTab"
-        case reportTab = "ReportTab"
         case settingsTab = "SettingsTab"
     }
     
@@ -28,11 +27,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("EventsTabTitle", systemImage: "list.dash")
                 }.tag(Tabs.eventsTab)
-            
-            ReportView()
-                .tabItem {
-                    Label("ReportTabTitle", systemImage: "chart.bar.xaxis")
-                }.tag(Tabs.reportTab)
             
             SettingsView()
                 .tabItem {

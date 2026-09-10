@@ -8,12 +8,31 @@
 import SwiftUI
 import UIKit
 
-private enum AppShortcutAction: String {
+private enum AppShortcutAction: String, CaseIterable {
     case addPee = "de.loeffeljan.gassi.addPee"
     case addPoo = "de.loeffeljan.gassi.addPoo"
 
     init?(shortcutItem: UIApplicationShortcutItem) {
         self.init(rawValue: shortcutItem.type)
+    }
+
+    var shortcutItem: UIApplicationShortcutItem {
+        switch self {
+        case .addPee:
+            return UIApplicationShortcutItem(
+                type: rawValue,
+                localizedTitle: localizedString("ShortcutAddPeeTitle", standardString: GassiType.pee.nameString),
+                localizedSubtitle: localizedString("ShortcutAddPeeSubtitle", standardString: "Pipi-Ereignis hinzufügen"),
+                icon: UIApplicationShortcutIcon(systemImageName: "drop.fill")
+            )
+        case .addPoo:
+            return UIApplicationShortcutItem(
+                type: rawValue,
+                localizedTitle: localizedString("ShortcutAddPooTitle", standardString: GassiType.poo.nameString),
+                localizedSubtitle: localizedString("ShortcutAddPooSubtitle", standardString: "Kot-Ereignis hinzufügen"),
+                icon: UIApplicationShortcutIcon(systemImageName: "pawprint.fill")
+            )
+        }
     }
 
     @MainActor
@@ -43,6 +62,7 @@ private final class AppShortcutController {
 
     func configure(coreDataController: CoreDataController) {
         self.coreDataController = coreDataController
+        UIApplication.shared.shortcutItems = AppShortcutAction.allCases.map(\.shortcutItem)
         _ = performPendingActionIfPossible()
     }
 

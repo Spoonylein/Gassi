@@ -40,41 +40,41 @@ enum GassiPredictionFailureReason: Equatable {
     var message: String {
         switch self {
         case .notEnoughHistory:
-            return "Need at least 3 events"
+            return localizedString("PredictionNotEnoughHistory", standardString: "Mindestens 3 Ereignisse erforderlich")
         case .foundationModelsUnavailable:
-            return "Foundation Models unavailable"
+            return localizedString("PredictionFoundationModelsUnavailable", standardString: "Mathematische Prognose wird verwendet")
         case .deviceNotEligible:
-            return "Device does not support Apple Intelligence"
+            return localizedString("PredictionDeviceNotEligible", standardString: "Apple Intelligence wird auf diesem Gerät nicht unterstützt")
         case .appleIntelligenceNotEnabled:
-            return "Apple Intelligence is turned off"
+            return localizedString("PredictionAppleIntelligenceNotEnabled", standardString: "Apple Intelligence ist deaktiviert")
         case .modelNotReady:
-            return "Apple Intelligence model not ready"
+            return localizedString("PredictionModelNotReady", standardString: "Apple Intelligence ist noch nicht bereit")
         case .unsupportedLocale:
-            return "Current language not supported"
+            return localizedString("PredictionUnsupportedLocale", standardString: "Aktuelle Sprache wird nicht unterstützt")
         case .refusal:
-            return "Model refused this prediction"
+            return localizedString("PredictionRefusal", standardString: "Modell hat die Prognose abgelehnt")
         case .lowConfidence:
-            return "Prediction confidence too low"
+            return localizedString("PredictionLowConfidence", standardString: "Zu wenig Daten")
         case .invalidDate:
-            return "Model returned an invalid date"
+            return localizedString("PredictionInvalidDate", standardString: "Modell hat ein ungültiges Datum geliefert")
         case .predictedDateInPast:
-            return "Prediction is not after last event"
+            return localizedString("PredictionDateInPast", standardString: "Prognose liegt nicht nach dem letzten Ereignis")
         case .predictedDateTooFar:
-            return "Prediction is too far in the future"
+            return localizedString("PredictionDateTooFar", standardString: "Prognose liegt zu weit in der Zukunft")
         case .decodingFailure:
-            return "Could not decode model output"
+            return localizedString("PredictionDecodingFailure", standardString: "Modellausgabe konnte nicht gelesen werden")
         case .guardrailViolation:
-            return "Model output blocked by guardrails"
+            return localizedString("PredictionGuardrailViolation", standardString: "Modellausgabe wurde blockiert")
         case .rateLimited:
-            return "Model is rate limited"
+            return localizedString("PredictionRateLimited", standardString: "Modell ist vorübergehend limitiert")
         case .assetsUnavailable:
-            return "Model assets unavailable"
+            return localizedString("PredictionAssetsUnavailable", standardString: "Modelldaten sind nicht verfügbar")
         case .exceededContextWindow:
-            return "Prediction history is too long"
+            return localizedString("PredictionExceededContextWindow", standardString: "Historie ist zu lang")
         case .concurrentRequests:
-            return "Prediction already running"
+            return localizedString("PredictionConcurrentRequests", standardString: "Prognose läuft bereits")
         case .unsupportedGuide:
-            return "Prediction schema unsupported"
+            return localizedString("PredictionUnsupportedGuide", standardString: "Prognoseschema wird nicht unterstützt")
         case .other(let message):
             return message
         }
@@ -89,10 +89,12 @@ enum GassiPredictionResult: Equatable {
 private struct GassiPredictionFeedback: Codable, Sendable {
     let id: UUID
     let categoryID: UUID
+    let dogID: UUID?
     let issuedAt: Date
     let aiDate: Date
     let scheduleDate: Date?
     let selectedDate: Date
+    var actualEventID: UUID?
     var actualDate: Date?
     var aiError: TimeInterval?
     var scheduleError: TimeInterval?
@@ -107,6 +109,7 @@ private enum GassiPredictionFeedbackStore {
 
     static func recordPrediction(
         categoryID: UUID,
+        dogID: UUID?,
         aiDate: Date,
         scheduleDate: Date?,
         selectedDate: Date
@@ -117,6 +120,7 @@ private enum GassiPredictionFeedbackStore {
                 GassiPredictionFeedback(
                     id: UUID(),
                     categoryID: categoryID,
+                    dogID: dogID,
                     issuedAt: .now,
                     aiDate: aiDate,
                     scheduleDate: scheduleDate,
@@ -127,33 +131,80 @@ private enum GassiPredictionFeedbackStore {
         }
     }
 
-    static func recordActualEvent(categoryID: UUID, actualDate: Date) {
+    static func recordActualEvent(categoryID: UUID, dogID: UUID?, eventID: UUID, actualDate: Date) {
         queue.sync {
             var feedback = load()
+            var didChange = false
 
-            guard let index = feedback.indices.reversed().first(where: {
-                feedback[$0].categoryID == categoryID
-                    && feedback[$0].actualDate == nil
-                    && feedback[$0].issuedAt <= actualDate
-            }) else {
-                return
+            feedback.removeAll { item in
+                guard item.actualEventID == eventID else { return false }
+                let eventStillMatchesPrediction = item.categoryID == categoryID
+                    && item.dogID == dogID
+                    && item.issuedAt <= actualDate
+                didChange = didChange || !eventStillMatchesPrediction
+                return !eventStillMatchesPrediction
             }
 
-            feedback[index].actualDate = actualDate
-            feedback[index].aiError = abs(actualDate.timeIntervalSince(feedback[index].aiDate))
-
-            if let scheduleDate = feedback[index].scheduleDate {
-                feedback[index].scheduleError = abs(actualDate.timeIntervalSince(scheduleDate))
+            let matchingResolvedIndices = feedback.indices.filter { feedback[$0].actualEventID == eventID }
+            for index in matchingResolvedIndices {
+                updateResolvedFeedback(&feedback[index], actualDate: actualDate)
+                didChange = true
             }
 
+            if matchingResolvedIndices.isEmpty,
+               let index = feedback.indices.reversed().first(where: {
+                   feedback[$0].categoryID == categoryID
+                       && feedback[$0].dogID == dogID
+                       && feedback[$0].actualDate == nil
+                       && feedback[$0].issuedAt <= actualDate
+               }) {
+                feedback[index].actualEventID = eventID
+                updateResolvedFeedback(&feedback[index], actualDate: actualDate)
+                didChange = true
+            }
+
+            if didChange {
+                save(feedback)
+            }
+        }
+    }
+
+    static func invalidateActualEvent(eventID: UUID) {
+        queue.sync {
+            let feedback = load().filter { $0.actualEventID != eventID }
             save(feedback)
         }
     }
 
-    static func weights(categoryID: UUID) -> (ai: Double, schedule: Double) {
+    static func invalidateDog(dogID: UUID) {
+        queue.sync {
+            let feedback = load().filter { $0.dogID != dogID }
+            save(feedback)
+        }
+    }
+
+    static func invalidateCategory(categoryID: UUID) {
+        queue.sync {
+            let feedback = load().filter { $0.categoryID != categoryID }
+            save(feedback)
+        }
+    }
+
+    private static func updateResolvedFeedback(_ feedback: inout GassiPredictionFeedback, actualDate: Date) {
+        feedback.actualDate = actualDate
+        feedback.aiError = abs(actualDate.timeIntervalSince(feedback.aiDate))
+
+        if let scheduleDate = feedback.scheduleDate {
+            feedback.scheduleError = abs(actualDate.timeIntervalSince(scheduleDate))
+        } else {
+            feedback.scheduleError = nil
+        }
+    }
+
+    static func weights(categoryID: UUID, dogID: UUID?) -> (ai: Double, schedule: Double) {
         queue.sync {
             let resolved = load()
-                .filter { $0.categoryID == categoryID && $0.actualDate != nil }
+                .filter { $0.categoryID == categoryID && $0.dogID == dogID && $0.actualDate != nil }
                 .suffix(20)
 
             let aiErrors = resolved.compactMap(\.aiError)
@@ -189,64 +240,21 @@ private enum GassiPredictionFeedbackStore {
     }
 }
 
-#if canImport(FoundationModels)
-@available(iOS 26.0, macOS 26.0, watchOS 26.0, *)
-@Generable(description: "A prediction for the next dog relief event.")
-private struct GassiNextEventPrediction {
-    var predictionPossible: Bool
+private enum GassiSchedulePredictor {
+    static let minimumPredictionLeadTime: TimeInterval = 15 * 60
+    static let maximumPredictionHorizon: TimeInterval = 36 * 60 * 60
+    static let maximumScheduleDeviation: TimeInterval = 2 * 60 * 60
 
-    @Guide(description: "Confidence score for the prediction.", .range(0.0 ... 1.0))
-    var confidence: Double
-
-    @Guide(description: "Four digit year of the predicted local date.", .range(2024 ... 2100))
-    var year: Int
-
-    @Guide(description: "Month of year.", .range(1 ... 12))
-    var month: Int
-
-    @Guide(description: "Day of month.", .range(1 ... 31))
-    var day: Int
-
-    @Guide(description: "Hour in 24 hour time.", .range(0 ... 23))
-    var hour: Int
-
-    @Guide(description: "Minute of hour.", .range(0 ... 59))
-    var minute: Int
-}
-
-@available(iOS 26.0, macOS 26.0, watchOS 26.0, *)
-private enum GassiAIPredictor {
-    private static let minimumPredictionLeadTime: TimeInterval = 15 * 60
-    private static let maximumPredictionHorizon: TimeInterval = 36 * 60 * 60
-    private static let maximumScheduleDeviation: TimeInterval = 2 * 60 * 60
-
-    private static func localPredictionTimestampString(for date: Date, timeZone: TimeZone) -> String {
-        var calendar = Calendar.current
-        calendar.timeZone = timeZone
-
-        let formatter = DateFormatter()
-        formatter.calendar = calendar
-        formatter.locale = Locale.autoupdatingCurrent
-        formatter.timeZone = timeZone
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-
-        return formatter.string(from: date)
-    }
-
-    private static func median(_ values: [Int]) -> Int {
-        let sortedValues = values.sorted()
-        let middle = sortedValues.count / 2
-
-        if sortedValues.count.isMultiple(of: 2) {
-            return (sortedValues[middle - 1] + sortedValues[middle]) / 2
+    static func prediction(eventDates: [Date], timeZone: TimeZone = .autoupdatingCurrent) -> GassiPredictionResult {
+        guard eventDates.count >= 3 else { return .failure(.notEnoughHistory) }
+        guard let scheduleDate = scheduleBasedDate(eventDates: eventDates, timeZone: timeZone) else {
+            return .failure(.lowConfidence)
         }
 
-        return sortedValues[middle]
+        return .success(max(scheduleDate, Date.now))
     }
 
-    /// Derives recurring daily time slots from recent observations. This provides a
-    /// deterministic fallback when the language model returns an implausible date.
-    private static func scheduleBasedDate(eventDates: [Date], timeZone: TimeZone) -> Date? {
+    static func scheduleBasedDate(eventDates: [Date], timeZone: TimeZone) -> Date? {
         guard let lastEvent = eventDates.max() else { return nil }
 
         var calendar = Calendar.autoupdatingCurrent
@@ -280,8 +288,6 @@ private enum GassiAIPredictor {
 
         guard !recurringMinutes.isEmpty else { return nil }
 
-        // Calculate from the latest observation, not from the current time. If an
-        // expected slot has already passed, validation can surface it as overdue.
         let earliestPrediction = lastEvent.addingTimeInterval(minimumPredictionLeadTime)
         let referenceDay = calendar.startOfDay(for: lastEvent)
 
@@ -301,18 +307,71 @@ private enum GassiAIPredictor {
         return nil
     }
 
+    private static func median(_ values: [Int]) -> Int {
+        let sortedValues = values.sorted()
+        let middle = sortedValues.count / 2
+
+        if sortedValues.count.isMultiple(of: 2) {
+            return (sortedValues[middle - 1] + sortedValues[middle]) / 2
+        }
+
+        return sortedValues[middle]
+    }
+}
+
+#if canImport(FoundationModels)
+@available(iOS 26.0, macOS 26.0, watchOS 26.0, *)
+@Generable(description: "A prediction for the next dog relief event.")
+private struct GassiNextEventPrediction {
+    var predictionPossible: Bool
+
+    @Guide(description: "Confidence score for the prediction.", .range(0.0 ... 1.0))
+    var confidence: Double
+
+    @Guide(description: "Four digit year of the predicted local date.", .range(2024 ... 2100))
+    var year: Int
+
+    @Guide(description: "Month of year.", .range(1 ... 12))
+    var month: Int
+
+    @Guide(description: "Day of month.", .range(1 ... 31))
+    var day: Int
+
+    @Guide(description: "Hour in 24 hour time.", .range(0 ... 23))
+    var hour: Int
+
+    @Guide(description: "Minute of hour.", .range(0 ... 59))
+    var minute: Int
+}
+
+@available(iOS 26.0, macOS 26.0, watchOS 26.0, *)
+private enum GassiAIPredictor {
+    private static func localPredictionTimestampString(for date: Date, timeZone: TimeZone) -> String {
+        var calendar = Calendar.current
+        calendar.timeZone = timeZone
+
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = Locale.autoupdatingCurrent
+        formatter.timeZone = timeZone
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+
+        return formatter.string(from: date)
+    }
+
     private static func validatedPredictionDate(
         _ predictedDate: Date,
         eventDates: [Date],
         timeZone: TimeZone,
-        categoryID: UUID?
+        categoryID: UUID?,
+        dogID: UUID?
     ) -> GassiPredictionResult {
         guard let lastEvent = eventDates.max() else { return .failure(.notEnoughHistory) }
 
         let referenceDate = max(Date.now, lastEvent)
-        let earliestPrediction = referenceDate.addingTimeInterval(minimumPredictionLeadTime)
-        let latestPrediction = referenceDate.addingTimeInterval(maximumPredictionHorizon)
-        let scheduleDate = scheduleBasedDate(eventDates: eventDates, timeZone: timeZone)
+        let earliestPrediction = referenceDate.addingTimeInterval(GassiSchedulePredictor.minimumPredictionLeadTime)
+        let latestPrediction = referenceDate.addingTimeInterval(GassiSchedulePredictor.maximumPredictionHorizon)
+        let scheduleDate = GassiSchedulePredictor.scheduleBasedDate(eventDates: eventDates, timeZone: timeZone)
         let actionableScheduleDate = scheduleDate.map { max($0, Date.now) }
 
         let selectedDate: Date
@@ -325,10 +384,10 @@ private enum GassiAIPredictor {
             }
             selectedDate = actionableScheduleDate
         } else if let scheduleDate, let actionableScheduleDate {
-            if abs(predictedDate.timeIntervalSince(scheduleDate)) > maximumScheduleDeviation {
+            if abs(predictedDate.timeIntervalSince(scheduleDate)) > GassiSchedulePredictor.maximumScheduleDeviation {
                 selectedDate = actionableScheduleDate
             } else if let categoryID {
-                let weights = GassiPredictionFeedbackStore.weights(categoryID: categoryID)
+                let weights = GassiPredictionFeedbackStore.weights(categoryID: categoryID, dogID: dogID)
                 let blendedTimestamp =
                     predictedDate.timeIntervalSinceReferenceDate * weights.ai
                     + actionableScheduleDate.timeIntervalSinceReferenceDate * weights.schedule
@@ -343,6 +402,7 @@ private enum GassiAIPredictor {
         if let categoryID {
             GassiPredictionFeedbackStore.recordPrediction(
                 categoryID: categoryID,
+                dogID: dogID,
                 aiDate: predictedDate,
                 scheduleDate: scheduleDate,
                 selectedDate: selectedDate
@@ -352,7 +412,7 @@ private enum GassiAIPredictor {
         return .success(selectedDate)
     }
 
-    static func nextDate(eventDates: [Date], categoryID: UUID?) async -> GassiPredictionResult {
+    static func nextDate(eventDates: [Date], categoryID: UUID?, dogID: UUID?) async -> GassiPredictionResult {
         guard eventDates.count >= 3 else { return .failure(.notEnoughHistory) }
         
         switch SystemLanguageModel.default.availability {
@@ -417,7 +477,8 @@ private enum GassiAIPredictor {
                 predictedDate,
                 eventDates: eventDates,
                 timeZone: timeZone,
-                categoryID: categoryID
+                categoryID: categoryID,
+                dogID: dogID
             )
         } catch LanguageModelSession.GenerationError.unsupportedLanguageOrLocale {
             return .failure(.unsupportedLocale)
@@ -672,6 +733,9 @@ extension GassiType {
 }
 
 extension GassiSubtype {
+    static let hardPooID: UUID = UUID(uuidString: "07031973-1000-6000-1100-000000002100")!
+    static let diarrheaPooID: UUID = UUID(uuidString: "07031973-1000-6000-1100-000000002200")!
+
     static func new(context: NSManagedObjectContext, id: UUID = UUID(), name: String = "new subtype", sign: String? = nil, type: GassiType, events: NSSet? = nil) -> GassiSubtype {
         let subtype = GassiSubtype(context: context)
         
@@ -685,11 +749,11 @@ extension GassiSubtype {
     }
     
     static func newHardPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, name: localizedString("HardPoo"), sign: localizedString("HardPooSign"), type: GassiType.poo)
+        return new(context: context, id: hardPooID, name: localizedString("HardPoo"), sign: localizedString("HardPooSign"), type: GassiType.poo)
     }
     
     static func newDiarrheaPoo(context: NSManagedObjectContext) -> GassiSubtype {
-        return new(context: context, name: localizedString("Diarrhea"), sign: localizedString("DiarrheaSign"), type: GassiType.poo)
+        return new(context: context, id: diarrheaPooID, name: localizedString("Diarrhea"), sign: localizedString("DiarrheaSign"), type: GassiType.poo)
     }
         
     var nameString: String {
@@ -739,16 +803,33 @@ extension GassiEvent {
     }
 
     static func new(context: NSManagedObjectContext, timestamp: Date = Date.now, dog: GassiDog, type: GassiType, subtype: GassiSubtype? = nil) -> GassiEvent {
-        // Check for a existing event within grace period and use it instead of creating a new event
+        // Check for an existing event within grace period and use it instead of creating a new event.
         let fetchRequest: NSFetchRequest = GassiEvent.fetchRequest()
-        let timestampPredicate: NSPredicate = NSPredicate(format: "timestamp > %@", Date.now.addingTimeInterval(-gracePeriod) as CVarArg)
-        let dogPredicate: NSPredicate = NSPredicate(format: "dog == %@", dog)
-        let typePredicate: NSPredicate = NSPredicate(format: "type == %@", type)
-        let subtypePredicate: NSPredicate = (subtype != nil ? NSPredicate(format: "subtype == %@", subtype!) : NSPredicate(format: "subtype == NIL"))
+        let lowerTimestamp = timestamp.addingTimeInterval(-gracePeriod)
+        let upperTimestamp = timestamp.addingTimeInterval(gracePeriod)
+        let timestampPredicate = NSPredicate(
+            format: "timestamp >= %@ AND timestamp <= %@",
+            lowerTimestamp as CVarArg,
+            upperTimestamp as CVarArg
+        )
+        let dogPredicate = NSPredicate(format: "dog == %@", dog)
+        let typePredicate = NSPredicate(format: "type == %@", type)
+        let subtypePredicate = subtype != nil ? NSPredicate(format: "subtype == %@", subtype!) : NSPredicate(format: "subtype == NIL")
         fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [timestampPredicate, dogPredicate, typePredicate, subtypePredicate])
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
         
-        if let gracePeriodEvent = try? context.fetch(fetchRequest).first {
+        if let gracePeriodEvent = try? context.fetch(fetchRequest).min(by: {
+            abs(($0.timestamp ?? timestamp).timeIntervalSince(timestamp)) < abs(($1.timestamp ?? timestamp).timeIntervalSince(timestamp))
+        }) {
             gracePeriodEvent.timestamp = timestamp
+            if let categoryID = type.id, let eventID = gracePeriodEvent.id {
+                GassiPredictionFeedbackStore.recordActualEvent(
+                    categoryID: categoryID,
+                    dogID: dog.id,
+                    eventID: eventID,
+                    actualDate: timestamp
+                )
+            }
             return gracePeriodEvent
         }
         
@@ -759,9 +840,11 @@ extension GassiEvent {
         event.type = type
         event.subtype = subtype
 
-        if let categoryID = type.id {
+        if let categoryID = type.id, let eventID = event.id {
             GassiPredictionFeedbackStore.recordActualEvent(
                 categoryID: categoryID,
+                dogID: dog.id,
+                eventID: eventID,
                 actualDate: timestamp
             )
         }
@@ -780,6 +863,46 @@ extension GassiEvent {
         if let events = try? viewContext.fetch(fetchRequest) {
             events.forEach(viewContext.delete)
         }
+    }
+
+    static func reconcilePredictionFeedback(for notification: Notification) {
+        if let deletedObjects = notification.userInfo?[NSDeletedObjectsKey] as? Set<NSManagedObject> {
+            deletedObjects.forEach(invalidatePredictionFeedback)
+        }
+
+        if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
+            updatedObjects.forEach(reevaluatePredictionFeedback)
+        }
+    }
+
+    private static func invalidatePredictionFeedback(for object: NSManagedObject) {
+        if let event = object as? GassiEvent, let eventID = event.id {
+            GassiPredictionFeedbackStore.invalidateActualEvent(eventID: eventID)
+        } else if let dog = object as? GassiDog, let dogID = dog.id {
+            GassiPredictionFeedbackStore.invalidateDog(dogID: dogID)
+        } else if let type = object as? GassiType, let categoryID = type.id {
+            GassiPredictionFeedbackStore.invalidateCategory(categoryID: categoryID)
+        }
+    }
+
+    private static func reevaluatePredictionFeedback(for object: NSManagedObject) {
+        guard let event = object as? GassiEvent,
+              let eventID = event.id else {
+            return
+        }
+
+        guard let categoryID = event.type?.id,
+              let actualDate = event.timestamp else {
+            GassiPredictionFeedbackStore.invalidateActualEvent(eventID: eventID)
+            return
+        }
+
+        GassiPredictionFeedbackStore.recordActualEvent(
+            categoryID: categoryID,
+            dogID: event.dog?.id,
+            eventID: eventID,
+            actualDate: actualDate
+        )
     }
     
     static func eventDays(events: [GassiEvent]) -> [Date] {
@@ -968,7 +1091,8 @@ extension GassiEvent {
         
         // Save all gassi events of given dog in `allGassiEvents`, save all default gassi categories in allGassiDefaultCategories.
         if let allGassiEvents = try? viewContext.fetch(eventsFetchRequest).filter({ item in
-            return (item.dog == dog || item.dog == nil || dog == nil)
+            guard let dog else { return true }
+            return item.dog == dog
         }), let allGassiDefaultCategories = try? viewContext.fetch(categoriesFetchRequest).filter({ item in
             return item.predict
         }) {
@@ -1005,17 +1129,23 @@ extension GassiEvent {
     
     static func nextPrediction(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) async -> GassiPredictionResult {
         let eventDates = events.compactMap(\.timestamp).sorted()
+        let scheduleResult = GassiSchedulePredictor.prediction(eventDates: eventDates)
 
 #if canImport(FoundationModels)
         if #available(iOS 26.0, macOS 26.0, watchOS 26.0, *) {
-            return await GassiAIPredictor.nextDate(
+            let aiResult = await GassiAIPredictor.nextDate(
                 eventDates: eventDates,
-                categoryID: events.first?.type?.id
+                categoryID: events.first?.type?.id,
+                dogID: events.first?.dog?.id
             )
+
+            if case .success = aiResult {
+                return aiResult
+            }
         }
 #endif
 
-        return .failure(.foundationModelsUnavailable)
+        return scheduleResult
     }
 
     static func nextDate(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) async -> Date? {
