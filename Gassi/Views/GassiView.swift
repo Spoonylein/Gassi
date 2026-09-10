@@ -23,12 +23,33 @@ struct GassiView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     DogMenuView()
                 }
+                if #available(iOS 26.0, *) {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        predictionStatusImage
+                    }
+                    .sharedBackgroundVisibility(.hidden)
+                } else {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        predictionStatusImage
+                    }
+                }
             }
             .navigationDestination(for: GassiEvent.self) { event in
                 EventView(event: event)
             }
             .navigationTitle("GassiViewNavigationTitle")
         }
+    }
+
+    private var predictionStatusImage: some View {
+        Image(systemName: navigationController.predictionStatus.symbolName)
+            .foregroundStyle(navigationController.predictionStatus.color)
+            .contentTransition(.symbolEffect(.replace))
+            .allowsHitTesting(false)
+            .accessibilityElement(children: .ignore)
+            .accessibilityAddTraits(.isImage)
+            .help(navigationController.predictionStatus.message)
+            .accessibilityLabel(navigationController.predictionStatus.message)
     }
 }
 

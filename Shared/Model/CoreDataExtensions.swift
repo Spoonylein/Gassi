@@ -8,6 +8,441 @@
 import Foundation
 import CoreData
 import SwiftUI
+#if canImport(FoundationModels)
+import FoundationModels
+#endif
+
+extension Notification.Name {
+    static let gassiEventDidCreate = Notification.Name("gassiEventDidCreate")
+}
+
+enum GassiPredictionFailureReason: Equatable {
+    case notEnoughHistory
+    case foundationModelsUnavailable
+    case deviceNotEligible
+    case appleIntelligenceNotEnabled
+    case modelNotReady
+    case unsupportedLocale
+    case refusal
+    case lowConfidence
+    case invalidDate
+    case predictedDateInPast
+    case predictedDateTooFar
+    case decodingFailure
+    case guardrailViolation
+    case rateLimited
+    case assetsUnavailable
+    case exceededContextWindow
+    case concurrentRequests
+    case unsupportedGuide
+    case other(String)
+
+    var message: String {
+        switch self {
+        case .notEnoughHistory:
+            return "Need at least 3 events"
+        case .foundationModelsUnavailable:
+            return "Foundation Models unavailable"
+        case .deviceNotEligible:
+            return "Device does not support Apple Intelligence"
+        case .appleIntelligenceNotEnabled:
+            return "Apple Intelligence is turned off"
+        case .modelNotReady:
+            return "Apple Intelligence model not ready"
+        case .unsupportedLocale:
+            return "Current language not supported"
+        case .refusal:
+            return "Model refused this prediction"
+        case .lowConfidence:
+            return "Prediction confidence too low"
+        case .invalidDate:
+            return "Model returned an invalid date"
+        case .predictedDateInPast:
+            return "Prediction is not after last event"
+        case .predictedDateTooFar:
+            return "Prediction is too far in the future"
+        case .decodingFailure:
+            return "Could not decode model output"
+        case .guardrailViolation:
+            return "Model output blocked by guardrails"
+        case .rateLimited:
+            return "Model is rate limited"
+        case .assetsUnavailable:
+            return "Model assets unavailable"
+        case .exceededContextWindow:
+            return "Prediction history is too long"
+        case .concurrentRequests:
+            return "Prediction already running"
+        case .unsupportedGuide:
+            return "Prediction schema unsupported"
+        case .other(let message):
+            return message
+        }
+    }
+}
+
+enum GassiPredictionResult: Equatable {
+    case success(Date)
+    case failure(GassiPredictionFailureReason)
+}
+
+private struct GassiPredictionFeedback: Codable, Sendable {
+    let id: UUID
+    let categoryID: UUID
+    let issuedAt: Date
+    let aiDate: Date
+    let scheduleDate: Date?
+    let selectedDate: Date
+    var actualDate: Date?
+    var aiError: TimeInterval?
+    var scheduleError: TimeInterval?
+}
+
+private enum GassiPredictionFeedbackStore {
+    private static let defaultsKey = "GassiPredictionFeedback"
+    private static let maximumEntries = 100
+    private static let minimumSamplesForAdaptation = 3
+    private static let minimumError: TimeInterval = 5 * 60
+    private static let queue = DispatchQueue(label: "GassiPredictionFeedbackStore")
+
+    static func recordPrediction(
+        categoryID: UUID,
+        aiDate: Date,
+        scheduleDate: Date?,
+        selectedDate: Date
+    ) {
+        queue.sync {
+            var feedback = load()
+            feedback.append(
+                GassiPredictionFeedback(
+                    id: UUID(),
+                    categoryID: categoryID,
+                    issuedAt: .now,
+                    aiDate: aiDate,
+                    scheduleDate: scheduleDate,
+                    selectedDate: selectedDate
+                )
+            )
+            save(Array(feedback.suffix(maximumEntries)))
+        }
+    }
+
+    static func recordActualEvent(categoryID: UUID, actualDate: Date) {
+        queue.sync {
+            var feedback = load()
+
+            guard let index = feedback.indices.reversed().first(where: {
+                feedback[$0].categoryID == categoryID
+                    && feedback[$0].actualDate == nil
+                    && feedback[$0].issuedAt <= actualDate
+            }) else {
+                return
+            }
+
+            feedback[index].actualDate = actualDate
+            feedback[index].aiError = abs(actualDate.timeIntervalSince(feedback[index].aiDate))
+
+            if let scheduleDate = feedback[index].scheduleDate {
+                feedback[index].scheduleError = abs(actualDate.timeIntervalSince(scheduleDate))
+            }
+
+            save(feedback)
+        }
+    }
+
+    static func weights(categoryID: UUID) -> (ai: Double, schedule: Double) {
+        queue.sync {
+            let resolved = load()
+                .filter { $0.categoryID == categoryID && $0.actualDate != nil }
+                .suffix(20)
+
+            let aiErrors = resolved.compactMap(\.aiError)
+            let scheduleErrors = resolved.compactMap(\.scheduleError)
+
+            guard aiErrors.count >= minimumSamplesForAdaptation,
+                  scheduleErrors.count >= minimumSamplesForAdaptation else {
+                return (0.5, 0.5)
+            }
+
+            let aiMeanError = aiErrors.reduce(0, +) / Double(aiErrors.count)
+            let scheduleMeanError = scheduleErrors.reduce(0, +) / Double(scheduleErrors.count)
+            let aiScore = 1 / max(aiMeanError, minimumError)
+            let scheduleScore = 1 / max(scheduleMeanError, minimumError)
+            let scoreTotal = aiScore + scheduleScore
+
+            return (aiScore / scoreTotal, scheduleScore / scoreTotal)
+        }
+    }
+
+    private static func load() -> [GassiPredictionFeedback] {
+        guard let data = UserDefaults.standard.data(forKey: defaultsKey),
+              let feedback = try? JSONDecoder().decode([GassiPredictionFeedback].self, from: data) else {
+            return []
+        }
+
+        return feedback
+    }
+
+    private static func save(_ feedback: [GassiPredictionFeedback]) {
+        guard let data = try? JSONEncoder().encode(feedback) else { return }
+        UserDefaults.standard.set(data, forKey: defaultsKey)
+    }
+}
+
+#if canImport(FoundationModels)
+@available(iOS 26.0, macOS 26.0, watchOS 26.0, *)
+@Generable(description: "A prediction for the next dog relief event.")
+private struct GassiNextEventPrediction {
+    var predictionPossible: Bool
+
+    @Guide(description: "Confidence score for the prediction.", .range(0.0 ... 1.0))
+    var confidence: Double
+
+    @Guide(description: "Four digit year of the predicted local date.", .range(2024 ... 2100))
+    var year: Int
+
+    @Guide(description: "Month of year.", .range(1 ... 12))
+    var month: Int
+
+    @Guide(description: "Day of month.", .range(1 ... 31))
+    var day: Int
+
+    @Guide(description: "Hour in 24 hour time.", .range(0 ... 23))
+    var hour: Int
+
+    @Guide(description: "Minute of hour.", .range(0 ... 59))
+    var minute: Int
+}
+
+@available(iOS 26.0, macOS 26.0, watchOS 26.0, *)
+private enum GassiAIPredictor {
+    private static let minimumPredictionLeadTime: TimeInterval = 15 * 60
+    private static let maximumPredictionHorizon: TimeInterval = 36 * 60 * 60
+    private static let maximumScheduleDeviation: TimeInterval = 2 * 60 * 60
+
+    private static func localPredictionTimestampString(for date: Date, timeZone: TimeZone) -> String {
+        var calendar = Calendar.current
+        calendar.timeZone = timeZone
+
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = Locale.autoupdatingCurrent
+        formatter.timeZone = timeZone
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+
+        return formatter.string(from: date)
+    }
+
+    private static func median(_ values: [Int]) -> Int {
+        let sortedValues = values.sorted()
+        let middle = sortedValues.count / 2
+
+        if sortedValues.count.isMultiple(of: 2) {
+            return (sortedValues[middle - 1] + sortedValues[middle]) / 2
+        }
+
+        return sortedValues[middle]
+    }
+
+    /// Derives recurring daily time slots from recent observations. This provides a
+    /// deterministic fallback when the language model returns an implausible date.
+    private static func scheduleBasedDate(eventDates: [Date], timeZone: TimeZone) -> Date? {
+        guard let lastEvent = eventDates.max() else { return nil }
+
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.timeZone = timeZone
+
+        let recentCutoff = lastEvent.addingTimeInterval(-14 * 24 * 60 * 60)
+        let minutesOfDay = eventDates
+            .filter { $0 >= recentCutoff }
+            .map {
+                let components = calendar.dateComponents([.hour, .minute], from: $0)
+                return (components.hour ?? 0) * 60 + (components.minute ?? 0)
+            }
+            .sorted()
+
+        guard minutesOfDay.count >= 3 else { return nil }
+
+        var clusters: [[Int]] = []
+        for minute in minutesOfDay {
+            if let lastCluster = clusters.last,
+               minute - median(lastCluster) <= 120 {
+                clusters[clusters.count - 1].append(minute)
+            } else {
+                clusters.append([minute])
+            }
+        }
+
+        let recurringMinutes = clusters
+            .filter { $0.count >= 2 }
+            .map(median)
+            .sorted()
+
+        guard !recurringMinutes.isEmpty else { return nil }
+
+        // Calculate from the latest observation, not from the current time. If an
+        // expected slot has already passed, validation can surface it as overdue.
+        let earliestPrediction = lastEvent.addingTimeInterval(minimumPredictionLeadTime)
+        let referenceDay = calendar.startOfDay(for: lastEvent)
+
+        for dayOffset in 0 ... 2 {
+            guard let day = calendar.date(byAdding: .day, value: dayOffset, to: referenceDay) else {
+                continue
+            }
+
+            for minute in recurringMinutes {
+                if let candidate = calendar.date(byAdding: .minute, value: minute, to: day),
+                   candidate > earliestPrediction {
+                    return candidate
+                }
+            }
+        }
+
+        return nil
+    }
+
+    private static func validatedPredictionDate(
+        _ predictedDate: Date,
+        eventDates: [Date],
+        timeZone: TimeZone,
+        categoryID: UUID?
+    ) -> GassiPredictionResult {
+        guard let lastEvent = eventDates.max() else { return .failure(.notEnoughHistory) }
+
+        let referenceDate = max(Date.now, lastEvent)
+        let earliestPrediction = referenceDate.addingTimeInterval(minimumPredictionLeadTime)
+        let latestPrediction = referenceDate.addingTimeInterval(maximumPredictionHorizon)
+        let scheduleDate = scheduleBasedDate(eventDates: eventDates, timeZone: timeZone)
+        let actionableScheduleDate = scheduleDate.map { max($0, Date.now) }
+
+        let selectedDate: Date
+
+        if predictedDate <= earliestPrediction || predictedDate > latestPrediction {
+            guard let actionableScheduleDate else {
+                return predictedDate <= earliestPrediction
+                    ? .failure(.predictedDateInPast)
+                    : .failure(.predictedDateTooFar)
+            }
+            selectedDate = actionableScheduleDate
+        } else if let scheduleDate, let actionableScheduleDate {
+            if abs(predictedDate.timeIntervalSince(scheduleDate)) > maximumScheduleDeviation {
+                selectedDate = actionableScheduleDate
+            } else if let categoryID {
+                let weights = GassiPredictionFeedbackStore.weights(categoryID: categoryID)
+                let blendedTimestamp =
+                    predictedDate.timeIntervalSinceReferenceDate * weights.ai
+                    + actionableScheduleDate.timeIntervalSinceReferenceDate * weights.schedule
+                selectedDate = Date(timeIntervalSinceReferenceDate: blendedTimestamp)
+            } else {
+                selectedDate = predictedDate
+            }
+        } else {
+            selectedDate = predictedDate
+        }
+
+        if let categoryID {
+            GassiPredictionFeedbackStore.recordPrediction(
+                categoryID: categoryID,
+                aiDate: predictedDate,
+                scheduleDate: scheduleDate,
+                selectedDate: selectedDate
+            )
+        }
+
+        return .success(selectedDate)
+    }
+
+    static func nextDate(eventDates: [Date], categoryID: UUID?) async -> GassiPredictionResult {
+        guard eventDates.count >= 3 else { return .failure(.notEnoughHistory) }
+        
+        switch SystemLanguageModel.default.availability {
+        case .available:
+            break
+        case .unavailable(.deviceNotEligible):
+            return .failure(.deviceNotEligible)
+        case .unavailable(.appleIntelligenceNotEnabled):
+            return .failure(.appleIntelligenceNotEnabled)
+        case .unavailable(.modelNotReady):
+            return .failure(.modelNotReady)
+        case .unavailable(let reason):
+            return .failure(.other(String(describing: reason)))
+        }
+        
+        guard SystemLanguageModel.default.supportsLocale() else {
+            return .failure(.unsupportedLocale)
+        }
+        
+        let timeZone = TimeZone.autoupdatingCurrent
+        let calendar = Calendar.autoupdatingCurrent
+        let history = eventDates.sorted()
+            .map { localPredictionTimestampString(for: $0, timeZone: timeZone) }
+            .joined(separator: "\n")
+        let prompt = """
+        Predict the next likely date and time for a dog's relief event from historical observations.
+        Return the single most likely next event after the last observed event.
+        Prefer recurring spacing and time-of-day patterns over broad guesses.
+        If the history is too weak or inconsistent, set predictionPossible to false.
+
+        Historical events in ascending order:
+        \(history)
+        """
+
+        do {
+            let session = LanguageModelSession()
+            let response = try await session.respond(
+                to: prompt,
+                generating: GassiNextEventPrediction.self,
+                options: GenerationOptions(temperature: 0.1)
+            )
+            let prediction = response.content
+
+            guard prediction.predictionPossible, prediction.confidence >= 0.35 else {
+                return .failure(.lowConfidence)
+            }
+
+            var components = DateComponents()
+            components.calendar = calendar
+            components.timeZone = timeZone
+            components.year = prediction.year
+            components.month = prediction.month
+            components.day = prediction.day
+            components.hour = prediction.hour
+            components.minute = prediction.minute
+
+            guard let predictedDate = calendar.date(from: components) else {
+                return .failure(.invalidDate)
+            }
+
+            return validatedPredictionDate(
+                predictedDate,
+                eventDates: eventDates,
+                timeZone: timeZone,
+                categoryID: categoryID
+            )
+        } catch LanguageModelSession.GenerationError.unsupportedLanguageOrLocale {
+            return .failure(.unsupportedLocale)
+        } catch LanguageModelSession.GenerationError.refusal {
+            return .failure(.refusal)
+        } catch LanguageModelSession.GenerationError.decodingFailure {
+            return .failure(.decodingFailure)
+        } catch LanguageModelSession.GenerationError.guardrailViolation {
+            return .failure(.guardrailViolation)
+        } catch LanguageModelSession.GenerationError.rateLimited {
+            return .failure(.rateLimited)
+        } catch LanguageModelSession.GenerationError.assetsUnavailable {
+            return .failure(.assetsUnavailable)
+        } catch LanguageModelSession.GenerationError.exceededContextWindowSize {
+            return .failure(.exceededContextWindow)
+        } catch LanguageModelSession.GenerationError.concurrentRequests {
+            return .failure(.concurrentRequests)
+        } catch LanguageModelSession.GenerationError.unsupportedGuide {
+            return .failure(.unsupportedGuide)
+        } catch {
+            return .failure(.other(error.localizedDescription))
+        }
+    }
+}
+#endif
 
 /// Enum of ID strings for default Gassi core data objects
 //enum GassiIDStrings: String {
@@ -323,8 +758,16 @@ extension GassiEvent {
         event.dog = dog
         event.type = type
         event.subtype = subtype
+
+        if let categoryID = type.id {
+            GassiPredictionFeedbackStore.recordActualEvent(
+                categoryID: categoryID,
+                actualDate: timestamp
+            )
+        }
         
         groom(in: context)
+        NotificationCenter.default.post(name: .gassiEventDidCreate, object: event)
         
         return event
     }
@@ -512,7 +955,7 @@ extension GassiEvent {
         }
     }
     
-    static func next(viewContext: NSManagedObjectContext, dog: GassiDog? = nil, intervals: Int = 6, minProbability: Double = 0.15) -> GassiEvent? {
+    static func next(viewContext: NSManagedObjectContext, dog: GassiDog? = nil, intervals: Int = 6, minProbability: Double = 0.15) async -> GassiEvent? {
         var result: GassiEvent? = nil
         
         let eventsFetchRequest = GassiEvent.fetchRequest()
@@ -536,10 +979,10 @@ extension GassiEvent {
                     return item.type == category
                 }
                 
-                if let nextGassiDate = nextDate(events: categoryGassiEvents,
-                                                intervals: intervals,
-                                                eventDays: daysCount(events: allGassiEvents),
-                                                minProbability: minProbability) {
+                if case .success(let nextGassiDate) = await nextPrediction(events: categoryGassiEvents,
+                                                                           intervals: intervals,
+                                                                           eventDays: daysCount(events: allGassiEvents),
+                                                                           minProbability: minProbability) {
                     if let nextEvent = result {
                         if nextGassiDate < nextEvent.timestamp ?? .now {
                             result = GassiEvent()
@@ -560,78 +1003,28 @@ extension GassiEvent {
         return result
     }
     
-    static func nextDate(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) -> Date? {
-        let dscSortedEvents = events.sorted(by: { event1, event2 in
-            return event1.timestamp ?? .now > event2.timestamp ?? .now
-        })
-        var nextGassiEventDate: Date? = nil
-        print(#function)
-        let lastGassiEvent = dscSortedEvents.first
-        let interval = 86400 / max(intervals, 1)    // Length of one interval in seconds avoiding division by Zero
-        var distancesSum = 0.0
-        var numberOfGassis = 0
-        var numberOfGassisInInterval: [Int] = Array(repeating: 0, count: intervals)   // Array with all gassi events per interval
-        var gassiProbabilityInInterval: [Double] = Array(repeating: 0.0, count: intervals) // Array with all probabilities of gassi event per interval
-        var gassiAvgDistToNextEventInInterval: [TimeInterval] = Array(repeating: 0.0, count: intervals) // Array with average distance to next event per interval
-        
-        // Sum up the distances per interval
-        for (index, event) in dscSortedEvents.enumerated() {
-            let secondsOnDay = Calendar.current.startOfDay(for: event.timestamp ?? .now).distance(to: event.timestamp ?? .now)
-            let intervalIndex = Int(secondsOnDay) / interval
-            numberOfGassisInInterval[intervalIndex] += 1
-            
-            if index > 0 {
-                let distanceToNextEvent = (event.timestamp ?? .now).distance(to: dscSortedEvents[index - 1].timestamp ?? .now)
-                //                            distance = min(distance, 86400)
-                gassiAvgDistToNextEventInInterval[intervalIndex] += distanceToNextEvent
-                distancesSum += distanceToNextEvent
-                
-#if DEBUG
-                print(
-                    "EventIndex: \(index) in Interval \(intervalIndex), \(event.timestamp?.formatted(date: .numeric, time: .shortened) ?? "nil"), Distance to next event: \(TimeInterval.timeSpanString(distanceToNextEvent))"
-                )
-#endif
-                
-            } else {
-                
-#if DEBUG
-                print(
-                    "EventIndex: \(index) in Interval \(intervalIndex), \(event.timestamp?.formatted(date: .numeric, time: .shortened) ?? "nil")"
-                )
-#endif
-                
-            }
+    static func nextPrediction(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) async -> GassiPredictionResult {
+        let eventDates = events.compactMap(\.timestamp).sorted()
+
+#if canImport(FoundationModels)
+        if #available(iOS 26.0, macOS 26.0, watchOS 26.0, *) {
+            return await GassiAIPredictor.nextDate(
+                eventDates: eventDates,
+                categoryID: events.first?.type?.id
+            )
         }
-        
-        // Fill the array of gassis and probabilities per interval
-        for index in 0...(intervals - 1) {
-            gassiAvgDistToNextEventInInterval[index] = gassiAvgDistToNextEventInInterval[index] / Double(max(numberOfGassisInInterval[index] - 1, 1))
-            gassiProbabilityInInterval[index] = Double(max(0, numberOfGassisInInterval[index] - 1)) / Double(eventDays)
-            numberOfGassis += numberOfGassisInInterval[index]
-            
-#if DEBUG
-            print("# in Interval \(index): \(numberOfGassisInInterval[index]) events, avg distance to next event: \(TimeInterval.timeSpanString(gassiAvgDistToNextEventInInterval[index])), Probability: \(gassiProbabilityInInterval[index])")
 #endif
-            
-        }
-        
-        // If there was a last Gassi event, calc the next event
-        if let timestamp = lastGassiEvent?.timestamp {
-            let secondsOnDay = Calendar.current.startOfDay(for: timestamp).distance(to: timestamp)
-            let intervalIndex = Int(secondsOnDay) / interval
-            let eventDate = gassiAvgDistToNextEventInInterval[intervalIndex] > 0 && gassiProbabilityInInterval[intervalIndex] > minProbability ? timestamp + gassiAvgDistToNextEventInInterval[intervalIndex] : timestamp + (distancesSum / Double(max(numberOfGassis - 1, 1)))
-            
-#if DEBUG
-            print(eventDate.formatted())
-#endif
-            
-            // Just use the calculated next event, if it has an minimum probability and more than 1 event
-            if numberOfGassis > 1 && gassiProbabilityInInterval[intervalIndex] > minProbability {
-                nextGassiEventDate = eventDate
-            }
-        }
-        
-        return nextGassiEventDate
+
+        return .failure(.foundationModelsUnavailable)
+    }
+
+    static func nextDate(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) async -> Date? {
+        let result = await nextPrediction(events: events,
+                                          intervals: intervals,
+                                          eventDays: eventDays,
+                                          minProbability: minProbability)
+        guard case .success(let predictedDate) = result else { return nil }
+        return predictedDate
     }
     
     func previous(events: [GassiEvent], dog: GassiDog? = nil, category: GassiType? = nil) -> GassiEvent? {

@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>drop.fill</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Add a pee event</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Pee</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>de.loeffeljan.gassi.addPee</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>pawprint.fill</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Add a poo event</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Poo</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>de.loeffeljan.gassi.addPoo</string>
+		</dict>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

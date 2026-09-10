@@ -717,10 +717,11 @@
         }
       }
     },
-    "NoGassiEvent " : {
+    "NoGassiEvent" : {
 
     },
     "NoPredictionPossible" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

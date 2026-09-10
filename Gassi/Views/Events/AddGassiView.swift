@@ -41,6 +41,7 @@ struct AddGassiView: View {
                     addItem(type: GassiType.poo)
                     generator.notificationOccurred(.success)
                 })
+                .liquidGlassControl()
                 
                 Spacer()
                 
@@ -69,6 +70,7 @@ struct AddGassiView: View {
                     generator.impactOccurred()
                 })
                 .menuOrder(.fixed)
+                .liquidGlassControl()
                                 
                 Spacer()
                 
@@ -91,6 +93,7 @@ struct AddGassiView: View {
                     addItem(type: GassiType.pee)
                     generator.notificationOccurred(.success)
                 })
+                .liquidGlassControl()
             }
         }
         .padding()
@@ -98,6 +101,17 @@ struct AddGassiView: View {
     
     private func addItem(type: GassiType, subtype: GassiSubtype? = nil) {
         let _ = GassiEvent.new(context: viewContext, dog: GassiDog.current, type: type, subtype: subtype)
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func liquidGlassControl() -> some View {
+        if #available(iOS 26.0, *) {
+            buttonStyle(.glass)
+        } else {
+            self
+        }
     }
 }
 

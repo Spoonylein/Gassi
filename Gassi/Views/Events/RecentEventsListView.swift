@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RecentEventsListView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -21,13 +22,50 @@ struct RecentEventsListView: View {
                 }
             } header: {
                 HStack {
-                    Label("lastEvent", systemImage: "clock.arrow.circlepath")
+                    HStack(spacing: 8) {
+                        Image(systemName: "clock.arrow.circlepath")
+                        Text("lastEvent")
+                    }
                     Spacer()
-                    Label("nextEvent", systemImage: "timer")
+                    HStack(spacing: 8) {
+                        Text("nextEvent")
+                        Image(systemName: "timer")
+                    }
                 }
             }
         }
         .listStyle(.plain)
+        .task(id: predictionRefreshTaskID) {
+            navigationController.beginPredictionRefresh(expectedResults: predictableTypes.count)
+        }
+        .refreshable {
+            navigationController.recalculateNextPrediction()
+        }
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: .NSManagedObjectContextObjectsDidChange,
+                object: viewContext
+            )
+        ) { notification in
+            guard containsEventChanges(notification) else { return }
+            navigationController.recalculateNextPrediction()
+        }
+    }
+
+    private var predictionRefreshTaskID: String {
+        "\(predictableTypes.count)-\(navigationController.nextPredictionRefreshID.uuidString)"
+    }
+
+    private func containsEventChanges(_ notification: Notification) -> Bool {
+        let eventChangeKeys = [NSInsertedObjectsKey, NSUpdatedObjectsKey, NSDeletedObjectsKey]
+
+        return eventChangeKeys.contains { key in
+            guard let objects = notification.userInfo?[key] as? Set<NSManagedObject> else {
+                return false
+            }
+
+            return objects.contains { $0 is GassiEvent }
+        }
     }
     
 }
