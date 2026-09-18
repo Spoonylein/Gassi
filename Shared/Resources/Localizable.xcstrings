@@ -8,14 +8,34 @@
             "state" : "new",
             "value" : "\t%1$@ %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "\t%1$@ %2$@"
+          }
         }
       }
     },
     " " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : " "
+          }
+        }
+      }
     },
     "-" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "-"
+          }
+        }
+      }
     },
     "%@ %@" : {
       "localizations" : {
@@ -24,14 +44,34 @@
             "state" : "new",
             "value" : "%1$@ %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%1$@ %2$@"
+          }
         }
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "⚤" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "⚤"
+          }
+        }
+      }
     },
     "AddGassiTapAndHold" : {
       "comment" : "MARK: AddGassiView",
@@ -41,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zum Hinzufügen Tippen und halten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tap and hold to add"
           }
         }
       }
@@ -53,6 +99,12 @@
             "state" : "translated",
             "value" : "Alle Hunde"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "All Dogs"
+          }
         }
       }
     },
@@ -64,126 +116,11 @@
             "state" : "translated",
             "value" : "Alle Ereignistypen"
           }
-        }
-      }
-    },
-    "FilterEvents" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ereignisse filtern"
-          }
-        }
-      }
-    },
-    "DogStatusNoEvents" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ wartet gespannt auf das erste Abenteuer. 🐾"
-          }
-        }
-      }
-    },
-    "DogStatusSatisfied" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ ist rundum zufrieden – der letzte Spaziergang wirkt noch. 😌"
-          }
-        }
-      }
-    },
-    "DogStatusHappy" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ ist entspannt und glücklich. Alles im grünen Bereich! 🐶"
-          }
-        }
-      }
-    },
-    "DogStatusThinkingAboutWalk" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ denkt langsam wieder über eine Runde draußen nach. 👀"
-          }
-        }
-      }
-    },
-    "DogStatusWalkRecommended" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ meint: Ein Spaziergang wäre jetzt eine ziemlich gute Idee. 🦮"
-          }
-        }
-      }
-    },
-    "DogStatusUnderPressure" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Achtung, %@ steht ordentlich unter Druck – höchste Zeit für Gassi! 🚨"
-          }
-        }
-      }
-    },
-    "SortByDate" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nach Datum sortieren"
-          }
-        }
-      }
-    },
-    "DateDescending" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neueste zuerst"
-          }
-        }
-      }
-    },
-    "DateAscending" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Älteste zuerst"
-          }
-        }
-      }
-    },
-    "SortEvents" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ereignisse sortieren"
+            "state" : "machine_translated",
+            "value" : "All Event Types"
           }
         }
       }
@@ -195,6 +132,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rasse"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Breed"
           }
         }
       }
@@ -208,6 +151,12 @@
             "state" : "translated",
             "value" : "Rassen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Breeds"
+          }
         }
       }
     },
@@ -218,6 +167,12 @@
             "state" : "translated",
             "value" : "Name des Rasse"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Breed Name"
+          }
         }
       }
     },
@@ -227,6 +182,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rassen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Breeds"
           }
         }
       }
@@ -240,6 +201,12 @@
             "state" : "translated",
             "value" : "Rasse bearbeiten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Edit Breed"
+          }
         }
       }
     },
@@ -250,6 +217,12 @@
             "state" : "translated",
             "value" : "Alle Daten löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete All Data"
+          }
         }
       }
     },
@@ -259,6 +232,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alle Hunde und Ereignisse werden gelöscht. Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen bleiben erhalten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "All dogs and events will be deleted. Breeds, sexes, categories, subtypes, and settings will be preserved."
           }
         }
       }
@@ -271,6 +250,46 @@
             "state" : "translated",
             "value" : "Aktiver Hund"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Current Dog"
+          }
+        }
+      }
+    },
+    "DateAscending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Älteste zuerst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Oldest First"
+          }
+        }
+      }
+    },
+    "DateDescending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neueste zuerst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Newest First"
+          }
         }
       }
     },
@@ -280,6 +299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete"
           }
         }
       }
@@ -291,6 +316,12 @@
             "state" : "translated",
             "value" : "Rasse löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Breed"
+          }
         }
       }
     },
@@ -300,6 +331,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Die Rasse wird von allen Hunden entfernt und gelöscht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The breed will be removed from all dogs and deleted."
           }
         }
       }
@@ -311,6 +348,12 @@
             "state" : "translated",
             "value" : "Hund löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Dog"
+          }
         }
       }
     },
@@ -320,6 +363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Der Hund und alle seine Ereignisse werden unwiderruflich gelöscht und können nicht wiederhergestellt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The dog and all of its events will be permanently deleted and can’t be recovered."
           }
         }
       }
@@ -331,6 +380,12 @@
             "state" : "translated",
             "value" : "Ereignis löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Event"
+          }
         }
       }
     },
@@ -340,6 +395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Das Ereignis wird gelöscht und kann nicht wiederhergestellt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The event will be deleted and can’t be recovered."
           }
         }
       }
@@ -351,6 +412,12 @@
             "state" : "translated",
             "value" : "Geschlecht löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Sex"
+          }
         }
       }
     },
@@ -360,6 +427,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Das Geschlecht wird von allen zugewiesenen Hunden entfernt und gelöscht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The sex will be removed from all assigned dogs and deleted."
           }
         }
       }
@@ -371,6 +444,12 @@
             "state" : "translated",
             "value" : "Unterkategorie löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Subtype"
+          }
         }
       }
     },
@@ -380,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Die Unterkategorie wird von der Kategorie und allen Ereignissen entfernt und gelöscht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The subtype will be removed from its category and all events, then deleted."
           }
         }
       }
@@ -391,6 +476,12 @@
             "state" : "translated",
             "value" : "Kategorie löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Category"
+          }
         }
       }
     },
@@ -400,6 +491,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Die Kategorie wird von allen Ereignissen entfernt und gelöscht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The category is removed from all events and deleted."
           }
         }
       }
@@ -412,6 +509,12 @@
             "state" : "translated",
             "value" : "Bezeichnung"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Name"
+          }
         }
       }
     },
@@ -423,6 +526,12 @@
             "state" : "translated",
             "value" : "Durchfall"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Diarrhea"
+          }
         }
       }
     },
@@ -432,6 +541,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "☣️"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "☣️"
           }
         }
@@ -445,6 +560,12 @@
             "state" : "translated",
             "value" : "Hund"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Dog"
+          }
         }
       }
     },
@@ -455,6 +576,12 @@
             "state" : "translated",
             "value" : "Geburtsdatum"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Date of Birth"
+          }
         }
       }
     },
@@ -464,6 +591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alter: "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Age: "
           }
         }
       }
@@ -477,6 +610,12 @@
             "state" : "translated",
             "value" : "Geschlecht: "
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sex: "
+          }
         }
       }
     },
@@ -486,6 +625,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name des Hundes"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Dog’s Name"
           }
         }
       }
@@ -497,6 +642,12 @@
             "state" : "translated",
             "value" : "kein Geburtsdatum"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add Date of Birth"
+          }
         }
       }
     },
@@ -506,6 +657,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hunde"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Dogs"
           }
         }
       }
@@ -519,6 +676,114 @@
             "state" : "translated",
             "value" : "Hunde"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Dogs"
+          }
+        }
+      }
+    },
+    "DogStatusHappy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ist entspannt und glücklich. Alles im grünen Bereich! 🐶"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ is relaxed and happy. Everything’s great! 🐶"
+          }
+        }
+      }
+    },
+    "DogStatusNoEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ wartet gespannt auf das erste Abenteuer. 🐾"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ is eagerly awaiting their first adventure. 🐾"
+          }
+        }
+      }
+    },
+    "DogStatusSatisfied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ist rundum zufrieden – der letzte Spaziergang wirkt noch. 😌"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ is completely content—the last walk is still doing the trick. 😌"
+          }
+        }
+      }
+    },
+    "DogStatusThinkingAboutWalk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ denkt langsam wieder über eine Runde draußen nach. 👀"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ is starting to think about another walk. 👀"
+          }
+        }
+      }
+    },
+    "DogStatusUnderPressure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achtung, %@ steht ordentlich unter Druck – höchste Zeit für Gassi! 🚨"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Heads up, %@ really needs to go—it’s time for a walk! 🚨"
+          }
+        }
+      }
+    },
+    "DogStatusWalkRecommended" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ meint: Ein Spaziergang wäre jetzt eine ziemlich gute Idee. 🦮"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ thinks a walk would be a pretty good idea right now. 🦮"
+          }
         }
       }
     },
@@ -528,6 +793,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nur dem aktiven Hund werden neue Ereignisse zugewiesen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "New events are assigned only to the current dog."
           }
         }
       }
@@ -539,6 +810,12 @@
             "state" : "translated",
             "value" : "Der aktive Hund kann nicht gelöscht werden."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The current dog can’t be deleted."
+          }
         }
       }
     },
@@ -548,6 +825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Für diesen Hund wurde noch kein Geburtsdatum gesetzt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No date of birth has been set for this dog."
           }
         }
       }
@@ -561,6 +844,12 @@
             "state" : "translated",
             "value" : "Hund bearbeiten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Edit Dog"
+          }
         }
       }
     },
@@ -571,11 +860,24 @@
             "state" : "translated",
             "value" : "Ereignis bearbeiten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Edit Event"
+          }
         }
       }
     },
     "Ereignis konnte nicht gespeichert werden" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Couldn’t Save Event"
+          }
+        }
+      }
     },
     "Event" : {
       "comment" : "MARK: GassiEvent",
@@ -585,6 +887,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ereignis"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Event"
           }
         }
       }
@@ -596,6 +904,12 @@
             "state" : "translated",
             "value" : "Merkmale"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Details"
+          }
         }
       }
     },
@@ -606,6 +920,12 @@
             "state" : "translated",
             "value" : "Ereignisse"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Events"
+          }
         }
       }
     },
@@ -615,6 +935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "List"
           }
         }
       }
@@ -627,6 +953,12 @@
             "state" : "translated",
             "value" : "Zeit und Ort"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Time and Place"
+          }
         }
       }
     },
@@ -637,6 +969,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hündin"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Female Dog"
           }
         }
       }
@@ -649,6 +987,29 @@
             "state" : "translated",
             "value" : "weiblich"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Female"
+          }
+        }
+      }
+    },
+    "FilterEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse filtern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Filter Events"
+          }
         }
       }
     },
@@ -658,6 +1019,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Gassi!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "Gassi!"
           }
         }
@@ -671,6 +1038,12 @@
             "state" : "translated",
             "value" : "Gassi"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Gassi"
+          }
         }
       }
     },
@@ -681,6 +1054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hart"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hard"
           }
         }
       }
@@ -693,11 +1072,24 @@
             "state" : "translated",
             "value" : "🫘"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "🫘"
+          }
         }
       }
     },
     "Hello, World!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hello, World!"
+          }
+        }
+      }
     },
     "justNow" : {
       "localizations" : {
@@ -705,6 +1097,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "gerade eben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Just now"
           }
         }
       }
@@ -715,6 +1113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "letztes Ereignis"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Last Event"
           }
         }
       }
@@ -727,6 +1131,12 @@
             "state" : "translated",
             "value" : "Rüde"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Male Dog"
+          }
         }
       }
     },
@@ -738,11 +1148,24 @@
             "state" : "translated",
             "value" : "männlich"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Male"
+          }
         }
       }
     },
     "Name" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Name"
+          }
+        }
+      }
     },
     "NamelessBreed" : {
       "extractionState" : "manual",
@@ -751,6 +1174,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Namenlose Rasse"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Unnamed Breed"
           }
         }
       }
@@ -763,6 +1192,12 @@
             "state" : "translated",
             "value" : "Namenloser Hund"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Unnamed Dog"
+          }
         }
       }
     },
@@ -773,6 +1208,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Namenloses Geschlecht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Unnamed Sex"
           }
         }
       }
@@ -785,6 +1226,12 @@
             "state" : "translated",
             "value" : "Namenlose Kategorie"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Unnamed Category"
+          }
         }
       }
     },
@@ -795,6 +1242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Neue Rasse"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "New Breed"
           }
         }
       }
@@ -807,6 +1260,12 @@
             "state" : "translated",
             "value" : "Neuer Hund"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "New Dog"
+          }
         }
       }
     },
@@ -817,6 +1276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Neues Geschlecht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "New Sex"
           }
         }
       }
@@ -829,6 +1294,12 @@
             "state" : "translated",
             "value" : "Neue Kategorie"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "New Category"
+          }
         }
       }
     },
@@ -838,6 +1309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "nächstes Ereignis"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Next Event"
           }
         }
       }
@@ -850,11 +1327,24 @@
             "state" : "translated",
             "value" : "keine Rasse"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No Breed"
+          }
         }
       }
     },
     "NoGassiEvent" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No Event Yet"
+          }
+        }
+      }
     },
     "NoPredictionPossible" : {
       "extractionState" : "stale",
@@ -863,6 +1353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "zu wenig Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Not Enough Data"
           }
         }
       }
@@ -875,6 +1371,12 @@
             "state" : "translated",
             "value" : "kein Geschlecht"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No Sex"
+          }
         }
       }
     },
@@ -884,6 +1386,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "keine Unterkategorie"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No Subtype"
           }
         }
       }
@@ -896,6 +1404,12 @@
             "state" : "translated",
             "value" : "keine Zeitangabe"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No Time Specified"
+          }
         }
       }
     },
@@ -905,6 +1419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "keine Kategorie"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No Category"
           }
         }
       }
@@ -916,11 +1436,24 @@
             "state" : "translated",
             "value" : "jetzt"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Now"
+          }
         }
       }
     },
     "OK" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Pee" : {
       "extractionState" : "manual",
@@ -929,6 +1462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pipi"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Pee"
           }
         }
       }
@@ -939,6 +1478,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "💦"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "💦"
           }
         }
@@ -952,6 +1497,12 @@
             "state" : "translated",
             "value" : "Kacka"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Poo"
+          }
         }
       }
     },
@@ -961,6 +1512,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "💩"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "💩"
           }
         }
@@ -974,6 +1531,12 @@
             "state" : "translated",
             "value" : "App beenden"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Quit App"
+          }
         }
       }
     },
@@ -985,6 +1548,12 @@
             "state" : "translated",
             "value" : "Statistiken"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Statistics"
+          }
         }
       }
     },
@@ -994,6 +1563,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Reset Settings"
           }
         }
       }
@@ -1005,6 +1580,12 @@
             "state" : "translated",
             "value" : "Alle Rassen, Geschlechter, Kategorien, Unterkategorien und Einstellungen werden gelöscht und beim nächsten Neustart auf Standardwerte zurückgesetzt. Hunde und Ereignisse bleiben erhalten, haben dann jedoch mglw. keine korrekte Zuordnung mehr."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "All breeds, sexes, categories, subtypes, and settings will be deleted and reset to their defaults the next time the app starts. Dogs and events will be preserved, but their assignments may no longer be correct."
+          }
         }
       }
     },
@@ -1015,6 +1596,12 @@
             "state" : "translated",
             "value" : "Die Standardwerte werden beim Neustart der App angelegt. Dazu bitte im AppSwitcher die App beenden und dann die App neu starten."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Default values will be created when the app restarts. Quit the app from the App Switcher, then open it again."
+          }
         }
       }
     },
@@ -1024,6 +1611,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App muss neu gestartet werden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Restart Required"
           }
         }
       }
@@ -1036,6 +1629,12 @@
             "state" : "translated",
             "value" : "Einstellungen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Settings"
+          }
         }
       }
     },
@@ -1045,6 +1644,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aktiver Hund"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Current Dog"
           }
         }
       }
@@ -1056,6 +1661,12 @@
             "state" : "translated",
             "value" : "Wähle den aktiven Hund aus oder bearbeite ihn."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Select the current dog or edit it."
+          }
         }
       }
     },
@@ -1065,6 +1676,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mehrere Gassis innerhalb der Karenzzeit werden wie ein einzelnes Gassi behandelt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Multiple walks within the grace period are treated as a single walk."
           }
         }
       }
@@ -1077,6 +1694,12 @@
             "state" : "translated",
             "value" : "Ereignisse"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Events"
+          }
         }
       }
     },
@@ -1086,6 +1709,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merkmale"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Details"
           }
         }
       }
@@ -1097,6 +1726,12 @@
             "state" : "translated",
             "value" : "Karenzzeit"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Grace Period"
+          }
         }
       }
     },
@@ -1107,6 +1742,12 @@
             "state" : "translated",
             "value" : "Behalte"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Keep"
+          }
         }
       }
     },
@@ -1116,6 +1757,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Settings"
           }
         }
       }
@@ -1128,6 +1775,12 @@
             "state" : "translated",
             "value" : "Geschlecht"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sex"
+          }
         }
       }
     },
@@ -1138,6 +1791,12 @@
             "state" : "translated",
             "value" : "Geschlechter"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sexes"
+          }
         }
       }
     },
@@ -1147,6 +1806,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bezeichnung des Geschlechtes"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sex Name"
           }
         }
       }
@@ -1160,6 +1825,46 @@
             "state" : "translated",
             "value" : "Geschlecht bearbeiten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Edit Sex"
+          }
+        }
+      }
+    },
+    "SortByDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Datum sortieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sort by Date"
+          }
+        }
+      }
+    },
+    "SortEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse sortieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sort Events"
+          }
         }
       }
     },
@@ -1171,11 +1876,24 @@
             "state" : "translated",
             "value" : "Unterkategorie"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Subtype"
+          }
         }
       }
     },
     "SubtypeName" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Subtype Name"
+          }
+        }
+      }
     },
     "Subtypes" : {
       "localizations" : {
@@ -1183,6 +1901,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unterkategorien"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Subtypes"
           }
         }
       }
@@ -1194,6 +1918,12 @@
             "state" : "translated",
             "value" : "Sind Unterkategorien vorhanden, können sie Ereignissen zugewiesen und als Sonderfall dieser Kategorie angezeigt werden."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "When subtypes are available, they can be assigned to events and displayed as special cases of this category."
+          }
         }
       }
     },
@@ -1204,6 +1934,12 @@
             "state" : "translated",
             "value" : "Nutze ein einzelnes Emoticon als Zeichen !"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Use a single emoji as the symbol."
+          }
         }
       }
     },
@@ -1213,6 +1949,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ereignisse einer Unterkategorie werden als Sonderfälle betrachtet und in Vorhersagen nicht berücksichtigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Events assigned to a subtype are treated as special cases and excluded from predictions."
           }
         }
       }
@@ -1225,6 +1967,12 @@
             "state" : "translated",
             "value" : "Zeichen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Symbol"
+          }
         }
       }
     },
@@ -1235,6 +1983,12 @@
             "state" : "translated",
             "value" : "Zeitpunkt"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Date and Time"
+          }
         }
       }
     },
@@ -1244,6 +1998,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Training"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "Training"
           }
         }
@@ -1257,6 +2017,12 @@
             "state" : "translated",
             "value" : "🦮"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "🦮"
+          }
         }
       }
     },
@@ -1268,6 +2034,12 @@
             "state" : "translated",
             "value" : "Leckerli"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Treat"
+          }
         }
       }
     },
@@ -1277,6 +2049,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "🍖"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "🍖"
           }
         }
@@ -1290,11 +2068,24 @@
             "state" : "translated",
             "value" : "Kategorie"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Category"
+          }
         }
       }
     },
     "TypeName" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Category Name"
+          }
+        }
+      }
     },
     "Types" : {
       "localizations" : {
@@ -1302,6 +2093,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kategorien"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Categories"
           }
         }
       }
@@ -1314,6 +2111,12 @@
             "state" : "translated",
             "value" : "🐶"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "🐶"
+          }
         }
       }
     },
@@ -1323,6 +2126,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nutze ein einzelnes Emoticon als Zeichen !"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Use a single emoji as the symbol."
           }
         }
       }
@@ -1334,6 +2143,12 @@
             "state" : "translated",
             "value" : "Wenn aktiviert, wird das nächste Auftreten eines Events dieser Kategorie vorhergesagt."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "When enabled, the next event in this category is predicted."
+          }
         }
       }
     },
@@ -1344,6 +2159,12 @@
             "state" : "translated",
             "value" : "Löschst Du diese Kategorie, wird sie beim nächsten Neustart automatisch neu erstellt."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "If you delete this category, it’s automatically re-created the next time the app starts."
+          }
         }
       }
     },
@@ -1353,6 +2174,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vorhersage"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Prediction"
           }
         }
       }
@@ -1365,6 +2192,12 @@
             "state" : "translated",
             "value" : "Zeichen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Symbol"
+          }
         }
       }
     },
@@ -1374,6 +2207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "unbekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Unknown"
           }
         }
       }
@@ -1386,6 +2225,12 @@
             "state" : "translated",
             "value" : "Erbrechen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Vomit"
+          }
         }
       }
     },
@@ -1395,6 +2240,12 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "🤮"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
             "value" : "🤮"
           }
         }
@@ -1408,6 +2259,12 @@
             "state" : "translated",
             "value" : "Dein Hund"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Your Dog"
+          }
         }
       }
     },
@@ -1419,9 +2276,15 @@
             "state" : "translated",
             "value" : "Deine Hunde"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Your Dogs"
+          }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version" : "1.3"
 }
