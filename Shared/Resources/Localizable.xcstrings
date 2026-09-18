@@ -56,6 +56,138 @@
         }
       }
     },
+    "AllTypes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Ereignistypen"
+          }
+        }
+      }
+    },
+    "FilterEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse filtern"
+          }
+        }
+      }
+    },
+    "DogStatusNoEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ wartet gespannt auf das erste Abenteuer. 🐾"
+          }
+        }
+      }
+    },
+    "DogStatusSatisfied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ist rundum zufrieden – der letzte Spaziergang wirkt noch. 😌"
+          }
+        }
+      }
+    },
+    "DogStatusHappy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ist entspannt und glücklich. Alles im grünen Bereich! 🐶"
+          }
+        }
+      }
+    },
+    "DogStatusThinkingAboutWalk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ denkt langsam wieder über eine Runde draußen nach. 👀"
+          }
+        }
+      }
+    },
+    "DogStatusWalkRecommended" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ meint: Ein Spaziergang wäre jetzt eine ziemlich gute Idee. 🦮"
+          }
+        }
+      }
+    },
+    "DogStatusUnderPressure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achtung, %@ steht ordentlich unter Druck – höchste Zeit für Gassi! 🚨"
+          }
+        }
+      }
+    },
+    "SortByDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Datum sortieren"
+          }
+        }
+      }
+    },
+    "DateDescending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neueste zuerst"
+          }
+        }
+      }
+    },
+    "DateAscending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Älteste zuerst"
+          }
+        }
+      }
+    },
+    "SortEvents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignisse sortieren"
+          }
+        }
+      }
+    },
     "Breed" : {
       "comment" : "MARK: GassiBreed",
       "localizations" : {

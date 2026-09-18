@@ -5,6 +5,7 @@
 //  Created by Jan Löffel on 14.09.22.
 //
 
+import CoreData
 import SwiftUI
 
 struct RecentEventRowView: View {

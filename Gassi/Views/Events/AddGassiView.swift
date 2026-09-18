@@ -29,8 +29,9 @@ struct AddGassiView: View {
                             .font(.title)
                     }
                 }
+                .buttonBorderShape(.roundedRectangle)
                 .liquidGlassControl()
-                
+
                 Spacer()
                 
                 Menu {
@@ -54,8 +55,9 @@ struct AddGassiView: View {
                         .padding()
                 }
                 .menuOrder(.fixed)
+                .buttonBorderShape(.circle)
                 .liquidGlassControl()
-                                
+                
                 Spacer()
                 
                 Button {
@@ -68,6 +70,7 @@ struct AddGassiView: View {
                             .font(.title)
                     }
                 }
+                .buttonBorderShape(.roundedRectangle)
                 .liquidGlassControl()
             }
         }

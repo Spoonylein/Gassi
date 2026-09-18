@@ -105,6 +105,7 @@ private enum GassiPredictionFeedbackStore {
     private static let maximumEntries = 100
     private static let minimumSamplesForAdaptation = 3
     private static let minimumError: TimeInterval = 5 * 60
+    private static let maximumActualEventError: TimeInterval = 12 * 60 * 60
     private static let queue = DispatchQueue(label: "GassiPredictionFeedbackStore")
 
     static func recordPrediction(
@@ -151,15 +152,22 @@ private enum GassiPredictionFeedbackStore {
                 didChange = true
             }
 
-            if matchingResolvedIndices.isEmpty,
-               let index = feedback.indices.reversed().first(where: {
-                   feedback[$0].categoryID == categoryID
-                       && feedback[$0].dogID == dogID
-                       && feedback[$0].actualDate == nil
-                       && feedback[$0].issuedAt <= actualDate
-               }) {
-                feedback[index].actualEventID = eventID
-                updateResolvedFeedback(&feedback[index], actualDate: actualDate)
+            let unresolvedIndex = feedback.indices
+                .filter {
+                    feedback[$0].categoryID == categoryID
+                        && feedback[$0].dogID == dogID
+                        && feedback[$0].actualDate == nil
+                        && feedback[$0].issuedAt <= actualDate
+                        && abs(actualDate.timeIntervalSince(feedback[$0].selectedDate)) <= maximumActualEventError
+                }
+                .min {
+                    abs(actualDate.timeIntervalSince(feedback[$0].selectedDate))
+                        < abs(actualDate.timeIntervalSince(feedback[$1].selectedDate))
+                }
+
+            if matchingResolvedIndices.isEmpty, let unresolvedIndex {
+                feedback[unresolvedIndex].actualEventID = eventID
+                updateResolvedFeedback(&feedback[unresolvedIndex], actualDate: actualDate)
                 didChange = true
             }
 
@@ -242,72 +250,107 @@ private enum GassiPredictionFeedbackStore {
 
 private enum GassiSchedulePredictor {
     static let minimumPredictionLeadTime: TimeInterval = 15 * 60
-    static let maximumPredictionHorizon: TimeInterval = 36 * 60 * 60
+    static let maximumPredictionHorizon: TimeInterval = 3 * 24 * 60 * 60
     static let maximumScheduleDeviation: TimeInterval = 2 * 60 * 60
 
-    static func prediction(eventDates: [Date], timeZone: TimeZone = .autoupdatingCurrent) -> GassiPredictionResult {
-        guard eventDates.count >= 3 else { return .failure(.notEnoughHistory) }
-        guard let scheduleDate = scheduleBasedDate(eventDates: eventDates, timeZone: timeZone) else {
+    static func prediction(
+        eventDates: [Date],
+        maximumIntervals: Int,
+        minimumConfidence: Double,
+        now: Date = .now
+    ) -> GassiPredictionResult {
+        guard let estimate = estimate(
+            eventDates: eventDates,
+            maximumIntervals: maximumIntervals,
+            now: now
+        ) else {
+            return eventDates.count < 3 ? .failure(.notEnoughHistory) : .failure(.lowConfidence)
+        }
+        guard estimate.confidence >= minimumConfidence else {
             return .failure(.lowConfidence)
         }
 
-        return .success(max(scheduleDate, Date.now))
+        return .success(estimate.date)
     }
 
-    static func scheduleBasedDate(eventDates: [Date], timeZone: TimeZone) -> Date? {
-        guard let lastEvent = eventDates.max() else { return nil }
-
-        var calendar = Calendar.autoupdatingCurrent
-        calendar.timeZone = timeZone
-
-        let recentCutoff = lastEvent.addingTimeInterval(-14 * 24 * 60 * 60)
-        let minutesOfDay = eventDates
-            .filter { $0 >= recentCutoff }
-            .map {
-                let components = calendar.dateComponents([.hour, .minute], from: $0)
-                return (components.hour ?? 0) * 60 + (components.minute ?? 0)
-            }
-            .sorted()
-
-        guard minutesOfDay.count >= 3 else { return nil }
-
-        var clusters: [[Int]] = []
-        for minute in minutesOfDay {
-            if let lastCluster = clusters.last,
-               minute - median(lastCluster) <= 120 {
-                clusters[clusters.count - 1].append(minute)
-            } else {
-                clusters.append([minute])
-            }
-        }
-
-        let recurringMinutes = clusters
-            .filter { $0.count >= 2 }
-            .map(median)
-            .sorted()
-
-        guard !recurringMinutes.isEmpty else { return nil }
-
-        let earliestPrediction = lastEvent.addingTimeInterval(minimumPredictionLeadTime)
-        let referenceDay = calendar.startOfDay(for: lastEvent)
-
-        for dayOffset in 0 ... 2 {
-            guard let day = calendar.date(byAdding: .day, value: dayOffset, to: referenceDay) else {
-                continue
-            }
-
-            for minute in recurringMinutes {
-                if let candidate = calendar.date(byAdding: .minute, value: minute, to: day),
-                   candidate > earliestPrediction {
-                    return candidate
-                }
-            }
-        }
-
-        return nil
+    static func scheduleBasedDate(
+        eventDates: [Date],
+        maximumIntervals: Int = 6,
+        now: Date = .now
+    ) -> Date? {
+        estimate(eventDates: eventDates, maximumIntervals: maximumIntervals, now: now)?.date
     }
 
-    private static func median(_ values: [Int]) -> Int {
+    private static func estimate(
+        eventDates: [Date],
+        maximumIntervals: Int,
+        now: Date
+    ) -> (date: Date, confidence: Double)? {
+        let sortedDates = eventDates
+            .filter { $0 <= now }
+            .sorted()
+        guard sortedDates.count >= 3, let lastEvent = sortedDates.last else { return nil }
+
+        let calendar = Calendar.autoupdatingCurrent
+        let lastEventTime = timeOfDay(for: lastEvent, calendar: calendar)
+        let lastIndex = sortedDates.index(before: sortedDates.endIndex)
+        let intervalLimit = max(1, maximumIntervals)
+
+        let matchingIntervals = sortedDates.indices
+            .dropFirst()
+            .filter { index in
+                index < lastIndex
+                    && !calendar.isDate(sortedDates[index], inSameDayAs: lastEvent)
+                    && circularTimeDifference(
+                        timeOfDay(for: sortedDates[index], calendar: calendar),
+                        lastEventTime
+                    ) <= maximumScheduleDeviation
+            }
+            .suffix(intervalLimit)
+            .map { index in
+                sortedDates[index + 1].timeIntervalSince(sortedDates[index])
+            }
+            .filter { $0 >= minimumPredictionLeadTime && $0 <= maximumPredictionHorizon }
+
+        let predictionIntervals: [TimeInterval]
+        let predictionInterval: TimeInterval
+
+        if matchingIntervals.isEmpty {
+            let recentDates = sortedDates.suffix(intervalLimit + 1)
+            let overallIntervals = zip(recentDates, recentDates.dropFirst())
+                .map { $1.timeIntervalSince($0) }
+                .filter { $0 >= minimumPredictionLeadTime && $0 <= maximumPredictionHorizon }
+            guard overallIntervals.count >= 2 else { return nil }
+
+            predictionIntervals = overallIntervals
+            predictionInterval = median(overallIntervals)
+        } else {
+            predictionIntervals = matchingIntervals
+            predictionInterval = matchingIntervals.reduce(0, +) / Double(matchingIntervals.count)
+        }
+
+        let earliestPrediction = now.addingTimeInterval(minimumPredictionLeadTime)
+        var predictedDate = lastEvent.addingTimeInterval(predictionInterval)
+
+        if predictedDate <= earliestPrediction {
+            let missedIntervals = floor(earliestPrediction.timeIntervalSince(predictedDate) / predictionInterval) + 1
+            predictedDate = predictedDate.addingTimeInterval(missedIntervals * predictionInterval)
+        }
+
+        guard predictedDate <= now.addingTimeInterval(maximumPredictionHorizon) else { return nil }
+
+        let variance = predictionIntervals.reduce(0) { partialResult, interval in
+            partialResult + pow(interval - predictionInterval, 2)
+        } / Double(predictionIntervals.count)
+        let relativeDeviation = sqrt(variance) / max(predictionInterval, 1)
+        let regularity = max(0, 1 - min(relativeDeviation, 1))
+        let sampleStrength = min(1, Double(predictionIntervals.count) / Double(max(2, intervalLimit)))
+        let confidence = (0.5 + 0.5 * sampleStrength) * regularity
+
+        return (predictedDate, confidence)
+    }
+
+    private static func median(_ values: [TimeInterval]) -> TimeInterval {
         let sortedValues = values.sorted()
         let middle = sortedValues.count / 2
 
@@ -316,6 +359,20 @@ private enum GassiSchedulePredictor {
         }
 
         return sortedValues[middle]
+    }
+
+    private static func timeOfDay(for date: Date, calendar: Calendar) -> TimeInterval {
+        let components = calendar.dateComponents([.hour, .minute, .second], from: date)
+        return TimeInterval(
+            (components.hour ?? 0) * 60 * 60
+                + (components.minute ?? 0) * 60
+                + (components.second ?? 0)
+        )
+    }
+
+    private static func circularTimeDifference(_ first: TimeInterval, _ second: TimeInterval) -> TimeInterval {
+        let difference = abs(first - second)
+        return min(difference, 24 * 60 * 60 - difference)
     }
 }
 
@@ -371,7 +428,7 @@ private enum GassiAIPredictor {
         let referenceDate = max(Date.now, lastEvent)
         let earliestPrediction = referenceDate.addingTimeInterval(GassiSchedulePredictor.minimumPredictionLeadTime)
         let latestPrediction = referenceDate.addingTimeInterval(GassiSchedulePredictor.maximumPredictionHorizon)
-        let scheduleDate = GassiSchedulePredictor.scheduleBasedDate(eventDates: eventDates, timeZone: timeZone)
+        let scheduleDate = GassiSchedulePredictor.scheduleBasedDate(eventDates: eventDates)
         let actionableScheduleDate = scheduleDate.map { max($0, Date.now) }
 
         let selectedDate: Date
@@ -866,6 +923,10 @@ extension GassiEvent {
     }
 
     static func reconcilePredictionFeedback(for notification: Notification) {
+        if let insertedObjects = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            insertedObjects.forEach(reevaluatePredictionFeedback)
+        }
+
         if let deletedObjects = notification.userInfo?[NSDeletedObjectsKey] as? Set<NSManagedObject> {
             deletedObjects.forEach(invalidatePredictionFeedback)
         }
@@ -1128,24 +1189,14 @@ extension GassiEvent {
     }
     
     static func nextPrediction(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) async -> GassiPredictionResult {
-        let eventDates = events.compactMap(\.timestamp).sorted()
-        let scheduleResult = GassiSchedulePredictor.prediction(eventDates: eventDates)
+        let eventDates = events.compactMap(\.timestamp)
+        let sampleIntervals = max(intervals, min(eventDays, 12))
 
-#if canImport(FoundationModels)
-        if #available(iOS 26.0, macOS 26.0, watchOS 26.0, *) {
-            let aiResult = await GassiAIPredictor.nextDate(
-                eventDates: eventDates,
-                categoryID: events.first?.type?.id,
-                dogID: events.first?.dog?.id
-            )
-
-            if case .success = aiResult {
-                return aiResult
-            }
-        }
-#endif
-
-        return scheduleResult
+        return GassiSchedulePredictor.prediction(
+            eventDates: eventDates,
+            maximumIntervals: sampleIntervals,
+            minimumConfidence: minProbability
+        )
     }
 
     static func nextDate(events: [GassiEvent], intervals: Int = 6, eventDays: Int, minProbability: Double = 0.15) async -> Date? {
